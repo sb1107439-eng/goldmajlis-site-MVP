@@ -1,0 +1,46 @@
+{
+  "name": "GoldMajlis — سعر الذهب في قطر",
+  "short_name": "GoldMajlis",
+  "description": "Live gold prices in Qatar. All karats, all currencies. Free jewellery calculator.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0d0900",
+  "theme_color": "#C9922A",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["finance", "utilities"],
+  "shortcuts": [
+    {
+      "name": "Gold Prices",
+      "short_name": "Prices",
+      "url": "/#home",
+      "description": "Live gold price per gram"
+    },
+    {
+      "name": "Calculator",
+      "short_name": "Calc",
+      "url": "/#calc",
+      "description": "Jewellery price calculator"
+    },
+    {
+      "name": "Gold Bars",
+      "short_name": "Bars",
+      "url": "/#bullion",
+      "description": "Gold bar prices"
+    }
+  ]
+}
