@@ -3702,17 +3702,17 @@ function setCur(btn,code,sym){
   /* Immediately update card prices AND units on currency switch */
   const _isArSC=document.documentElement.getAttribute('dir')==='rtl';
   const _grSC=window.GM_STRINGS?.gram_cur||'غرام';
-  const _fxSC=FX[code]||1;
+  const _fxSC=FX[code]; /* raw — may be 0 for EUR/GBP/INR if not loaded yet */
   [24,22,21,18].forEach(k=>{
     const _u=document.getElementById('wcu-'+k);
     const _p=document.getElementById('wp-'+k);
     if(_u)_u.textContent=_isArSC?(_grSC+' / '+gCurSym):(gCurSym+' / gram');
-    /* Update price immediately if we have base price */
+    /* Update price immediately if we have base price AND FX rate */
     if(_p&&base24QAR&&_fxSC>0){
       const _v=base24QAR*(PURITY[k]||1)*_fxSC;
       _p.textContent=_v.toFixed(2);
-    } else if(_p&&(!_fxSC||_fxSC===0)){
-      _p.textContent='…'; /* FX not loaded yet — show loading */
+    } else if(_p&&base24QAR&&(_fxSC===0||_fxSC===undefined)){
+      _p.textContent='…'; /* FX rate not loaded yet */
     }
   });
   /* v30 Fix 12 — sync calculator currency to home currency; pass skipSave=true so user's saved calc currency pref is preserved */
