@@ -593,6 +593,57 @@ window.GM_STRINGS = {
   q_advice_mid:       '، تفاوض — استهدف ',
   q_advice_suf:       ' رسوم مصنعية.',
 
+  /* v102 — new section labels */
+  calc_rate_section:  'السعر والعملة',
+  calc_piece_details: 'تفاصيل قطعتك',
+  rate_own:           'سعري',
+  rate_active:        'سعري ✓',
+
+  /* v104 — calc full Arabic translation */
+  calc_piece_details: 'تفاصيل قطعتك',
+  calc_rate_section:  'السعر والعملة',
+  rate_own:           'سعري',
+  rate_active:        'سعري ✓',
+  calc_wt_ph:         '١٢.٥ :مثال',
+  calc_total_ph:      '٣٥٠٠ :مثال',
+  calc_myrate_ph:     '٢٨٥ :مثال',
+  calc_stamp_btn:     '▾ دليل ختم القيراط',
+  calc_stamp_lbl:     'الأختام الشائعة',
+  calc_myrate_label:  'سعرك (',
+  calc_myrate_hint:   'أدخل السعر الذي أعطاك إياه الجوهري اليوم.',
+  calc_fair_range:    ':النطاق العادل',
+  calc_unit_g:        'غرام',
+  calc_unit_tola:     'تولا',
+  calc_unit_oz:       'أوقية',
+
+  /* v105 — bullion page + calc result */
+  bul_page_title:   'سبائك وعملات الذهب في قطر',
+  bul_page_lead:    'أسعار مرجعية من السعر الدولي المباشر. أسعار التجار الفعلية تشمل علاوة إضافية.',
+  bul_disclaimer:   'للإشارة فقط. محسوب من سعر XAU/USD المباشر. أسعار التجار تشمل علاوة 3–8٪.',
+  calc_wt_tip:      'لا تعرف الوزن؟ اطلب من الجوهري وزنه أمامك، أو راجع إيصال الشراء.',
+
+  /* v106 — bullion full */
+  bul_grp_small:    'سبائك صغيرة',
+  bul_grp_small_r:  '١غ – ٥٠غ',
+  bul_grp_tola:     'سبائك التولا',
+  bul_grp_tola_r:   'تنسيق الخليج وجنوب آسيا',
+  bul_grp_large:    'سبائك متوسطة وكبيرة',
+  bul_grp_large_r:  '١٠٠غ – ١كغ',
+  bul_loading:      'جارٍ جلب الأسعار المباشرة…',
+  bul_loading_sub:  'هذا يستغرق لحظة',
+  bul_inv_small:    'سبيكة استثمارية · ذهب خالص ٢٤ق',
+  bul_inv_tola:     'تنسيق خليجي تقليدي · ٢٤ق',
+  bul_inv_large:    'معيار دولي · ٢٤ق',
+  bul_inv_lbma:     'تسليم LBMA · ٢٤ق',
+  bul_livebar:      'سبائك وعملات الذهب — أسعار مرجعية لقطر',
+  bul_cur_qar:      'ريال قطري — QAR',
+  bul_cur_usd:      'دولار أمريكي — USD',
+  bul_cur_eur:      'يورو — EUR',
+  bul_cur_gbp:      'جنيه إسترليني — GBP',
+  bul_cur_inr:      'روبية هندية — INR',
+  calc_fetching:    'جارٍ جلب سعر الذهب المباشر…',
+
+  gram_cur:         'غرام',  /* currency unit label for karat cards */
 };
 
 /* Signal ready */
