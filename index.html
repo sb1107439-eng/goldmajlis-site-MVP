@@ -417,6 +417,10 @@
     .bullion-section{max-width:var(--mw);margin:28px auto 0;padding:0 24px}
     @media(max-width:767px){.bullion-section{padding:0 16px}}
     .bullion-scroll{overflow-x:auto;scrollbar-width:none;margin-top:12px}
+    @media(min-width:600px){
+      .bullion-scroll{margin-top:16px}
+      .bscroll-cta{min-width:120px} /* ensure View All is always visible on desktop */
+    }
     .bullion-scroll::-webkit-scrollbar{display:none}
     .bullion-row-inner{display:flex;gap:10px}
     .bscroll-card{background:var(--bg);border:1px solid var(--div);border-radius:var(--r);padding:14px;min-width:130px;flex-shrink:0;transition:box-shadow .2s}
@@ -673,7 +677,7 @@
     #page-calc .jtype-btn.on::after{color:var(--gold)}
     #page-calc .jtype-btn.on .jtype-name{color:var(--ink)}
     #page-calc .jtype-range{color:var(--ink-3)}
-    #page-calc .calc-rate-chip{background:var(--gold-bg);border-color:#E8D4A8}
+
     #page-calc .calc-mci-hint,#page-calc #calc-mci-hint{color:var(--ink-3)}
 
     /* ── ANALYSE BUTTON — standard ink button matching rest of app ── */
@@ -738,25 +742,11 @@
     .calc-cur-row{display:flex;align-items:center;gap:6px;margin-bottom:16px;flex-wrap:wrap}
     .ccur{flex:1;min-width:fit-content;text-align:center;padding:7px 10px;border-radius:980px;font-size:12px;font-weight:600;color:var(--ink-2);border:1px solid var(--div);cursor:pointer;transition:all .15s;white-space:nowrap}
     .ccur.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-    .calc-rate-chip{
-      display:flex;align-items:center;gap:10px;width:100%;box-sizing:border-box;
-      background:var(--gold-bg);border:1px solid #E8D4A8;
-      border-radius:var(--r);padding:10px 14px;
-    }
-    .calc-rate-chip-left{display:flex;align-items:center;gap:8px;flex:1;min-width:0}
-    .calc-rate-label{font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
-    .calc-rate-value{font-size:14px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
-    .calc-own-rate-btn{
-      display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:980px;
-      border:1px solid rgba(184,134,11,.3);background:rgba(184,134,11,.08);
-      font-size:12px;font-weight:600;color:var(--gold);cursor:pointer;white-space:nowrap;
-      flex-shrink:0;transition:background .15s;
-    }
-    .calc-own-rate-btn:hover{background:rgba(184,134,11,.15)}
-    .toggle-sw{width:28px;height:16px;border-radius:980px;background:var(--div);position:relative;transition:background .2s;flex-shrink:0;display:inline-flex;align-items:center}
+
+    .toggle-sw{width:24px;height:14px;border-radius:980px;background:var(--div);position:relative;transition:background .2s;flex-shrink:0;display:inline-flex;align-items:center}
     .toggle-sw.on{background:var(--gold)}
-    .toggle-knob{position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
-    .toggle-sw.on .toggle-knob{transform:translateX(12px)}
+    .toggle-knob{position:absolute;top:2px;left:2px;width:10px;height:10px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+    .toggle-sw.on .toggle-knob{transform:translateX(10px)}
     .custom-rate-panel{background:var(--gold-bg);border:1px solid #E8D4A8;border-radius:var(--r);padding:12px 14px;margin-bottom:14px}
 
     .calc-field-row{display:flex;gap:10px;margin-bottom:14px;align-items:flex-start}
@@ -1436,7 +1426,6 @@
     [dir=rtl] .bkrow{flex-direction:row-reverse}
     [dir=rtl] .bench-row{flex-direction:row-reverse}
     [dir=rtl] .result-share-row{flex-direction:row-reverse}
-    [dir=rtl] .calc-rate-chip{flex-direction:row-reverse}
     [dir=rtl] .calc-cur-row{flex-direction:row-reverse}
     [dir=rtl] .calc-field-row{flex-direction:row-reverse}
     [dir=rtl] .cfg-label{text-align:right;direction:rtl}
@@ -1524,7 +1513,7 @@
     }catch(e){}
   </script>
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HJ5RTLHN1"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HJ5RTLHN1" onerror="console.info('[GM] Analytics blocked')"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -1872,35 +1861,44 @@
 
   <div class="calc-wrap">
 
-    <!-- Currency -->
-    <div class="cfg">
-      <div class="cfg-label" id="calc-cur-label">Currency <span class="fx-age-hint" style="display:none;font-size:10px;font-weight:500;color:var(--amber);margin-left:4px"><span id="fx-age-txt">· EUR/GBP/INR rates may be outdated</span></span></div>
-      <div class="calc-cur-row" id="calc-cur-strip">
-        <button class="ccur on" data-code="QAR" onclick="setCalcCur(this,'QAR','QAR')" aria-pressed="true">QAR</button>
-        <button class="ccur" data-code="USD" onclick="setCalcCur(this,'USD','USD')" aria-pressed="false">USD</button>
-        <button class="ccur" data-code="EUR" onclick="setCalcCur(this,'EUR','EUR')" aria-pressed="false">EUR</button>
-        <button class="ccur" data-code="GBP" onclick="setCalcCur(this,'GBP','GBP')" aria-pressed="false">GBP</button>
-        <button class="ccur" data-code="INR" onclick="setCalcCur(this,'INR','₹')" aria-pressed="false">INR</button>
-      </div>
-    </div>
-
-    <!-- #6 — live rate chip -->
-    <div style="margin-bottom:16px">
-      <div class="calc-rate-chip">
-        <div class="calc-rate-chip-left">
-          <div>
-            <div class="calc-rate-label">Live rate · <span id="live-rate-karat">22K</span></div>
-            <div class="calc-rate-value" id="live-rate-display">—</div>
-          </div>
+    <!-- Currency + Live Rate — single compact row -->
+    <div style="margin-bottom:12px">
+      <!-- Row 1: currency selector + live rate in one line -->
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <select id="calc-cur-select" onchange="setCalcCurFromSelect(this)"
+          style="flex:1;padding:7px 10px;border-radius:8px;border:1px solid var(--div);
+          background:var(--f1);color:var(--ink);font-size:13px;font-family:var(--ff);
+          cursor:pointer;appearance:none;-webkit-appearance:none;
+          background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2210%22 height=%226%22 viewBox=%220 0 10 6%22><path d=%22M1 1l4 4 4-4%22 stroke=%22%23999%22 stroke-width=%221.5%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>');
+          background-repeat:no-repeat;background-position:right 10px center;padding-right:28px">
+          <option value="QAR|QAR" selected>QAR</option>
+          <option value="USD|USD">USD</option>
+          <option value="EUR|EUR">EUR</option>
+          <option value="GBP|GBP">GBP</option>
+          <option value="INR|₹">INR</option>
+        </select>
+        <!-- Live rate pill — compact -->
+        <div style="display:flex;align-items:center;gap:5px;background:var(--gold-bg);
+          border:1px solid #E8D4A8;border-radius:8px;padding:5px 10px;flex-shrink:0">
+          <span style="font-size:10px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.04em" id="live-rate-karat-lbl">22K</span>
+          <span style="font-size:12px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums" id="live-rate-display">—</span>
         </div>
-        <div style="width:1px;height:28px;background:rgba(184,134,11,.2);flex-shrink:0"></div>
-        <button class="calc-own-rate-btn" onclick="toggleCustomRate()" role="switch" aria-checked="false" id="custom-rate-btn">
-          Use my rate
+      </div>
+      <!-- Row 2: fair range + use my rate link — one tiny line -->
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:0 2px">
+        <div id="calc-mci-hint" style="display:flex;align-items:center;gap:4px">
+          <span style="font-size:10px;color:var(--ink-3)" id="calc-mci-pre">Fair range:</span>
+          <span style="font-size:10px;font-weight:600;color:var(--gold)" id="calc-mci-range">QAR 45–75/g</span>
+          <span class="fx-age-hint" style="display:none;font-size:9px;color:var(--amber)" id="fx-age-txt"></span>
+        </div>
+        <button id="custom-rate-btn" onclick="toggleCustomRate()" role="switch" aria-checked="false"
+          style="background:none;border:none;cursor:pointer;font-size:10px;font-weight:600;
+          color:var(--ink-3);font-family:var(--ff);padding:0;display:flex;align-items:center;gap:3px">
+          <span id="custom-rate-btn-lbl">own rate</span>
           <div class="toggle-sw" id="custom-rate-toggle"><div class="toggle-knob"></div></div>
         </button>
       </div>
-      <!-- Fix 45 — show fair making charge range in selected currency -->
-      <div style="margin-top:5px;font-size:11px;color:var(--ink-3);text-align:right" id="calc-mci-hint"><span id="calc-mci-pre">Fair making charge: </span><span id="calc-mci-range">QAR 45–75/g</span><span id="calc-mci-post"> depending on piece type</span></div>
+      <!-- Custom rate input — hidden until toggled -->
       <div id="custom-rate-panel" style="display:none;margin-top:8px" class="custom-rate-panel">
         <div class="cfg-label" id="custom-rate-label">Your rate (<span class="calc-cur-sym">QAR</span>/gram)</div>
         <input class="fi" type="number" id="custom-rate-val" placeholder="e.g. 285" min="1" step="0.01" inputmode="decimal" autocomplete="off" oninput="validateCustomRate();updateCalcLiveRate()"/>
@@ -1908,7 +1906,7 @@
       </div>
     </div>
 
-    <!-- Weight + Unit -->
+<!-- Weight + Unit -->
     <div class="calc-field-row">
       <div class="cfg" style="flex:2">
         <label class="cfg-label" for="wt-inp" id="calc-wt-label">Weight</label>
@@ -1943,8 +1941,8 @@
           </select>
         </div>
         <!-- C14 — karat stamp reference -->
-        <div style="margin-top:5px">
-          <button onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none';this.textContent=this.textContent.includes('▼')?'▲ Hide stamps':'▼ Read stamp?'" style="background:none;border:none;font-size:10px;color:var(--gold);font-weight:600;cursor:pointer;padding:0">▼ Read stamp?</button>
+        <div style="margin-top:3px">
+          <button onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'" style="background:none;border:none;font-size:9px;color:var(--ink-3);cursor:pointer;padding:0;letter-spacing:.02em">▾ karat stamp guide</button>
           <div style="display:none;margin-top:5px;background:var(--gold-bg);border:1px solid #E8D4A8;border-radius:9px;padding:8px 10px;font-size:10px;line-height:1.7;color:var(--ink-2)">
             <strong style="color:var(--ink)">Common stamps</strong><br>
             999 = 24K · 916 = 22K · 875 = 21K<br>
@@ -2721,8 +2719,7 @@ function gs(key, fallback){
   return window.GM_STRINGS?.[key] ?? fallback;
 }
 
-/* toArNum: utility kept for reference — not used in display (Western digits always) */
-function toArNum(val){return String(val);}
+/* toArNum removed in v101 — Western digits always, no conversion needed */
 /* Format a number for display: if Arabic active, convert digits */
 function fmtNum(val,decimals){
   /* Always Western digits — Arabic layout, English numbers per design decision */
@@ -2763,6 +2760,12 @@ async function loadAlfardanPrices(){
     }
   }catch(e){
     console.warn('[GM] Alfardan prices failed:', e.message);
+    /* Retry once after 30 seconds if first load fails */
+    if(!_alfardanLoaded){
+      setTimeout(()=>{
+        if(!_alfardanLoaded) loadAlfardanPrices();
+      }, 30000);
+    }
   }
 }
 
@@ -2792,8 +2795,14 @@ const PURITY={24:1,22:22/24,21:21/24,18:18/24,14:14/24,12:12/24};
 /* FX rates — QAR is pegged to USD at 3.64 (fixed by Qatar Central Bank).
    EUR/GBP are fetched live from a free API and refreshed every 6 hours.
    Hardcoded fallbacks used if fetch fails. */
-const FX={QAR:1,USD:1/3.64,EUR:1/3.97,GBP:1/4.70,INR:3.64/0.044};let lastFXFetch=null; /* FIX 4 — track when FX rates were last refreshed */
+/* FX rates — QAR=base(1), USD=fixed peg(3.64).
+   EUR/GBP/INR start at 0 and are populated immediately by refreshFXRates().
+   AED/SAR are USD-pegged fixed rates. */
+const FX={QAR:1,USD:1/3.64,EUR:0,GBP:0,INR:0,AED:3.6725/3.64,SAR:3.75/3.64};let lastFXFetch=null; /* FIX 4 — track when FX rates were last refreshed */
 async function refreshFXRates(){
+  /* Boolean lock — prevents concurrent/duplicate calls */
+  if(window._fxFetching)return;
+  window._fxFetching=true;
   /* v92: api.frankfurter.dev/v2 — new endpoint, base=USD (reliable ECB data).
      AED/SAR hardcoded as USD-pegged fixed rates. */
   try{
@@ -2813,9 +2822,10 @@ async function refreshFXRates(){
       lastFXFetch=new Date();
       updateFXAgeHint();
       if(base24QAR)renderAllPrices();
+      window._fxFetching=false;
       console.info('[GM] FX updated from frankfurter.dev');
     }
-  }catch(e){updateFXAgeHint();console.warn('[GM] FX failed:',e.message);}
+  }catch(e){updateFXAgeHint();console.warn('[GM] FX failed:',e.message);window._fxFetching=false;}
 }
 /* FIX 4 — show a subtle note when EUR/GBP rates may be stale (>8h) */
 function updateFXAgeHint(){
@@ -2893,8 +2903,8 @@ function sparkPush(spot,ts){
   const minBucket=Math.floor(ts/60000)*60000;
   sparkHistory=sparkHistory.filter(d=>d.seeded||Math.floor(d.t/60000)*60000!==minBucket);
   sparkHistory.push({t:ts,p:spot});
-  /* Cap live history at 1008 points (7 days × 144 per day) */
-  if(sparkHistory.filter(d=>!d.seeded).length>1008)sparkHistory=sparkHistory.slice(-1008);
+  /* Cap total history at 2016 points (live + seeded) to limit memory */
+  if(sparkHistory.length>2016)sparkHistory=sparkHistory.slice(-2016);
   sparkHistory.sort((a,b)=>a.t-b.t);
   /* Trim to 7d */
   const cutoff=ts-7*24*60*60*1000;
@@ -3361,6 +3371,10 @@ async function fetchGoldPrice(){
 /* ══ RENDER ══ */
 function renderAllPrices(skipBullion=false){
   if(!base24QAR)return;
+  /* Skip if selected currency rate not yet loaded (EUR/GBP/INR start at 0) */
+  if((FX[gCurCode]||0)===0&&!['QAR','USD','AED','SAR'].includes(gCurCode)){
+    return; /* refreshFXRates() will trigger re-render when rates arrive */
+  }
   const P={24:base24QAR,22:base24QAR*PURITY[22],21:base24QAR*PURITY[21],18:base24QAR*PURITY[18],14:base24QAR*PURITY[14],12:base24QAR*PURITY[12]};
   const pb24=prevSpot?(prevSpot/OZ)*3.64:null;
 
@@ -3622,6 +3636,10 @@ function setCur(btn,code,sym){
   /* v30 Fix 12 — sync calculator currency to home currency; pass skipSave=true so user's saved calc currency pref is preserved */
   const calcBtn=document.querySelector(`#calc-cur-strip .ccur[data-code="${code}"]`);
   if(calcBtn)setCalcCur(calcBtn,code,sym||SYMS[code],true);
+  /* v101: sync compact <select> dropdown */
+  const _csel=document.getElementById('calc-cur-select');
+  if(_csel){const _opt=Array.from(_csel.options).find(o=>o.value.startsWith(code+'|'));if(_opt)_csel.value=_opt.value;}
+  if(!calcBtn)setCalcCur(null,code,sym||SYMS[code],true);
   /* v39 Fix 6 — sync bullion page currency; setBulCur already calls renderBullionPage internally */
   /* v42 Fix 7 — only sync bullion if user hasn't manually set their own bullion currency yet.
      Once _gmBulCurManual is true (set by the user explicitly clicking a bullion currency pill),
@@ -3699,6 +3717,13 @@ function selectBulCurOpt(el){
     window._bulCurCloseHandler=null;
   }
 }
+
+function setCalcCurFromSelect(sel){
+  const [code,sym]=sel.value.split('|');
+  /* Find or create a dummy element for setCalcCur compatibility */
+  const dummy={dataset:{code},classList:{add:()=>{},remove:()=>{},contains:()=>false}};
+  setCalcCur(dummy,code,sym);
+}
 function setCalcCur(btn,code,sym,_skipSave=false){
   document.querySelectorAll('#calc-cur-strip .ccur').forEach(b=>{b.classList.remove('on');b.setAttribute('aria-pressed','false');});
   /* BUG-05 fix: btn may be null when called programmatically (e.g. from setCur) */
@@ -3707,6 +3732,12 @@ function setCalcCur(btn,code,sym,_skipSave=false){
   if(!btn){
     const match=document.querySelector(`#calc-cur-strip .ccur[data-code="${code}"]`);
     if(match){match.classList.add('on');match.setAttribute('aria-pressed','true');}
+  }
+  /* Sync the <select> dropdown to match the new currency */
+  const _sel=document.getElementById('calc-cur-select');
+  if(_sel){
+    const _opt=Array.from(_sel.options).find(o=>o.value.startsWith(code+'|'));
+    if(_opt) _sel.value=_opt.value;
   }
   const prevCode=calcCurCode;
   calcCurCode=code;calcCurSym=sym||SYMS[code];
@@ -3746,7 +3777,7 @@ function updateCalcLiveRate(){
   /* Fix C — read from whichever karat select is currently visible */
   const kselEl=calcMode==='quote'?document.getElementById('ksel-q'):document.getElementById('ksel');
   const k=parseInt((kselEl||document.getElementById('ksel')).value);
-  const kLbl=document.getElementById('live-rate-karat');
+  const kLbl=document.getElementById('live-rate-karat-lbl');
   if(kLbl)kLbl.textContent=k+'K';
   const el=document.getElementById('live-rate-display');
   /* C18 FIX — show custom rate indicator when active */
@@ -3756,7 +3787,7 @@ function updateCalcLiveRate(){
       if(cv>0){
         el.textContent=calcCurSym+' '+cv.toFixed(2)+'/g';
         el.style.color='var(--amber)';
-        const lbl=document.getElementById('live-rate-karat');
+        const lbl=document.getElementById('live-rate-karat-lbl');
         if(lbl){lbl.textContent='Custom rate';lbl.style.color='var(--amber)';}
       }else{
         el.textContent=calcCurSym+' '+(base24QAR*PURITY[k]*(FX[calcCurCode]||1)).toFixed(2)+'/g';
@@ -3830,7 +3861,8 @@ function renderBullionScroll(p24){
     /* Build once — subsequent ticks only update the price text node */
     const savedScroll=inner.scrollLeft;
     inner.innerHTML=items.map(it=>{
-      const v=p24*it.g*it.pm;
+      const _alfP=getAlfardanPrice(it.id);
+    const v=_alfP!==null?_alfP:(p24*it.g*it.pm); /* Alfardan price or spot fallback */
       return `<div class="bscroll-card"><div class="bsc-bar-wrap"><div class="bsc-bar-plate"><div class="bsc-bar-shine"></div><span class="bsc-bar-label">${it.plate}</span></div></div><div class="bsc-name">${it.label}</div><div class="bsc-price" id="${it.id}">${fQAR(v,gCurCode,dispSym,0)}</div><div class="bsc-cur">${dispSym}</div></div>`;
     }).join('')+`<div class="bscroll-cta" onclick="showPage('bullion')"><div class="bscroll-cta-inner"><div style="font-size:13px;font-weight:600;color:var(--gold);margin-bottom:4px">${_isArScroll?(window.GM_STRINGS?.bsc?.viewall||'عرض الكل'):'View All'}</div><div style="font-size:11px;color:var(--ink-3);margin-bottom:10px">${_isArScroll?(window.GM_STRINGS?.bsc?.bars_coins||'السبائك والعملات'):'Bars & Coins'}</div><div style="font-size:20px;color:var(--gold)">${_isArScroll?(window.GM_STRINGS?.bsc?.arrow||'←'):'→'}</div></div></div>`;
     inner.scrollLeft=savedScroll;
@@ -3876,7 +3908,10 @@ function renderBullionPage(p24){
     'c1'  :{g:OZ,    pm:1.05, pur:PURITY[22]}
   };
   Object.entries(items).forEach(([id,c])=>{
-    const base=c.pur?p24*c.pur:p24;const v=base*c.g*c.pm;
+    /* Use Alfardan real price if available, else spot×weight×premium */
+    const base=c.pur?p24*c.pur:p24;
+    const _alfPrice=getAlfardanPrice(id); /* real Alfardan price in QAR */
+    const v=_alfPrice!==null?_alfPrice:base*c.g*c.pm;
     const pe=document.getElementById('b-'+id);const te=document.getElementById('bt-'+id);
     if(pe)pe.textContent=fQAR(v,bulCurCode,bulCurSym);
     if(te)te.textContent='As of '+now;
@@ -3896,6 +3931,13 @@ function toggleCustomRate(){
   if(tsw)tsw.className='toggle-sw'+(useCustomRate?' on':'');
   if(panel)panel.style.display=useCustomRate?'block':'none';
   if(btn)btn.setAttribute('aria-checked',useCustomRate?'true':'false');
+  /* Update label + color to show active state */
+  const _ownLbl=document.getElementById('custom-rate-btn-lbl');
+  if(_ownLbl){
+    const _isAr=document.documentElement.getAttribute('dir')==='rtl';
+    _ownLbl.textContent=useCustomRate?(_isAr?'سعري ✓':'my rate ✓'):(_isAr?'سعري':'own rate');
+  }
+  if(btn)btn.style.color=useCustomRate?'var(--gold)':'var(--ink-3)';
   /* Fix #8 — clear stale value when toggled off */
   if(!useCustomRate){const cv=document.getElementById('custom-rate-val');if(cv)cv.value='';}
 }
@@ -5091,9 +5133,12 @@ document.addEventListener('keydown',e=>{
     this.classList.toggle('scrolled-end',atEnd);
   },{passive:true});
 })();
+refreshFXRates(); /* fetch live EUR/GBP/INR immediately on startup */
 updatePrices();
 sparkSeedHistory(); /* v19 — seed 7 days of daily closes on load */
-const priceInterval=setInterval(updatePrices,600000); /* 10 minutes — gold-api.com primary */
+loadAlfardanPrices(); /* fetch Alfardan bar prices on startup */
+setInterval(loadAlfardanPrices, 60*60*1000); /* re-fetch Alfardan every 1 hour */
+const priceInterval=setInterval(updatePrices,60000) /* 1 minute */; /* 10 minutes — gold-api.com primary */
 const stalenessInterval=setInterval(checkStaleness,60000);
 /* v40 Fix 15 — fxAgeInterval removed; refreshFXRates now calls updateFXAgeHint on every attempt */
 const tickInterval=setInterval(tickTime,1000);
@@ -5148,7 +5193,7 @@ function _buildStories(){
   const T=(en,ar)=>isAr?ar:en;
 
   /* Live data from the app */
-  const p24=base24QAR||228;
+  const p24=base24QAR; /* no hardcoded fallback — show dashes if no price */
   const p22=p24*PURITY[22];
   const p21=p24*PURITY[21];
   const p18=p24*PURITY[18];
@@ -5192,9 +5237,8 @@ function _buildStories(){
   const purity22=T('91.6% Pure','نقاء ٩١.٦٪');
   const srcTxt=srcLabel==='gold-api.com'?T('Live','مباشر'):T('Est.','تقدير');
 
-  return [
-    /* ─── STORY 1: Live Price ─── */
-    {
+  return[
+{
       id:'price', label:T('Price Today','السعر اليوم'),
       svgKey:'gold', ringClass:'live-ring', labelClass:'live',
       coverClass:'story-cover-price', dur:STORY_DUR.price,
@@ -5227,8 +5271,23 @@ function _buildStories(){
           </div>
         </div>`
     },
-    /* ─── STORY 2: Price Movement ─── */
-    {
+    /* ─── STORY 2: Price Movement ─── */,
+{
+      id:'tip', label:T('Buyer Tip','نصيحة المشتري'),
+      svgKey:'lightbulb', coverClass:'story-cover-tip',
+      dur:STORY_DUR.tip, bgClass:'story-bg-tip',
+      cta:T('Check My Price','تحقق من سعري'), ctaAction:()=>showPage('calc'),
+      html:`
+        ${_SVG.tip}
+        <div class="story-tip-title">${T('Always Ask for the Making Charge Separately','اطلب دائماً رسوم المصنعية منفصلة')}</div>
+        <div class="story-tip-body">${T(
+          `Every jewellery price = gold value + making charge (Ujra). Fair range in Qatar:<br><strong style="color:#FCD34D">Plain: ${mcPlain}/g · Bridal: ${mcBridal}/g</strong><br>If a jeweller won't show the split — that's a red flag.`,
+          `كل سعر مجوهرات = قيمة الذهب + رسوم المصنعية (أجرة). النطاق العادل في قطر:<br><strong style="color:#FCD34D">بسيط: ${mcPlain}/غ · عرائس: ${mcBridal}/غ</strong><br>إن رفض الجوهري تفصيل السعر — فهذه علامة تحذير.`
+        )}</div>
+        <div class="story-tip-cta" onclick="showPage('calc')">${_SVG.arrow} ${T('Use the free calculator','استخدم الحاسبة المجانية')}</div>`
+    },
+    /* ─── STORY 5: Market Snapshot ─── */,
+{
       id:'whats', label:T("Today's Move","حركة اليوم"),
       svgKey:'chart', coverClass:'story-cover-whats',
       dur:STORY_DUR.whats, bgClass:'story-bg-whats',
@@ -5255,8 +5314,8 @@ function _buildStories(){
           </div>
         </div>`
     },
-    /* ─── STORY 3: Karat Guide ─── */
-    {
+    /* ─── STORY 3: Karat Guide ─── */,
+{
       id:'news', label:T('Karat Guide','دليل القيراط'),
       svgKey:'news', coverClass:'story-cover-news',
       dur:STORY_DUR.news, bgClass:'story-bg-news',
@@ -5281,23 +5340,8 @@ function _buildStories(){
           </div>
         </div>`
     },
-    /* ─── STORY 4: Making Charge Tip ─── */
-    {
-      id:'tip', label:T('Buyer Tip','نصيحة المشتري'),
-      svgKey:'lightbulb', coverClass:'story-cover-tip',
-      dur:STORY_DUR.tip, bgClass:'story-bg-tip',
-      cta:T('Check My Price','تحقق من سعري'), ctaAction:()=>showPage('calc'),
-      html:`
-        ${_SVG.tip}
-        <div class="story-tip-title">${T('Always Ask for the Making Charge Separately','اطلب دائماً رسوم المصنعية منفصلة')}</div>
-        <div class="story-tip-body">${T(
-          `Every jewellery price = gold value + making charge (Ujra). Fair range in Qatar:<br><strong style="color:#FCD34D">Plain: ${mcPlain}/g · Bridal: ${mcBridal}/g</strong><br>If a jeweller won't show the split — that's a red flag.`,
-          `كل سعر مجوهرات = قيمة الذهب + رسوم المصنعية (أجرة). النطاق العادل في قطر:<br><strong style="color:#FCD34D">بسيط: ${mcPlain}/غ · عرائس: ${mcBridal}/غ</strong><br>إن رفض الجوهري تفصيل السعر — فهذه علامة تحذير.`
-        )}</div>
-        <div class="story-tip-cta" onclick="showPage('calc')">${_SVG.arrow} ${T('Use the free calculator','استخدم الحاسبة المجانية')}</div>`
-    },
-    /* ─── STORY 5: Market Snapshot ─── */
-    {
+    /* ─── STORY 4: Making Charge Tip ─── */,
+{
       id:'market', label:T('Market','السوق'),
       svgKey:'market', coverClass:'story-cover-market',
       dur:STORY_DUR.market, bgClass:'story-bg-market',
@@ -5359,7 +5403,6 @@ function _buildStories(){
     }
   ];
 }
-
 function renderStoriesBubbles(){
   const _rawStories=_buildStories();
   const isRtl=document.documentElement.getAttribute('dir')==='rtl';
@@ -6065,49 +6108,7 @@ function applyLang(lang){
   const calcSub=document.getElementById('calc-subhead');if(calcSub)calcSub.textContent=t(calcMode==='check'?'calc.sub.check':'calc.sub.quote');
   st('mode-check','calc.mode.check');st('mode-quote','calc.mode.quote');
   const calcHdr=document.getElementById('calc-form-header-text');if(calcHdr)calcHdr.textContent=t(calcMode==='check'?'calc.header':'calc.header.quote');
-  const calcCurLbl=document.getElementById('calc-cur-label');
-  if(calcCurLbl){const fxHint=calcCurLbl.querySelector('.fx-age-hint');calcCurLbl.textContent=t('calc.cur.label')+' ';if(fxHint)calcCurLbl.appendChild(fxHint);}
-  st('calc-mci-pre','calc.mci.hint');st('calc-mci-post','calc.mci.dep');
-  st('calc-wt-label','calc.wt.label');st('calc-unit-label','calc.unit.label');
-  st('calc-karat-label','calc.karat.label');st('calc-karat-q-label','calc.karat.label');
-  const calcTotalPre=document.getElementById('calc-total-pre');if(calcTotalPre)calcTotalPre.textContent=t('calc.total.label');
-  st('jtype-label','calc.jtype.label');
-  st('jtype-name-plain','calc.jtype.plain');st('jtype-range-plain','calc.jtype.plain.r');
-  st('jtype-name-pat','calc.jtype.pat');st('jtype-range-pat','calc.jtype.pat.r');
-  st('jtype-name-hand','calc.jtype.hand');st('jtype-range-hand','calc.jtype.hand.r');
-  const analyseBtn=document.getElementById('analyse-btn');if(analyseBtn)analyseBtn.textContent=t(calcMode==='check'?'calc.analyse':'calc.fairprice');
-  st('calc-wt-tip','calc.wt.tip');
-  /* Use my rate btn */
-  const myRateBtn=document.getElementById('custom-rate-btn');
-  if(myRateBtn){const tsw=myRateBtn.querySelector('.toggle-sw');const txt=document.createTextNode(t('calc.myrate.btn')+' ');myRateBtn.textContent='';myRateBtn.appendChild(txt);if(tsw)myRateBtn.appendChild(tsw);}
-  /* Live rate label */
-  const lrLabel=document.querySelector('.calc-rate-label');if(lrLabel){const span=lrLabel.querySelector('span');lrLabel.textContent=t('calc.live.label');if(span)lrLabel.appendChild(span);}
-  /* Score result */
-  st('score-rlbl','calc.score.lbl');
-  st('score-guide-lbl','calc.score.guide');st('score-g1','calc.score.fair');st('score-g2','calc.score.high');st('score-g3','calc.score.over');
-  st('calc-breakdown-hd','calc.breakdown');st('calc-bench-title','calc.benchmark');
-  st('q-fairprice-lbl','calc.fairprice.lbl');
-  /* Share buttons */
-  ['calc-newcalc-1','calc-newcalc-2'].forEach(id=>st(id,'calc.result.new'));
-  ['calc-share-1','calc-share-2'].forEach(id=>st(id,'calc.result.share'));
-  ['calc-copy-1','calc-copy-2'].forEach(id=>st(id,'calc.result.copy'));
-
-  /* ─── Bullion page ─── */
-  st('bul-livebar-txt','bul.livebar');
-  sh('bul-page-title','bul.title');st('bul-page-lead','bul.lead');
-  const bulConn=document.getElementById('bul-upd-prominent');if(bulConn&&(bulConn.textContent.includes('Connecting')||bulConn.textContent.includes('الاتصال')))bulConn.textContent=isAr?(window.GM_STRINGS?.bul_connecting||'جارٍ الاتصال بالبيانات المباشرة…'):'Connecting to live feed…';
-  st('bul-bars-label','bul.bars.label');
-  st('bul-grp-small','bul.small');st('bul-grp-small-r','bul.small.range');
-  st('bul-grp-tola','bul.tola');st('bul-grp-tola-r','bul.tola.range');
-  st('bul-grp-large','bul.large');st('bul-grp-large-r','bul.large.range');
-  sh('bul-dis-txt','bul.dis');
-  /* Bar item descriptions */
-  document.querySelectorAll('.bs2').forEach(el=>{
-    if(el.textContent==='Investment bar · 24K fine')el.textContent=t('bul.bar.inv');
-    if(el.textContent==='Traditional Gulf format · 24K')el.textContent=t('bul.bar.tola');
-    if(el.textContent==='International standard · 24K')el.textContent=t('bul.bar.intl');
-    if(el.textContent==='LBMA good delivery · 24K')el.textContent=t('bul.bar.lbma');
-  });
+  /* calc-cur-label removed in v99 compact redesign */
   /* Currency options */
   document.querySelectorAll('.bul-cur-opt').forEach(el=>{
     const code=el.dataset.code;
@@ -6250,7 +6251,7 @@ function applyLang(lang){
 
   /* ─── FX age hint ─── */
   const fxAgeTxt=document.getElementById('fx-age-txt');
-  if(fxAgeTxt)fxAgeTxt.textContent=isAr?(window.GM_STRINGS?.fx_outdated||'· أسعار EUR/GBP/INR قد تكون قديمة'):'· EUR/GBP/INR rates may be outdated';
+  if(fxAgeTxt)fxAgeTxt.textContent=isAr?(window.GM_STRINGS?.fx_outdated||'· أسعار EUR/GBP/INR قد تكون قديمة'):'';
 
   /* ─── Unit dropdown ─── */
   const uOptG=document.getElementById('unit-opt-g');if(uOptG)uOptG.textContent=isAr?(window.GM_STRINGS?.unit_grams||'غرام'):'Grams';

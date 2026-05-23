@@ -456,7 +456,9 @@ window.GM_STRINGS = {
   unit_grams: 'غرام', unit_tola: 'تولا', unit_oz: 'أوقية',
 
   /* Piece types */
-  cx_plain: 'بسيط', cx_patterned: 'منقوش', cx_handmade: 'يدوي',
+  cx_plain:     'بسيط',
+  cx_patterned: 'منقوش',
+  cx_handmade:  'يدوي',
 
   /* Verdicts */
   v_exceptional: 'صفقة استثنائية',
@@ -484,9 +486,6 @@ window.GM_STRINGS = {
   /* Quote mode */
   q_fair_range: 'نطاق رسوم المصنعية العادل',
   q_making_this: 'رسوم المصنعية على هذه القطعة',
-  q_advice_pre: 'إذا طلب الجوهري أكثر من ',
-  q_advice_mid: '، تفاوض — أو استخدم هذا النطاق كعرض افتتاحي. الحد الأقصى للغرام ',
-  q_advice_suf: ' رسوم مصنعية.',
 
   /* FMCI note */
   fmci_note_pre: 'نطاقات رسوم المصنعية بـ ',
