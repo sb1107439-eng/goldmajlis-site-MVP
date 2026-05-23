@@ -3696,14 +3696,24 @@ function renderFMCI(){
 function setCur(btn,code,sym){
   document.querySelectorAll('.tcp').forEach(b=>{b.classList.toggle('on',b.dataset.code===code);b.setAttribute('aria-pressed',b.dataset.code===code?'true':'false');});
   gCurCode=code;gCurSym=sym||SYMS[code];
+  try{localStorage.setItem('gm_cur_v1',code);}catch{} /* persist currency choice */
   const heroLbl=document.getElementById('hero-cur-label');
   if(heroLbl)heroLbl.textContent=gCurSym;
-  /* Immediately update card unit labels — even before prices load */
+  /* Immediately update card prices AND units on currency switch */
   const _isArSC=document.documentElement.getAttribute('dir')==='rtl';
   const _grSC=window.GM_STRINGS?.gram_cur||'غرام';
+  const _fxSC=FX[code]||1;
   [24,22,21,18].forEach(k=>{
     const _u=document.getElementById('wcu-'+k);
+    const _p=document.getElementById('wp-'+k);
     if(_u)_u.textContent=_isArSC?(_grSC+' / '+gCurSym):(gCurSym+' / gram');
+    /* Update price immediately if we have base price */
+    if(_p&&base24QAR&&_fxSC>0){
+      const _v=base24QAR*(PURITY[k]||1)*_fxSC;
+      _p.textContent=_v.toFixed(2);
+    } else if(_p&&(!_fxSC||_fxSC===0)){
+      _p.textContent='…'; /* FX not loaded yet — show loading */
+    }
   });
   /* v30 Fix 12 — sync calculator currency to home currency; pass skipSave=true so user's saved calc currency pref is preserved */
   const calcBtn=document.querySelector(`#calc-cur-strip .ccur[data-code="${code}"]`);
@@ -5223,7 +5233,13 @@ document.addEventListener('keydown',e=>{
     this.classList.toggle('scrolled-end',atEnd);
   },{passive:true});
 })();
-refreshFXRates(); /* fetch live EUR/GBP/INR immediately on startup */
+/* Restore saved currency */
+  (function(){try{const _sc=localStorage.getItem('gm_cur_v1');
+  if(_sc&&SYMS[_sc]&&_sc!=='QAR'){const _b=document.querySelector(`.tcp[data-code="${_sc}"]`);
+  setCur(_b||null,_sc,SYMS[_sc]);}}catch{}})();
+  /* Restore saved currency */
+  (function(){try{const _sc=localStorage.getItem('gm_cur_v1');if(_sc&&SYMS[_sc]&&_sc!=='QAR'){const _b=document.querySelector('.tcp[data-code="'+_sc+'"]');setCur(_b||null,_sc,SYMS[_sc]);}}catch{}})();
+  refreshFXRates(); /* fetch live EUR/GBP/INR immediately on startup */
   /* Set unit labels correctly before first price loads */
   (function(){const _ar=document.documentElement.getAttribute('dir')==='rtl';
   const _gr=window.GM_STRINGS?.gram_cur||'غرام';
