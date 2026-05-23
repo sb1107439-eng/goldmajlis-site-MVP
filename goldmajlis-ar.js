@@ -504,7 +504,7 @@ window.GM_STRINGS = {
   bul_connecting: 'جارٍ الاتصال بالبيانات المباشرة…',
 
   /* Karat stamp */
-  karat_stamp: '999 = 24ق · 916 = 22ق · 875 = 21ق<br>750 = 18ق · 585 = 14ق · 500 = 12ق',
+  karat_stamp: '٩٩٩ = عيار 24 · ٩١٦ = عيار 22 · ٨٧٥ = عيار 21<br>٧٥٠ = عيار 18 · ٥٨٥ = عيار 14 · ٥٠٠ = عيار 12',
 
   /* Article overlay */
   art_back: 'رجوع',
@@ -631,10 +631,10 @@ window.GM_STRINGS = {
   bul_grp_large_r:  '١٠٠غ – ١كغ',
   bul_loading:      'جارٍ جلب الأسعار المباشرة…',
   bul_loading_sub:  'هذا يستغرق لحظة',
-  bul_inv_small:    'سبيكة استثمارية · ذهب خالص ٢٤ق',
-  bul_inv_tola:     'تنسيق خليجي تقليدي · ٢٤ق',
-  bul_inv_large:    'معيار دولي · ٢٤ق',
-  bul_inv_lbma:     'تسليم LBMA · ٢٤ق',
+  bul_inv_small:    'سبيكة استثمارية · عيار 24',
+  bul_inv_tola:     'تنسيق خليجي تقليدي · عيار 24',
+  bul_inv_large:    'معيار دولي · عيار 24',
+  bul_inv_lbma:     'تسليم LBMA · عيار 24',
   bul_livebar:      'سبائك وعملات الذهب — أسعار مرجعية لقطر',
   bul_cur_qar:      'ريال قطري — QAR',
   bul_cur_usd:      'دولار أمريكي — USD',

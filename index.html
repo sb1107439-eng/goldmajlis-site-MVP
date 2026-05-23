@@ -1394,7 +1394,8 @@
     [dir=rtl] .live-glow-row{flex-direction:row-reverse}
     [dir=rtl] .home-cur-row{flex-direction:row-reverse}
     [dir=rtl] .home-cur-pills{flex-direction:row-reverse}
-    [dir=rtl] .kcard-header{flex-direction:row-reverse}
+    [dir=rtl] .kcard-header{flex-direction:row-reverse;direction:rtl}
+    [dir=rtl] .kcard-karat{order:2;margin-right:0;margin-left:auto}
     [dir=rtl] .kcard-delta{flex-direction:row-reverse}
     [dir=rtl] .ptable thead th{text-align:right}
     [dir=rtl] .ptable tbody td{text-align:right}
@@ -2842,7 +2843,7 @@ async function refreshFXRates(){
       FX.SAR=3.75/_peg;   /* SAR/USD fixed peg since 1986 */
       lastFXFetch=new Date();
       updateFXAgeHint();
-      if(base24QAR)renderAllPrices();
+      if(base24QAR)renderAllPrices(); /* refresh all prices with new FX rates */
       window._fxFetching=false;
       console.info('[GM] FX updated from frankfurter.dev');
     } else {window._fxFetching=false;}
@@ -3328,7 +3329,7 @@ async function tryMetalSentinel(){
       url += '?last=' + lastP.toFixed(4);
       if (lastTs > 0) url += '&last_ts=' + lastTs;
     }
-    const TO    = new Promise((_,rej)=>setTimeout(()=>rej(new Error('timeout')),10000));
+    const TO    = new Promise((_,rej)=>setTimeout(()=>rej(new Error('timeout')),6000)); /* 6s timeout */
     const r     = await Promise.race([fetch(url), TO]);
     if(!r.ok){console.warn('[GM] Worker HTTP',r.status);return null;}
     const d = await r.json();
@@ -3394,7 +3395,7 @@ function renderAllPrices(skipBullion=false){
   if(!base24QAR)return;
   /* Skip if selected currency rate not yet loaded (EUR/GBP/INR start at 0) */
   if((FX[gCurCode]||0)===0&&!['QAR','USD','AED','SAR'].includes(gCurCode)){
-    return; /* refreshFXRates() will trigger re-render when rates arrive */
+    return; /* rate=0; setCur will trigger refreshFXRates+re-render */
   }
   const P={24:base24QAR,22:base24QAR*PURITY[22],21:base24QAR*PURITY[21],18:base24QAR*PURITY[18],14:base24QAR*PURITY[14],12:base24QAR*PURITY[12]};
   const pb24=prevSpot?(prevSpot/OZ)*3.64:null;
@@ -3416,7 +3417,11 @@ function renderAllPrices(skipBullion=false){
     const np=P[k],pp=pb24?pb24*PURITY[k]:null,df=pp?np-pp:0;
     const dispSym=gCurSym;
     pEl.textContent=(np*(FX[gCurCode]||1)).toFixed(2);
-    if(cuEl)cuEl.textContent=dispSym+' / gram';
+    if(cuEl){
+      const _isArU=document.documentElement.getAttribute('dir')==='rtl';
+      const _gram=window.GM_STRINGS?.gram_cur||'غرام';
+      cuEl.textContent=_isArU?(_gram+' / '+dispSym):(dispSym+' / gram');
+    }
     /* Always wipe both classes to prevent stale colour from prior tick */
     cEl.classList.remove('flash-up','flash-dn');
     pEl.classList.remove('up','dn');
@@ -3556,7 +3561,7 @@ function renderAllPrices(skipBullion=false){
     const _annP=(base24QAR*(FX[gCurCode]||1)).toFixed(2);
     const _annNum=_annP; /* Western digits always */
     srAnn.textContent=_isArAnn
-      ?((window.GM_STRINGS?.sr_updated_pre||'تم تحديث أسعار الذهب. ٢٤ق: ')+_annNum+' '+gCurSym+(window.GM_STRINGS?.sr_updated_suf||' للغرام'))
+      ?((window.GM_STRINGS?.sr_updated_pre||'تم تحديث أسعار الذهب. عيار 24: ')+_annNum+' '+gCurSym+(window.GM_STRINGS?.sr_updated_suf||' للغرام'))
       :('Gold prices updated. 24K: '+_annNum+' '+gCurSym+' per gram.');
   }
 
@@ -3693,6 +3698,13 @@ function setCur(btn,code,sym){
   gCurCode=code;gCurSym=sym||SYMS[code];
   const heroLbl=document.getElementById('hero-cur-label');
   if(heroLbl)heroLbl.textContent=gCurSym;
+  /* Immediately update card unit labels — even before prices load */
+  const _isArSC=document.documentElement.getAttribute('dir')==='rtl';
+  const _grSC=window.GM_STRINGS?.gram_cur||'غرام';
+  [24,22,21,18].forEach(k=>{
+    const _u=document.getElementById('wcu-'+k);
+    if(_u)_u.textContent=_isArSC?(_grSC+' / '+gCurSym):(gCurSym+' / gram');
+  });
   /* v30 Fix 12 — sync calculator currency to home currency; pass skipSave=true so user's saved calc currency pref is preserved */
   const calcBtn=document.querySelector(`#calc-cur-strip .ccur[data-code="${code}"]`);
   if(calcBtn)setCalcCur(calcBtn,code,sym||SYMS[code],true);
@@ -3711,10 +3723,25 @@ function setCur(btn,code,sym){
   /* v41 Fix 1 — only render if prices are available; removed separate renderBullionPage call
      (setBulCur handles it) to prevent double-render and NaN writes when base24QAR is null */
   if(base24QAR){
-    renderAllPrices(true);
-    renderBullionScroll(base24QAR);
-    renderSparkline();
-    renderFMCI();
+    /* If EUR/GBP/INR selected but rate is 0 — force FX fetch first */
+    if((FX[code]||0)===0&&!['QAR','USD','AED','SAR'].includes(code)){
+      window._fxFetching=false; /* release lock so fetch proceeds */
+      refreshFXRates().then(()=>{
+        renderAllPrices(true);renderBullionScroll(base24QAR);renderSparkline();renderFMCI();
+      });
+      /* Show placeholder while loading */
+      [24,22,21,18].forEach(k=>{
+        const _pe=document.getElementById('wp-'+k);
+        const _ue=document.getElementById('wcu-'+k);
+        if(_pe)_pe.textContent='…';
+        if(_ue)_ue.textContent=code+'…';
+      });
+    } else {
+      renderAllPrices(true);
+      renderBullionScroll(base24QAR);
+      renderSparkline();
+      renderFMCI();
+    }
   }
 }
 function setBulCur(btn,code,sym,_fromHomeCur=false){
@@ -3838,7 +3865,7 @@ function updateCalcLiveRate(){
   const kselEl=calcMode==='quote'?document.getElementById('ksel-q'):document.getElementById('ksel');
   const k=parseInt((kselEl||document.getElementById('ksel')).value);
   const kLbl=document.getElementById('live-rate-karat-lbl');
-  if(kLbl)kLbl.textContent=k+'K';
+  if(kLbl)kLbl.textContent=document.documentElement.getAttribute('dir')==='rtl'?('عيار '+k):(k+'K');
   const el=document.getElementById('live-rate-display');
   /* C18 FIX — show custom rate indicator when active */
   if(el){
@@ -4834,7 +4861,7 @@ function priceText(){
   const dateStr=lastFetch?fD(lastFetch)+' '+fT(lastFetch):fT(new Date());
   /* v30 Fix 31 — format as a natural shareable WhatsApp message */
   /* v39 Fix 12 — include all 6 karats to match the price table */
-  return `*Qatar Gold Prices today (${sym}/gram)*\n${dateStr}\n\n🥇 24K · ${sym} ${fmt(b)}\n🥈 22K · ${sym} ${fmt(b*PURITY[22])}\n📿 21K · ${sym} ${fmt(b*PURITY[21])}\n💎 18K · ${sym} ${fmt(b*PURITY[18])}\n   14K · ${sym} ${fmt(b*PURITY[14])}\n   12K · ${sym} ${fmt(b*PURITY[12])}\n\nSource: goldmajlis.qa (reference prices)`;
+  return `*Qatar Gold Prices today (${sym}/gram)*\n${dateStr}\n\n${isAr?'عيار 24':'🥇 24K'} · ${sym} ${fmt(b)}\n${isAr?'عيار 22':'🥈 22K'} · ${sym} ${fmt(b*PURITY[22])}\n${isAr?'عيار 21':'📿 21K'} · ${sym} ${fmt(b*PURITY[21])}\n${isAr?'عيار 18':'💎 18K'} · ${sym} ${fmt(b*PURITY[18])}\n   ${isAr?'عيار 14':'14K'} · ${sym} ${fmt(b*PURITY[14])}\n   ${isAr?'عيار 12':'12K'} · ${sym} ${fmt(b*PURITY[12])}\n\nSource: goldmajlis.qa (reference prices)`;
 }
 function shareWA(){if(navigator.vibrate)navigator.vibrate(10);window.open('https://wa.me/?text='+encodeURIComponent(priceText()),'_blank');}
 
@@ -5197,7 +5224,12 @@ document.addEventListener('keydown',e=>{
   },{passive:true});
 })();
 refreshFXRates(); /* fetch live EUR/GBP/INR immediately on startup */
-updatePrices();
+  /* Set unit labels correctly before first price loads */
+  (function(){const _ar=document.documentElement.getAttribute('dir')==='rtl';
+  const _gr=window.GM_STRINGS?.gram_cur||'غرام';
+  [24,22,21,18].forEach(k=>{const _u=document.getElementById('wcu-'+k);
+  if(_u)_u.textContent=_ar?(_gr+' / '+gCurSym):(gCurSym+' / gram');});})();
+  updatePrices();
 sparkSeedHistory(); /* v19 — seed 7 days of daily closes on load */
 loadAlfardanPrices(); /* fetch Alfardan bar prices on startup */
 setInterval(loadAlfardanPrices, 60*60*1000); /* re-fetch Alfardan every 1 hour */
@@ -5318,17 +5350,17 @@ function _buildStories(){
         <div class="story-divider"></div>
         <div class="story-karat-row">
           <div class="story-karat-chip">
-            <div class="story-karat-chip-k">22K</div>
+            <div class="story-karat-chip-k" id="story-chip-22">22K</div>
             <div class="story-karat-chip-p" id="st-p22">${fmtP(p22)}</div>
             <div class="story-karat-chip-u">${gCurSym}/g</div>
           </div>
           <div class="story-karat-chip">
-            <div class="story-karat-chip-k">21K</div>
+            <div class="story-karat-chip-k" id="story-chip-21">21K</div>
             <div class="story-karat-chip-p" id="st-p21">${fmtP(p21)}</div>
             <div class="story-karat-chip-u">${gCurSym}/g</div>
           </div>
           <div class="story-karat-chip">
-            <div class="story-karat-chip-k">18K</div>
+            <div class="story-karat-chip-k" id="story-chip-18">18K</div>
             <div class="story-karat-chip-p" id="st-p18">${fmtP(p18)}</div>
             <div class="story-karat-chip-u">${gCurSym}/g</div>
           </div>
@@ -5387,17 +5419,17 @@ function _buildStories(){
         <div class="story-section-label">${T('Today\'s Prices by Karat','أسعار اليوم حسب القيراط')}</div>
         <div class="story-news-list">
           <div class="story-news-item">
-            <div class="story-news-tag">${T('24K · Investment','٢٤ق · استثمار')}</div>
+            <div class="story-news-tag">${T('24K · Investment','عيار 24 · استثمار')}</div>
             <div class="story-news-headline">${gCurSym} ${fmtP(p24)}/g — ${purity24}</div>
             <div class="story-news-meta">${T('Investment bars & coins only · Too soft to wear','سبائك ومسكوكات فقط · طري جداً للارتداء')}</div>
           </div>
           <div class="story-news-item">
-            <div class="story-news-tag">${T('22K · Most Popular','٢٢ق · الأكثر شيوعاً')}</div>
+            <div class="story-news-tag">${T('22K · Most Popular','عيار 22 · الأكثر شيوعاً')}</div>
             <div class="story-news-headline">${gCurSym} ${fmtP(p22)}/g — ${purity22}</div>
             <div class="story-news-meta">${T('Dominant in Qatar souqs · Bridal & traditional','السائد في أسواق قطر · العرائس والتراث')}</div>
           </div>
           <div class="story-news-item">
-            <div class="story-news-tag">${T('18K · Diamond Setting','١٨ق · تحميل الماس')}</div>
+            <div class="story-news-tag">${T('18K · Diamond Setting','عيار 18 · تحميل الماس')}</div>
             <div class="story-news-headline">${gCurSym} ${fmtP(p18)}/g — ${T('75.0% Pure','نقاء ٧٥٪')}</div>
             <div class="story-news-meta">${T('Hardest alloy · Best for diamond jewellery','أصلب سبيكة · الأفضل للمجوهرات الماسية')}</div>
           </div>
@@ -5414,7 +5446,7 @@ function _buildStories(){
         <div class="story-market-table">
           <div class="story-market-row">
             <div class="story-market-left">
-              <div class="story-market-lbl">${T('24K Gold','ذهب ٢٤ قيراط')}</div>
+              <div class="story-market-lbl">${T('24K Gold','ذهب عيار 24')}</div>
               <div class="story-market-sub">${T('per gram','للغرام')} · ${gCurSym}</div>
             </div>
             <div class="story-market-right">
@@ -5424,7 +5456,7 @@ function _buildStories(){
           </div>
           <div class="story-market-row">
             <div class="story-market-left">
-              <div class="story-market-lbl">${T('22K Jewellery','مجوهرات ٢٢ق')}</div>
+              <div class="story-market-lbl">${T('22K Jewellery','مجوهرات عيار 22')}</div>
               <div class="story-market-sub">${T('per gram','للغرام')} · ${gCurSym}</div>
             </div>
             <div class="story-market-right">
@@ -5445,7 +5477,7 @@ function _buildStories(){
           <div class="story-market-row">
             <div class="story-market-left">
               <div class="story-market-lbl">${T('100g Bar Ref.','سبيكة 100غ مرجع')}</div>
-              <div class="story-market-sub">${T('24K · with premium','٢٤ق · مع علاوة')}</div>
+              <div class="story-market-sub">${T('24K · with premium','عيار 24 · مع علاوة')}</div>
             </div>
             <div class="story-market-right">
               <div class="story-market-val">${gCurSym} ${(bar100*(FX[gCurCode]||1)*1.025).toFixed(0)}</div>
@@ -5853,7 +5885,7 @@ const TRANSLATIONS={
   'bul.large':          {en:'Medium & Large Bars',  ar:'سبائك متوسطة وكبيرة'},
   'bul.large.range':    {en:'100g – 1kg',           ar:'١٠٠غ – ١كغ'},
   'bul.coins':          {en:'Gold Coins',           ar:'عملات ذهبية'},
-  'bul.coins.range':    {en:'Sovereign mints · 22K',ar:'سك حكومي · ٢٢ قيراط'},
+  'bul.coins.range':    {en:'Sovereign mints · 22K',ar:'سك حكومي · عيار 22'},
   'bul.dis':            {en:'<strong>Reference only.</strong> Calculated from live XAU/USD spot. Dealer prices include 3–8% premium. GoldMajlis does not sell gold.',ar:'<strong>استرشادي فقط.</strong> محسوب من سعر XAU/USD المباشر. أسعار الوكلاء تشمل علاوة ٣–٨٪. غولد مجلس لا يبيع الذهب.'},
   'bul.faq.eyebrow':    {en:'Gold Bars in Qatar',   ar:'سبائك الذهب في قطر'},
   'bul.faq.title':      {en:'Common Questions',     ar:'أسئلة شائعة'},
@@ -5998,10 +6030,10 @@ const TRANSLATIONS={
   'bul.grp.large.r':  {en:'100g – 1kg',            ar:'١٠٠غ – ١كغ'},
   'bul.loading':      {en:'Fetching live prices…',  ar:'جارٍ جلب الأسعار المباشرة…'},
   'bul.loading.sub':  {en:'This takes just a moment',ar:'هذا يستغرق لحظة'},
-  'bul.inv.small':    {en:'Investment bar · 24K fine',ar:'سبيكة استثمارية · ذهب خالص ٢٤ق'},
-  'bul.inv.tola':     {en:'Traditional Gulf format · 24K',ar:'تنسيق خليجي تقليدي · ٢٤ق'},
-  'bul.inv.large':    {en:'International standard · 24K',ar:'معيار دولي · ٢٤ق'},
-  'bul.inv.lbma':     {en:'LBMA good delivery · 24K',ar:'تسليم LBMA · ٢٤ق'},
+  'bul.inv.small':    {en:'Investment bar · 24K fine',ar:'سبيكة استثمارية · عيار 24'},
+  'bul.inv.tola':     {en:'Traditional Gulf format · 24K',ar:'تنسيق خليجي تقليدي · عيار 24'},
+  'bul.inv.large':    {en:'International standard · 24K',ar:'معيار دولي · عيار 24'},
+  'bul.inv.lbma':     {en:'LBMA good delivery · 24K',ar:'تسليم LBMA · عيار 24'},
   'bul.livebar':      {en:'Gold Bars &amp; Coins — Qatar Reference Prices',ar:'سبائك وعملات الذهب — أسعار مرجعية لقطر'},
   'calc.fetching':    {en:'Fetching live gold rate…',ar:'جارٍ جلب سعر الذهب المباشر…'},
   'calc.score.lbl':   {en:'Score',                   ar:'النتيجة'},
@@ -6010,7 +6042,7 @@ const TRANSLATIONS={
   'bul.cur.eur':      {en:'EUR — Euro',               ar:'يورو — EUR'},
   'bul.cur.gbp':      {en:'GBP — British Pound',      ar:'جنيه إسترليني — GBP'},
   'bul.cur.inr':      {en:'INR — Indian Rupee',       ar:'روبية هندية — INR'},
-  'bul.grp.small.inv':{en:'Investment bar · 24K fine',ar:'سبيكة استثمارية · ٢٤ق'},
+  'bul.grp.small.inv':{en:'Investment bar · 24K fine',ar:'سبيكة استثمارية · عيار 24'},
 
   'bul.conn':           {en:'Connecting to live feed…',ar:'جارٍ الاتصال بالبيانات المباشرة…'},
   'bul.bars.label':     {en:'Gold Bars — 24K (999.9 fine)',ar:'سبائك الذهب — ٢٤ قيراط (٩٩٩.٩ خلوص)'},
@@ -6021,7 +6053,7 @@ const TRANSLATIONS={
   'bul.large':          {en:'Medium & Large Bars',   ar:'سبائك متوسطة وكبيرة'},
   'bul.large.range':    {en:'100g – 1kg',            ar:'١٠٠غ – ١كغ'},
   'bul.coins':          {en:'Gold Coins',            ar:'عملات ذهبية'},
-  'bul.coins.range':    {en:'Sovereign mints · 22K', ar:'سك حكومي · ٢٢ قيراط'},
+  'bul.coins.range':    {en:'Sovereign mints · 22K', ar:'سك حكومي · عيار 22'},
   'bul.dis':            {en:'<strong>Reference only.</strong> Calculated from live XAU/USD spot converted at current exchange rates. Actual dealer prices include a 3–8% premium. GoldMajlis does not sell gold.',ar:'<strong>استرشادي فقط.</strong> محسوب من سعر XAU/USD المباشر بأسعار الصرف الحالية. أسعار الوكلاء تشمل علاوة ٣–٨٪. غولد مجلس لا يبيع الذهب.'},
   'bul.faq.eyebrow':    {en:'Gold Bars in Qatar',    ar:'سبائك الذهب في قطر'},
   'bul.faq.heading':    {en:'Common Questions',      ar:'أسئلة شائعة'},
@@ -6046,7 +6078,7 @@ const TRANSLATIONS={
   'bul.bar.tola':       {en:'Traditional Gulf format · 24K',ar:'صيغة الخليج التقليدية · ٢٤ قيراط'},
   'bul.bar.intl':       {en:'International standard · 24K',ar:'معيار دولي · ٢٤ قيراط'},
   'bul.bar.lbma':       {en:'LBMA good delivery · 24K',ar:'تسليم LBMA · ٢٤ قيراط'},
-  'bul.coin.sov':       {en:'Sovereign mint · 22K',   ar:'سك حكومي · ٢٢ قيراط'},
+  'bul.coin.sov':       {en:'Sovereign mint · 22K',   ar:'سك حكومي · عيار 22'},
 
   /* Currency names */
   'cur.qar':            {en:'Qatari Riyal',           ar:'ريال قطري'},
@@ -6080,7 +6112,7 @@ const TRANSLATIONS={
   'learn.blog.pricing.title': {en:'The Making Charge — The Number You Should Always Ask For',ar:'رسوم المصنعية — الرقم الذي يجب أن تطلبه دائماً'},
   'learn.blog.pricing.exc':   {en:"Every jewellery price is two numbers. Only one is negotiable. Here's how to split them apart.",ar:'كل سعر مجوهرات هو رقمان. رقم واحد فقط قابل للتفاوض. إليك كيفية تفصيلهما.'},
   'learn.blog.karats.tag':    {en:'Karats',           ar:'القيراط'},
-  'learn.blog.karats.title':  {en:"24K, 22K, 21K, 18K, 14K, 12K — Which Karat is Right For You?",ar:'٢٤ق، ٢٢ق، ٢١ق، ١٨ق، ١٤ق، ١٢ق — أي قيراط مناسب لك؟'},
+  'learn.blog.karats.title':  {en:"24K, 22K, 21K, 18K, 14K, 12K — Which Karat is Right For You?",ar:'عيار 24، عيار 22، عيار 21، عيار 18، عيار 14، عيار 12 — أيها الأنسب لك؟'},
   'learn.blog.karats.exc':    {en:"A visual guide to gold purity and which karat dominates Qatar's gold souqs.",ar:'دليل مرئي لنقاء الذهب وأي قيراط يهيمن على أسواق الذهب في قطر.'},
   'learn.blog.souq.tag':      {en:'Qatar Souq',       ar:'سوق قطر'},
   'learn.blog.souq.title':    {en:"Shopping in Doha's Gold Souqs — The Insider's Guide",ar:"التسوق في أسواق الذهب في الدوحة — دليل المطلعين"},
@@ -6262,13 +6294,30 @@ function applyLang(lang){
   /* calc-form-header-text set by calcHeading block above */
 
   /* ── Calc field labels ── */
-  /* v109 — karat card labels: "عيار 24" in Arabic */
+  /* v109/v111 — karat labels: "عيار 24" in Arabic */
+  /* Update karat select options */
+  [['ksel'],['ksel-q']].flat().forEach(selId=>{
+    const sel=document.getElementById(selId);
+    if(!sel)return;
+    Array.from(sel.options).forEach(o=>{
+      const k=parseInt(o.value);
+      if(k)o.textContent=isAr?('عيار '+k):(k+'K');
+    });
+  });
+  /* Update live rate karat label */
+  const _lrkl=document.getElementById('live-rate-karat-lbl');
+  if(_lrkl){const _k=parseInt(_lrkl.textContent)||22;_lrkl.textContent=isAr?('عيار '+_k):(_k+'K');}
+  /* Update story karat chips */
+  [22,21,18].forEach(k=>{
+    const _sc=document.getElementById('story-chip-'+k);
+    if(_sc)_sc.textContent=isAr?('عيار '+k):(k+'K');
+  });
   const _isArCard = isAr;
   [24,22,21,18].forEach(k=>{
     const _wk=document.getElementById('wk-'+k);
     if(_wk)_wk.textContent=_isArCard?('عيار '+k):(k+'K');
     const _wcu=document.getElementById('wcu-'+k);
-    if(_wcu)_wcu.textContent=_isArCard?('غرام / '+(window.GM_STRINGS?.gram_cur||gCurSym)):gCurSym+' / gram';
+    /* wcu: handled by renderAllPrices with correct currency */
   });
   st('calc-wt-label','calc.wt.label');
   st('calc-unit-label','calc.unit.label');
@@ -6460,7 +6509,7 @@ function applyLang(lang){
 
   /* ─── Karat stamp hint ─── */
   document.querySelectorAll('.karat-stamp-hint').forEach(el=>{
-    el.innerHTML=isAr?(window.GM_STRINGS?.karat_stamp||'٩٩٩ = ٢٤ق · ٩١٦ = ٢٢ق · ٨٧٥ = ٢١ق<br>٧٥٠ = ١٨ق · ٥٨٥ = ١٤ق · ٥٠٠ = ١٢ق'):'999 = 24K · 916 = 22K · 875 = 21K<br>750 = 18K · 585 = 14K · 500 = 12K';
+    el.innerHTML=isAr?(window.GM_STRINGS?.karat_stamp||'٩٩٩ = عيار 24 · ٩١٦ = عيار 22 · ٨٧٥ = عيار 21<br>٧٥٠ = عيار 18 · ٥٨٥ = عيار 14 · ٥٠٠ = عيار 12'):'999 = 24K · 916 = 22K · 875 = 21K<br>750 = 18K · 585 = 14K · 500 = 12K';
   });
   /* ─── Spark section ─── */
   const spEyebrowEl=document.getElementById('spark-eyebrow');if(spEyebrowEl)spEyebrowEl.textContent=isAr?(window.GM_STRINGS?.spark_eyebrow||'تاريخ السعر'):'Price History';
@@ -6479,8 +6528,7 @@ function applyLang(lang){
   const spEmptyEl=document.getElementById('spark-empty');
   if(spEmptyEl&&spEmptyEl.style.display!=='none')spEmptyEl.textContent=isAr?(window.GM_STRINGS?.spark_empty||'جارٍ جمع بيانات الأسعار…'):'Collecting price data… updates every minute';
   /* kcard units */
-  const _kcUnit=gCurSym+' / '+(isAr?(window.GM_STRINGS?.gram||'غرام'):'gram');
-  ['wcu-24','wcu-22','wcu-21','wcu-18'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=_kcUnit;});
+  /* kcard units handled by renderAllPrices — no override here */
   /* ─── Bullion bar names & subs ─── */
   /* Bar names via data-bname-en/ar attributes (reliable even without id) */
   document.querySelectorAll('[data-bname-en]').forEach(el=>{
@@ -6562,6 +6610,8 @@ function applyLang(lang){
   if(typeof _storyInjectLiveData==='function')_storyInjectLiveData();
   renderFMCI();
 
+  /* ─── Re-render prices with correct currency units after lang switch ─── */
+  if(base24QAR)renderAllPrices(true);
   /* ─── Persist ─── */
   try{localStorage.setItem(LANG_LS_KEY,lang);}catch{}
 }
