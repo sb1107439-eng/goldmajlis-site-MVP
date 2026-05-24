@@ -194,6 +194,109 @@
     [dir=rtl] .upd-left{flex-direction:row-reverse}
     .upd-right{font-size:11px;color:var(--ink-3)}
 
+    /* ── CURRENCY PILLS (between live row and table) ── */
+    /* #7 — currency outside/above the table */
+    .home-cur-row{
+      max-width:var(--mw);margin:10px auto 0;padding:0 24px;
+      display:flex;align-items:center;justify-content:space-between;gap:8px;
+      flex-wrap:wrap;
+    }
+    .home-cur-pills{display:flex;gap:6px;flex-wrap:wrap;flex:1;min-width:0}
+    .tcp{padding:5px 13px;border-radius:980px;font-size:12px;font-weight:500;color:var(--ink-2);border:1px solid var(--div);background:var(--bg);cursor:pointer;transition:all .15s;white-space:nowrap}
+    .tcp.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .home-cur-actions{display:flex;align-items:center;gap:4px}
+    .tbl-action-btn{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--ink-3);background:none;border:none;cursor:pointer;transition:color .15s,background .15s}
+    .tbl-action-btn:hover{background:var(--f1);color:var(--ink)}
+    .tbl-action-btn.wa:hover{color:#1A7A43;background:#EDF7F2}
+
+    /* ── TABLE CARD ── */
+    .table-card{
+      max-width:var(--mw);margin:39px auto 0;padding:0 24px;
+    }
+    .table-card-inner{
+      border:1px solid var(--div);border-radius:var(--rx);
+      overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.04);
+    }
+
+    @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+    /* ── TABLE CELL FLASH — color-only, no background flicker ── */
+    @keyframes tdFlashUp{
+      0%  {color:#1A7A43}
+      70% {color:#1A7A43}
+      100%{color:inherit}
+    }
+    @keyframes tdFlashDn{
+      0%  {color:#C0392B}
+      70% {color:#C0392B}
+      100%{color:inherit}
+    }
+    .td-flash-up{animation:tdFlashUp 3s linear both}
+    .td-flash-dn{animation:tdFlashDn 3s linear both}
+
+    /* #4 — equal columns, no wrapping */
+    .ptable{width:100%;border-collapse:collapse;table-layout:fixed}
+    .ptable thead th{
+      font-size:11px;font-weight:600;color:var(--ink-3);
+      text-align:left;padding:12px 12px 10px;
+      border-bottom:1px solid var(--div);letter-spacing:.04em;text-transform:uppercase;
+      white-space:nowrap;
+    }
+    /* Equal width across all 6 columns — karat col slightly narrower */
+    .ptable thead th:nth-child(1){width:14%}
+    .ptable thead th:nth-child(2){width:17.2%}
+    .ptable thead th:nth-child(3){width:17.2%}
+    .ptable thead th:nth-child(4){width:17.2%}
+    .ptable thead th:nth-child(5){width:17.2%}
+    .ptable thead th:nth-child(6){width:17.2%}
+    .ptable tbody td{
+      padding:14px 12px;font-size:14px;
+      border-bottom:1px solid var(--div);
+      letter-spacing:-.01em;vertical-align:middle;white-space:nowrap;
+    }
+    .ptable tbody tr:last-child td{border-bottom:none}
+    .ptable tbody td:nth-child(n+2){font-weight:600;font-variant-numeric:tabular-nums}
+    .ptable tbody tr{transition:none}
+    .kbold{font-weight:700}
+
+    /* Mobile — horizontal scroll so table breathes */
+    @media(max-width:767px){
+      .table-card{padding:0 16px}
+      .table-card-inner{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--r)}
+      .ptable{min-width:520px;table-layout:fixed}
+      .ptable thead th{font-size:10px;padding:10px 10px 8px;letter-spacing:.02em}
+      .ptable thead th:nth-child(1){width:14%}
+      .ptable thead th:nth-child(2){width:17.2%}
+      .ptable thead th:nth-child(3){width:17.2%}
+      .ptable thead th:nth-child(4){width:17.2%}
+      .ptable thead th:nth-child(5){width:17.2%}
+      .ptable thead th:nth-child(6){width:17.2%}
+      .ptable tbody td{font-size:12px;padding:12px 10px}
+      .ptable tbody td:nth-child(1){font-size:12px;font-weight:700}
+    }
+
+    /* Mobile scroll fade-edge hint */
+    @media(max-width:767px){
+      .table-card-inner{position:relative}
+      .table-scroll-hint{
+        display:block;position:absolute;top:0;right:0;width:32px;height:100%;
+        background:linear-gradient(to right,transparent,rgba(255,255,255,.85));
+        pointer-events:none;border-radius:0 var(--r) var(--r) 0;z-index:2;
+        transition:opacity .3s;
+      }
+      .table-card-inner.scrolled-end .table-scroll-hint{opacity:0}
+    }
+    @media(min-width:768px){.table-scroll-hint{display:none}}
+    .upd-row{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:6px;padding:8px 20px;font-size:11px;color:var(--ink-3);
+      border-top:1px solid var(--div);
+    }
+    .upd-left{display:flex;align-items:center;gap:6px}
+    [dir=rtl] .upd-left{flex-direction:row-reverse}
+    .upd-right{font-size:11px;color:var(--ink-3)}
+
+    
     /* ── HOME INFO WEDGES (end of home page) ── */
     /* #2 — three info wedges at bottom of home */
     .home-wedges{max-width:var(--mw);margin:28px auto 0;padding:0 24px}
