@@ -3461,7 +3461,7 @@ function startPriceFlicker() {
     [24, 22, 21, 18].forEach(k => {
       const base    = base24QAR * (PURITY[k] || 1);
       /* Independent random per karat — so 24K can tick opposite to 18K */
-      const jitter  = (Math.random() - 0.5) * base * 0.0005;
+      const jitter  = (Math.random() - 0.5) * base * 0.002; /* ±0.1% — visible but tiny */
       const newQAR  = base + jitter;            /* jittered QAR/gram */
       const newDisp = newQAR * fx;              /* in display currency */
       const prev    = _lf[k];
@@ -3527,6 +3527,7 @@ async function updatePrices(){
     /* v78 — save price for next-visit comparison (Worker handles alert logic) */
     if(src!=='estimated')saveLastPrice(base24QAR);
     renderAllPrices();
+    startPriceFlicker(); /* start 3s visual flicker after first real price */
     /* stories content refreshed via _storyInjectLiveData in applyLang */
     updateSpark(spot);
     _priceUpdateInFlight=false;
