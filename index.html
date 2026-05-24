@@ -1624,7 +1624,7 @@
   <!-- TABLE — #1 per ounce instead of change, #4 full width -->
   <div class="table-card">
     <div class="table-card-inner">
-      <span class="table-scroll-hint" id="tbl-scroll-hint" aria-hidden="true"></span><span id="wdir-18" style="font-size:11px;font-weight:700;margin-left:4px;opacity:0.4;transition:opacity .5s">–</span>
+      <span class="table-scroll-hint" id="tbl-scroll-hint" aria-hidden="true"></span>
       <table class="ptable" aria-label="Gold prices Qatar by karat">
         <thead>
           <tr>
@@ -3460,10 +3460,13 @@ function startPriceFlicker() {
        This is purely cosmetic — never stored, never affects real data. */
     [24, 22, 21, 18].forEach(k => {
       const base    = base24QAR * (PURITY[k] || 1);
-      /* Independent random per karat — so 24K can tick opposite to 18K */
-      const jitter  = (Math.random() - 0.5) * base * 0.002; /* ±0.1% — visible but tiny */
-      const newQAR  = base + jitter;            /* jittered QAR/gram */
-      const newDisp = newQAR * fx;              /* in display currency */
+      const baseDisp = base * fx;               /* real price in display currency */
+      /* Jitter: keep same integer, only change decimals (±0.49 max)
+         e.g. 528.49 → 528.06, 528.73, 528.21 — never 527.xx or 529.xx */
+      const intPart  = Math.floor(baseDisp);
+      const decJitter = Math.random() * 0.98;   /* 0.00 to 0.98 */
+      const newDisp   = intPart + decJitter;     /* same integer, random decimals */
+      const newQAR    = newDisp / fx;            /* back to QAR for table calc */
       const prev    = _lf[k];
       _lf[k] = newDisp;
 
@@ -5147,6 +5150,7 @@ document.addEventListener('keydown',e=>{
   [24,22,21,18].forEach(k=>{const _u=document.getElementById('wcu-'+k);
   if(_u)_u.textContent=_ar?(_gr+' / '+gCurSym):(gCurSym+' / gram');});})();
   updatePrices();
+  setTimeout(startPriceFlicker, 3000); /* start flicker 3s after load */
 sparkSeedHistory(); /* v19 — seed 7 days of daily closes on load */
 loadAlfardanPrices(); /* fetch Alfardan bar prices on startup */
 setInterval(loadAlfardanPrices, 60*60*1000); /* re-fetch Alfardan every 1 hour */
