@@ -3486,20 +3486,38 @@ function startPriceFlicker() {
         dBadge.style.opacity     = '0.85';
       }
 
-      /* ── Table row — update gram cell only (most visible) ──
-         kg/oz/pound/tola are rounded integers so tiny jitter is invisible there */
+      /* ── Table row — update all columns with independent jitter ── */
       const trow = document.getElementById('trow' + k);
       if (trow) {
         const cells = trow.querySelectorAll('td');
-        /* cells[0]=karat label, cells[1]=gram, cells[2]=kg, cells[3]=oz ... */
+        /* cells[0]=karat, [1]=gram, [2]=kg, [3]=oz, [4]=pound, [5]=tola */
+        /* Each column gets its own independent decimal jitter */
+        const _j = () => Math.random() * 0.98; /* 0.00–0.98 */
         if (cells[1]) cells[1].textContent = newDisp.toFixed(2);
-        /* kg: show jitter only if it moves the rounded integer */
         if (cells[2]) {
-          const kgJit = Math.round(newQAR * 1000 * fx);
-          cells[2].textContent = kgJit.toLocaleString('en-QA');
+          const kgBase = Math.floor(newQAR * 1000 * fx);
+          cells[2].textContent = (kgBase + Math.round(_j() * 100) / 100).toLocaleString('en-QA',{maximumFractionDigits:0});
+        }
+        if (cells[3]) {
+          const ozBase = Math.floor(newQAR * OZ * fx);
+          cells[3].textContent = (ozBase + Math.round(_j() * 100)).toLocaleString('en-QA');
+        }
+        if (cells[4]) {
+          const lbBase = Math.floor(newQAR * OZ * 12 * fx);
+          cells[4].textContent = (lbBase + Math.round(_j() * 100)).toLocaleString('en-QA');
+        }
+        if (cells[5]) {
+          const tolBase = Math.floor(newQAR * TOLA * fx);
+          cells[5].textContent = (tolBase + Math.round(_j() * 100)).toLocaleString('en-QA');
         }
       }
     });
+    /* Update live dot timestamp every tick */
+    const _ut=document.getElementById('upd-txt');
+    if(_ut&&base24QAR){
+      const _isArF=document.documentElement.getAttribute('dir')==='rtl';
+      _ut.textContent=(_isArF?'● مباشر':'● Live')+' · '+fT(new Date());
+    }
   }, 3000);
 }
 
@@ -6412,7 +6430,7 @@ function applyLang(lang){
   st('footer-lnk-terms',isAr?(window.GM_STRINGS?.footer_terms||'شروط الاستخدام'):'Terms of Use');
   st('footer-lnk-privacy',isAr?(window.GM_STRINGS?.footer_privacy||'سياسة الخصوصية'):'Privacy Policy');
   st('footer-legal',isAr?(window.GM_STRINGS?.footer_legal||'© ٢٠٢٦ غولد مجلس.'):'© 2026 GoldMajlis. Reference prices only — not financial advice. Not affiliated with any exchange, dealer, or financial institution. All prices are indicative, calculated from public international spot data.');
-  st('footer-refresh',isAr?(window.GM_STRINGS?.footer_refresh||'يتحدث كل ١٠ دقائق'):'Updated every minute');
+  st('footer-refresh',isAr?(window.GM_STRINGS?.footer_refresh||'تتحدث كل دقيقة'):'Updated every minute');
   st('footer-disclaimer-txt',isAr?(window.GM_STRINGS?.footer_disclaimer||'الأسعار والحسابات المعروضة للأغراض المعلوماتية فقط.'):'Gold prices and calculations shown are for informational purposes only and may not reflect actual retail or market transaction prices.');
   st('footer-bot-about',isAr?(window.GM_STRINGS?.footer_about_us||'عنّا'):'About Us');
   st('footer-bot-terms',isAr?(window.GM_STRINGS?.footer_terms||'شروط الاستخدام'):'Terms of Use');
