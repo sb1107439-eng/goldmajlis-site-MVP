@@ -1586,7 +1586,7 @@
     <div class="kcard-item kcard-24" id="wc-24">
       <div class="kcard-header">
         <span class="kcard-karat" id="wk-24">24K</span>
-        <span id="wdir-24" style="font-size:11px;font-weight:800;padding:2px 6px;border-radius:980px;background:rgba(128,128,128,.12);color:var(--ink-3);transition:all .4s;letter-spacing:.02em">–</span>
+        <span id="wdir-24" style="font-size:9px;font-weight:600;padding:1px 4px;border-radius:4px;background:transparent;color:var(--ink-3);transition:all .4s;letter-spacing:.01em;opacity:0.5">–</span>
       </div>
       <div class="kcard-price" id="wp-24">--</div>
       <div class="kcard-unit" id="wcu-24">QAR / gram</div>
@@ -1595,7 +1595,7 @@
     <div class="kcard-item kcard-22" id="wc-22">
       <div class="kcard-header">
         <span class="kcard-karat" id="wk-22">22K</span>
-        <span id="wdir-22" style="font-size:11px;font-weight:800;padding:2px 6px;border-radius:980px;background:rgba(128,128,128,.12);color:var(--ink-3);transition:all .4s;letter-spacing:.02em">–</span>
+        <span id="wdir-22" style="font-size:9px;font-weight:600;padding:1px 4px;border-radius:4px;background:transparent;color:var(--ink-3);transition:all .4s;letter-spacing:.01em;opacity:0.5">–</span>
       </div>
       <div class="kcard-price" id="wp-22">--</div>
       <div class="kcard-unit" id="wcu-22">QAR / gram</div>
@@ -1604,7 +1604,7 @@
     <div class="kcard-item kcard-21" id="wc-21">
       <div class="kcard-header">
         <span class="kcard-karat" id="wk-21">21K</span>
-        <span id="wdir-21" style="font-size:11px;font-weight:800;padding:2px 6px;border-radius:980px;background:rgba(128,128,128,.12);color:var(--ink-3);transition:all .4s;letter-spacing:.02em">–</span>
+        <span id="wdir-21" style="font-size:9px;font-weight:600;padding:1px 4px;border-radius:4px;background:transparent;color:var(--ink-3);transition:all .4s;letter-spacing:.01em;opacity:0.5">–</span>
       </div>
       <div class="kcard-price" id="wp-21">--</div>
       <div class="kcard-unit" id="wcu-21">QAR / gram</div>
@@ -1613,7 +1613,7 @@
     <div class="kcard-item kcard-18" id="wc-18">
       <div class="kcard-header">
         <span class="kcard-karat" id="wk-18">18K</span>
-        <span id="wdir-18" style="font-size:11px;font-weight:800;padding:2px 6px;border-radius:980px;background:rgba(128,128,128,.12);color:var(--ink-3);transition:all .4s;letter-spacing:.02em">–</span>
+        <span id="wdir-18" style="font-size:9px;font-weight:600;padding:1px 4px;border-radius:4px;background:transparent;color:var(--ink-3);transition:all .4s;letter-spacing:.01em;opacity:0.5">–</span>
       </div>
       <div class="kcard-price" id="wp-18">--</div>
       <div class="kcard-unit" id="wcu-18">QAR / gram</div>
@@ -3294,13 +3294,13 @@ function renderAllPrices(skipBullion=false){
         const _up=df>0;
         _db.textContent=(document.documentElement.getAttribute('dir')==='rtl')?(_up?'↑ صعود':'↓ هبوط'):(_up?'↑ UP':'↓ DN');
         _db.style.color=_up?'var(--green)':'var(--red)';
-        _db.style.background=_up?'rgba(52,199,89,.15)':'rgba(255,59,48,.15)';
+        _db.style.background='transparent';
         _db.style.opacity='1';
         setTimeout(()=>{if(_db){_db.style.opacity='.85';}},3000);
       }
     } else {
       const _db=document.getElementById('wdir-'+k);
-      if(_db){_db.textContent='–';_db.style.color='var(--ink-3)';_db.style.background='rgba(128,128,128,.12)';_db.style.opacity='0.4';}
+      if(_db){_db.textContent='–';_db.style.color='var(--ink-3)';_db.style.background='transparent';_db.style.opacity='0.4';}
     }
   });
 
@@ -3480,7 +3480,7 @@ function startPriceFlicker() {
         const up = newDisp >= prev;
         dBadge.textContent = (document.documentElement.getAttribute('dir')==='rtl')?(up?'↑ صعود':'↓ هبوط'):(up?'↑ UP':'↓ DN');
         dBadge.style.color       = up ? 'var(--green)' : 'var(--red)';
-        dBadge.style.background  = up ? 'rgba(52,199,89,.15)' : 'rgba(255,59,48,.15)';
+        dBadge.style.background  = 'transparent';
         dBadge.style.opacity     = '0.85';
       }
 
