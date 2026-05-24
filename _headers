@@ -5,8 +5,21 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
 
-/goldmajlis-ar.js
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
-
 /
-  Cache-Control: public, max-age=300, stale-while-revalidate=600
+  Cache-Control: no-cache, must-revalidate
+  ETag: true
+
+/index.html
+  Cache-Control: no-cache, must-revalidate
+
+/goldmajlis-ar.js
+  Cache-Control: no-cache, must-revalidate
+
+/manifest.json
+  Cache-Control: no-cache, must-revalidate
+
+/*.png
+  Cache-Control: public, max-age=2592000
+
+/*.ico
+  Cache-Control: public, max-age=2592000
