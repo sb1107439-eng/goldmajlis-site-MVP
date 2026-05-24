@@ -7,9 +7,9 @@
   <!-- v71 — Metal Sentinel via Cloudflare Worker proxy, clean API architecture -->
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://goldmajlis.qa/#website","url":"https://goldmajlis.qa/","name":"GoldMajlis","description":"Live gold prices in Qatar — jewellery calculator, gold bars, and buyer guides.","inLanguage":"en"},{"@type":"WebPage","@id":"https://goldmajlis.qa/#home","url":"https://goldmajlis.qa/","name":"Live Gold Price in Qatar Today — GoldMajlis","description":"Real-time gold prices per gram for 24K, 22K, 21K, 18K, 14K and 12K. Updated every minute.","isPartOf":{"@id":"https://goldmajlis.qa/#website"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Gold Prices","item":"https://goldmajlis.qa/"}]}},{"@type":"WebPage","@id":"https://goldmajlis.qa/#calc","url":"https://goldmajlis.qa/#calc","name":"Jewellery Price Calculator — GoldMajlis","description":"Free jewellery calculator for Qatar gold buyers. Check if your making charge is fair.","isPartOf":{"@id":"https://goldmajlis.qa/#website"}},{"@type":"WebPage","@id":"https://goldmajlis.qa/#bullion","url":"https://goldmajlis.qa/#bullion","name":"Gold Bars and Coins Prices in Qatar — GoldMajlis","description":"Reference prices for gold bars and coins in Qatar updated live from spot price.","isPartOf":{"@id":"https://goldmajlis.qa/#website"}},{"@type":"WebPage","@id":"https://goldmajlis.qa/#learn","url":"https://goldmajlis.qa/#learn","name":"Qatar Gold Buying Guide — GoldMajlis","description":"Complete guide to buying gold in Qatar.","isPartOf":{"@id":"https://goldmajlis.qa/#website"}},{"@type":"FAQPage","@id":"https://goldmajlis.qa/#bullion-faq","url":"https://goldmajlis.qa/#bullion","name":"Gold Bars FAQ Qatar","mainEntity":[{"@type":"Question","name":"What are bullion prices in Qatar today?","acceptedAnswer":{"@type":"Answer","text":"Bullion prices are calculated in real time from XAU/USD spot. Qatar charges zero import duty and no VAT on investment gold. Dealer prices include a 1-8% premium by bar size."}},{"@type":"Question","name":"Is gold bullion a good investment in Qatar?","acceptedAnswer":{"@type":"Answer","text":"Gold serves as a store of value during dollar weakness and uncertainty. Qatar charges zero import duty on investment gold products, making it one of the most competitive markets in the world for buying bullion."}},{"@type":"Question","name":"Where can I buy gold bars in Qatar?","acceptedAnswer":{"@type":"Answer","text":"Licensed sources include QNB, Al Fardan Exchange, and authorised dealers in Souq Waqif and Al Rayyan Gold Souq. Every genuine bar has a sealed assay certificate."}},{"@type":"Question","name":"Bars vs coins which is better value?","acceptedAnswer":{"@type":"Answer","text":"Bars offer the best value per gram. A 100g bar carries 1-3% premium; a 1g bar carries 5-8%. Coins carry higher premiums but are easier to sell internationally."}},{"@type":"Question","name":"Can I sell gold bars back in Qatar?","acceptedAnswer":{"@type":"Answer","text":"Yes. Reputable dealers buy back at spot minus 0.5-2%. Confirm buyback policy before purchasing and never break the original sealed packaging."}},{"@type":"Question","name":"What is a tola bar?","acceptedAnswer":{"@type":"Answer","text":"A tola equals 11.664 grams, a traditional Gulf unit. Tola bars are widely available in Doha souqs and popular for gifting and saving."}}]},{"@type":"Organization","@id":"https://goldmajlis.qa/#org","name":"GoldMajlis","url":"https://goldmajlis.qa/","areaServed":"QA"}]}</script>
   <meta name="description" content="Live gold price in Qatar today in QAR per gram. Check 24K, 22K, 21K, 18K, 14K, 12K rates. Free jewellery price calculator."/>
-  <meta name="robots" content="noindex,nofollow,noarchive,noimageindex,nositelinkssearchbox"/>
-  <meta name="googlebot" content="noindex,nofollow,noarchive,noimageindex"/>
-  <meta name="bingbot" content="noindex,nofollow"/>
+  
+  
+  
   <meta name="geo.region" content="QA"/>
   <meta name="geo.placename" content="Qatar"/>
   <meta name="geo.position" content="25.2854;51.5310"/>
@@ -185,174 +185,6 @@
     .live-glow-sep{color:var(--ink-3);margin:0 2px}
     .live-glow-time{color:var(--ink-2);font-weight:500}
 
-    /* ── SPARKLINE SECTION HEADING ── */
-    .spark-section-head{
-      max-width:var(--mw);margin:32px auto 0;padding:0 24px 16px;
-    }
-    .spark-section-eyebrow{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
-    .spark-section-title{font-size:18px;font-weight:700;letter-spacing:-.02em;font-family:var(--ff-display);color:var(--ink);margin-bottom:3px}
-    .spark-section-sub{font-size:13px;color:var(--ink-2)}
-    @media(max-width:767px){
-      .spark-section-head{padding:0 16px 16px}
-      /* Fix 3 — consistent 16px mobile padding */
-      .live-glow-row{padding:0 16px}
-      .home-cur-row{padding:0 16px}
-    }
-
-    /* ── SPARKLINE CARD ── */
-    .spark-card{
-      max-width:var(--mw);margin:0 auto;padding:0 24px;
-    }
-    .spark-inner{
-      background:var(--bg);border:1px solid var(--div);border-radius:var(--rx);
-      padding:14px 18px 12px;box-shadow:0 2px 12px rgba(0,0,0,.04);
-      position:relative;overflow:hidden;
-    }
-    .spark-inner::before{
-      content:'';position:absolute;top:0;left:0;right:0;height:2px;
-      background:linear-gradient(90deg,var(--spark-accent,var(--gold)),var(--spark-accent-mid,#E8C060) 60%,transparent);
-    }
-    /* ── SPARKLINE CARD — v33 2-row layout ── */
-    .spark-controls-row{
-      display:flex;align-items:center;justify-content:space-between;
-      gap:6px;margin-bottom:10px;
-    }
-    .spark-price-row{
-      display:flex;align-items:center;justify-content:space-between;
-      gap:8px;margin-bottom:10px;
-    }
-    .spark-price-left{display:flex;flex-direction:column;gap:1px;min-width:0}
-    /* Keep legacy .spark-header/left/right for desktop (no structural change there) */
-    .spark-header{display:none} /* replaced by 2-row layout */
-    .spark-left{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
-    .spark-title{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
-    .spark-price{font-size:22px;font-weight:700;letter-spacing:-.03em;color:var(--ink);font-variant-numeric:tabular-nums;font-family:var(--ff-display)}
-    .spark-delta{font-size:12px;font-weight:600;font-variant-numeric:tabular-nums;padding:4px 10px;border-radius:980px;flex-shrink:0;white-space:nowrap}
-    .spark-delta.up{color:var(--green);background:var(--green-bg)}
-    .spark-delta.dn{color:var(--red);background:var(--red-bg)}
-    .spark-delta.neutral{color:var(--ink-3);background:var(--f1)}
-    .spark-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
-    .spark-range-pills{display:flex;gap:4px;flex-wrap:nowrap}
-    .spark-rpill{
-      padding:5px 10px;border-radius:980px;font-size:11px;font-weight:600;
-      color:var(--ink-3);border:1px solid var(--div);background:none;cursor:pointer;
-      transition:all .15s;white-space:nowrap;
-    }
-    .spark-rpill.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-    @media(max-width:767px){
-      .spark-rpill{padding:4px 8px;font-size:10px}
-      .spark-price{font-size:20px}
-      .spark-delta{font-size:11px;padding:3px 8px}
-    }
-    @media(max-width:767px){.spark-card{padding:0 16px}}
-    .spark-wrap{position:relative;width:100%;height:56px}
-    .spark-svg{width:100%;height:100%;overflow:visible;display:block}
-    .spark-area{fill:url(#sparkGrad);opacity:.35}
-    .spark-line{fill:none;stroke:var(--gold);stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
-    .spark-dot{fill:var(--gold);stroke:#fff;stroke-width:1.5}
-    .spark-foot{
-      display:flex;align-items:center;justify-content:space-between;
-      margin-top:6px;font-size:10px;color:var(--ink-3);font-variant-numeric:tabular-nums;
-    }
-    .spark-foot-label{font-weight:500}
-    .spark-empty{
-      display:flex;align-items:center;justify-content:center;
-      height:56px;font-size:11px;color:var(--ink-3);
-    }
-
-    /* ── CURRENCY PILLS (between live row and table) ── */
-    /* #7 — currency outside/above the table */
-    .home-cur-row{
-      max-width:var(--mw);margin:10px auto 0;padding:0 24px;
-      display:flex;align-items:center;justify-content:space-between;gap:8px;
-      flex-wrap:wrap;
-    }
-    .home-cur-pills{display:flex;gap:6px;flex-wrap:wrap;flex:1;min-width:0}
-    .tcp{padding:5px 13px;border-radius:980px;font-size:12px;font-weight:500;color:var(--ink-2);border:1px solid var(--div);background:var(--bg);cursor:pointer;transition:all .15s;white-space:nowrap}
-    .tcp.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-    .home-cur-actions{display:flex;align-items:center;gap:4px}
-    .tbl-action-btn{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--ink-3);background:none;border:none;cursor:pointer;transition:color .15s,background .15s}
-    .tbl-action-btn:hover{background:var(--f1);color:var(--ink)}
-    .tbl-action-btn.wa:hover{color:#1A7A43;background:#EDF7F2}
-
-    /* ── TABLE CARD ── */
-    .table-card{
-      max-width:var(--mw);margin:39px auto 0;padding:0 24px;
-    }
-    .table-card-inner{
-      border:1px solid var(--div);border-radius:var(--rx);
-      overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.04);
-    }
-
-    @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
-
-    /* ── TABLE CELL FLASH — color-only, no background flicker ── */
-    @keyframes tdFlashUp{
-      0%  {color:#1A7A43}
-      70% {color:#1A7A43}
-      100%{color:inherit}
-    }
-    @keyframes tdFlashDn{
-      0%  {color:#C0392B}
-      70% {color:#C0392B}
-      100%{color:inherit}
-    }
-    .td-flash-up{animation:tdFlashUp 3s linear both}
-    .td-flash-dn{animation:tdFlashDn 3s linear both}
-
-    /* #4 — equal columns, no wrapping */
-    .ptable{width:100%;border-collapse:collapse;table-layout:fixed}
-    .ptable thead th{
-      font-size:11px;font-weight:600;color:var(--ink-3);
-      text-align:left;padding:12px 12px 10px;
-      border-bottom:1px solid var(--div);letter-spacing:.04em;text-transform:uppercase;
-      white-space:nowrap;
-    }
-    /* Equal width across all 6 columns — karat col slightly narrower */
-    .ptable thead th:nth-child(1){width:14%}
-    .ptable thead th:nth-child(2){width:17.2%}
-    .ptable thead th:nth-child(3){width:17.2%}
-    .ptable thead th:nth-child(4){width:17.2%}
-    .ptable thead th:nth-child(5){width:17.2%}
-    .ptable thead th:nth-child(6){width:17.2%}
-    .ptable tbody td{
-      padding:14px 12px;font-size:14px;
-      border-bottom:1px solid var(--div);
-      letter-spacing:-.01em;vertical-align:middle;white-space:nowrap;
-    }
-    .ptable tbody tr:last-child td{border-bottom:none}
-    .ptable tbody td:nth-child(n+2){font-weight:600;font-variant-numeric:tabular-nums}
-    .ptable tbody tr{transition:none}
-    .kbold{font-weight:700}
-
-    /* Mobile — horizontal scroll so table breathes */
-    @media(max-width:767px){
-      .table-card{padding:0 16px}
-      .table-card-inner{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--r)}
-      .ptable{min-width:520px;table-layout:fixed}
-      .ptable thead th{font-size:10px;padding:10px 10px 8px;letter-spacing:.02em}
-      .ptable thead th:nth-child(1){width:14%}
-      .ptable thead th:nth-child(2){width:17.2%}
-      .ptable thead th:nth-child(3){width:17.2%}
-      .ptable thead th:nth-child(4){width:17.2%}
-      .ptable thead th:nth-child(5){width:17.2%}
-      .ptable thead th:nth-child(6){width:17.2%}
-      .ptable tbody td{font-size:12px;padding:12px 10px}
-      .ptable tbody td:nth-child(1){font-size:12px;font-weight:700}
-    }
-
-    /* Mobile scroll fade-edge hint */
-    @media(max-width:767px){
-      .table-card-inner{position:relative}
-      .table-scroll-hint{
-        display:block;position:absolute;top:0;right:0;width:32px;height:100%;
-        background:linear-gradient(to right,transparent,rgba(255,255,255,.85));
-        pointer-events:none;border-radius:0 var(--r) var(--r) 0;z-index:2;
-        transition:opacity .3s;
-      }
-      .table-card-inner.scrolled-end .table-scroll-hint{opacity:0}
-    }
-    @media(min-width:768px){.table-scroll-hint{display:none}}
     .upd-row{
       display:flex;align-items:center;justify-content:space-between;
       gap:6px;padding:8px 20px;font-size:11px;color:var(--ink-3);
@@ -1651,7 +1483,7 @@
     <div class="kcard-item kcard-24" id="wc-24">
       <div class="kcard-header">
         <span class="kcard-karat" id="wk-24">24K</span>
-        <span id="wdir-24" style="font-size:11px;font-weight:700;margin-left:4px;margin-right:4px;opacity:0.4;transition:opacity .5s">–</span>
+        <span id="wdir-24" style="font-size:11px;font-weight:800;padding:2px 6px;border-radius:980px;background:rgba(128,128,128,.12);color:var(--ink-3);transition:all .4s;letter-spacing:.02em">–</span>
       </div>
       <div class="kcard-price" id="wp-24">--</div>
       <div class="kcard-unit" id="wcu-24">QAR / gram</div>
@@ -1660,7 +1492,7 @@
     <div class="kcard-item kcard-22" id="wc-22">
       <div class="kcard-header">
         <span class="kcard-karat" id="wk-22">22K</span>
-        <span id="wdir-22" style="font-size:11px;font-weight:700;margin-left:4px;margin-right:4px;opacity:0.4;transition:opacity .5s">–</span>
+        <span id="wdir-22" style="font-size:11px;font-weight:800;padding:2px 6px;border-radius:980px;background:rgba(128,128,128,.12);color:var(--ink-3);transition:all .4s;letter-spacing:.02em">–</span>
       </div>
       <div class="kcard-price" id="wp-22">--</div>
       <div class="kcard-unit" id="wcu-22">QAR / gram</div>
@@ -1669,7 +1501,7 @@
     <div class="kcard-item kcard-21" id="wc-21">
       <div class="kcard-header">
         <span class="kcard-karat" id="wk-21">21K</span>
-        <span id="wdir-21" style="font-size:11px;font-weight:700;margin-left:4px;margin-right:4px;opacity:0.4;transition:opacity .5s">–</span>
+        <span id="wdir-21" style="font-size:11px;font-weight:800;padding:2px 6px;border-radius:980px;background:rgba(128,128,128,.12);color:var(--ink-3);transition:all .4s;letter-spacing:.02em">–</span>
       </div>
       <div class="kcard-price" id="wp-21">--</div>
       <div class="kcard-unit" id="wcu-21">QAR / gram</div>
@@ -1678,7 +1510,7 @@
     <div class="kcard-item kcard-18" id="wc-18">
       <div class="kcard-header">
         <span class="kcard-karat" id="wk-18">18K</span>
-        <span id="wdir-18" style="font-size:11px;font-weight:700;margin-left:4px;margin-right:4px;opacity:0.4;transition:opacity .5s">–</span>
+        <span id="wdir-18" style="font-size:11px;font-weight:800;padding:2px 6px;border-radius:980px;background:rgba(128,128,128,.12);color:var(--ink-3);transition:all .4s;letter-spacing:.02em">–</span>
       </div>
       <div class="kcard-price" id="wp-18">--</div>
       <div class="kcard-unit" id="wcu-18">QAR / gram</div>
@@ -1722,97 +1554,6 @@
     </div>
   </div>
 
-  <!-- ── SPARKLINE ── -->
-  <div class="spark-section-head">
-    <div class="spark-section-eyebrow" id="spark-eyebrow">Price History</div>
-    <div class="spark-section-title" id="spark-section-title">Today's Price Movement</div>
-    <div class="spark-section-sub" id="spark-section-sub">Gold price per gram — up to 7 days of price history</div>
-  </div>
-  <!-- Screen reader summary of sparkline data, updated with JS -->
-  <div id="spark-sr-summary" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap"></div>
-  <div class="spark-card" id="spark-card">
-    <div class="spark-inner">
-      <!-- v33 — restructured for mobile clarity: controls row + price row -->
-      <div class="spark-controls-row">
-        <div class="spark-range-pills spark-karat-pills">
-          <button class="spark-rpill on" data-karat="24" onclick="setSparkKarat(this,24)">24K</button>
-          <button class="spark-rpill" data-karat="22" onclick="setSparkKarat(this,22)">22K</button>
-          <button class="spark-rpill" data-karat="21" onclick="setSparkKarat(this,21)">21K</button>
-          <button class="spark-rpill" data-karat="18" onclick="setSparkKarat(this,18)">18K</button>
-        </div>
-        <div class="spark-range-pills spark-time-pills">
-          <button class="spark-rpill on" id="spark-pill-today" data-range="today" onclick="setSparkRange(this,'today')">Today</button>
-          <button class="spark-rpill" id="spark-pill-2d" data-range="2d" onclick="setSparkRange(this,'2d')">2d</button>
-          <button class="spark-rpill" id="spark-pill-3d" data-range="3d" onclick="setSparkRange(this,'3d')">3d</button>
-          <button class="spark-rpill" id="spark-pill-7d" data-range="7d" onclick="setSparkRange(this,'7d')">7d</button>
-        </div>
-      </div>
-      <div class="spark-price-row">
-        <div class="spark-price-left">
-          <span class="spark-title" id="spark-title">24K · QAR / gram</span>
-          <span class="spark-price" id="spark-price">—</span>
-        </div>
-        <span class="spark-delta neutral" id="spark-delta">—</span>
-      </div>
-      <div class="spark-wrap" id="spark-wrap">
-        <div class="spark-empty" id="spark-empty">Collecting price data… updates every 60s</div>
-        <svg class="spark-svg" id="spark-svg" style="display:none" aria-hidden="true" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop id="sparkGradTop" offset="0%" stop-color="#B8860B" stop-opacity=".5"/>
-              <stop id="sparkGradBot" offset="100%" stop-color="#B8860B" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-          <path class="spark-area" id="spark-area-path"/>
-          <path class="spark-line" id="spark-line-path"/>
-          <circle class="spark-dot" id="spark-dot" r="3"/>
-        </svg>
-        <!-- Fix M — hover/touch tooltip -->
-        <div class="spark-crosshair" id="spark-crosshair"></div>
-        <div class="spark-tooltip" id="spark-tooltip">
-          <div class="spark-tooltip-date" id="spark-tooltip-date"></div>
-          <div id="spark-tooltip-price"></div>
-        </div>
-      </div>
-      <div class="spark-foot">
-        <span class="spark-foot-label" id="spark-foot-lo">—</span>
-        <span id="spark-foot-count" style="color:var(--ink-3)"></span>
-        <span class="spark-foot-label" id="spark-foot-hi">—</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── SECTION DIVIDER ── -->
-  <div class="section-rule">
-    <div class="section-rule-line"></div>
-    <span class="section-rule-label">GoldMajlis Tools</span>
-    <div class="section-rule-line"></div>
-  </div>
-
-  <!-- CTA -->
-  <div class="home-cta-banner">
-    <div class="home-cta-inner">
-      <div class="home-cta-left">
-        <div class="home-cta-eyebrow">Free Calculator</div>
-        <div class="home-cta-title">Is Your Jewellery Price Fair?</div>
-        <div class="home-cta-sub">Check your making charge instantly — free.</div>
-      </div>
-      <button class="home-cta-btn" onclick="showPage('calc')">
-        <span id="home-cta-btn-txt">Check</span>
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </button>
-    </div>
-  </div>
-
-  <!-- BULLION SCROLL — #10 aligned -->
-  <div class="bullion-section">
-    <div style="font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px" id="home-bars-eyebrow">Gold Bars</div>
-    <div style="font-size:18px;font-weight:700;letter-spacing:-.02em;font-family:var(--ff-display);margin-bottom:4px" id="home-bars-title">Bullion Prices in Qatar</div>
-    <div style="font-size:13px;color:var(--ink-2)" id="home-bars-sub">Reference prices from the live international spot.</div>
-    <div class="bullion-scroll">
-      <div class="bullion-row-inner" id="bullion-scroll-inner"></div>
-    </div>
-  </div>
 
   <!-- #2 — three knowledge wedges at end of home -->
   <div class="home-wedges">
@@ -2820,7 +2561,18 @@ const PURITY={24:1,22:22/24,21:21/24,18:18/24,14:14/24,12:12/24};
 /* FX rates — QAR=base(1), USD=fixed peg(3.64).
    EUR/GBP/INR start at 0 and are populated immediately by refreshFXRates().
    AED/SAR are USD-pegged fixed rates. */
-const FX={QAR:1,USD:1/3.64,EUR:0,GBP:0,INR:0,AED:3.6725/3.64,SAR:3.75/3.64};let lastFXFetch=null; /* FIX 4 — track when FX rates were last refreshed */
+/* FX rates: EUR/GBP/INR initialized to reasonable defaults
+   Will be updated by refreshFXRates() on startup and periodically.
+   Defaults prevent -- display if frankfurter.dev is slow/unavailable. */
+const FX={
+  QAR:1,
+  USD:1/3.64,           /* 1 USD = 3.64 QAR (fixed peg) */
+  EUR:0.25,             /* ~1 EUR = 4.0 QAR — updated live */
+  GBP:0.21,             /* ~1 GBP = 4.75 QAR — updated live */
+  INR:30.0,             /* ~1 QAR = 23 INR — updated live */
+  AED:3.6725/3.64,
+  SAR:3.75/3.64
+};let lastFXFetch=null; /* FIX 4 — track when FX rates were last refreshed */
 async function refreshFXRates(){
   /* Boolean lock — prevents concurrent/duplicate calls */
   if(window._fxFetching)return;
@@ -2874,6 +2626,7 @@ let bulCurCode='QAR',bulCurSym='QAR';
 let calcCurCode='QAR',calcCurSym='QAR';
 let useCustomRate=false;
 let base24QAR=null;
+try{const _ps=localStorage.getItem('gm_prev_spot');if(_ps)prevSpot=parseFloat(_ps);}catch{}
 /* Fix #7 — double-submit guard */
 let isCalculating=false;
 
@@ -3393,10 +3146,7 @@ async function fetchGoldPrice(){
 /* ══ RENDER ══ */
 function renderAllPrices(skipBullion=false){
   if(!base24QAR)return;
-  /* Skip if selected currency rate not yet loaded (EUR/GBP/INR start at 0) */
-  if((FX[gCurCode]||0)===0&&!['QAR','USD','AED','SAR'].includes(gCurCode)){
-    return; /* rate=0; setCur will trigger refreshFXRates+re-render */
-  }
+  /* FX rates always available (defaults set on init, live rates loaded async) */
   const P={24:base24QAR,22:base24QAR*PURITY[22],21:base24QAR*PURITY[21],18:base24QAR*PURITY[18],14:base24QAR*PURITY[14],12:base24QAR*PURITY[12]};
   const pb24=prevSpot?(prevSpot/OZ)*3.64:null;
 
@@ -3437,11 +3187,17 @@ function renderAllPrices(skipBullion=false){
       /* Direction badge */
       /* Direction badge */
       const _db=document.getElementById('wdir-'+k);
-      if(_db){_db.textContent=df>0?'↑':'↓';_db.style.color=df>0?'var(--green)':'var(--red)';_db.style.opacity='1';
-        setTimeout(()=>{if(_db)_db.style.opacity='0.4';},3000);}
+      if(_db){
+        const _up=df>0;
+        _db.textContent=(document.documentElement.getAttribute('dir')==='rtl')?(_up?'↑ صعود':'↓ هبوط'):(_up?'↑ UP':'↓ DN');
+        _db.style.color=_up?'var(--green)':'var(--red)';
+        _db.style.background=_up?'rgba(52,199,89,.15)':'rgba(255,59,48,.15)';
+        _db.style.opacity='1';
+        setTimeout(()=>{if(_db){_db.style.opacity='.85';}},3000);
+      }
     } else {
       const _db=document.getElementById('wdir-'+k);
-      if(_db){_db.textContent='–';_db.style.color='var(--ink-3)';_db.style.opacity='0.4';}
+      if(_db){_db.textContent='–';_db.style.color='var(--ink-3)';_db.style.background='rgba(128,128,128,.12)';_db.style.opacity='0.4';}
     }
   });
 
@@ -3589,17 +3345,52 @@ let _flickerTimer = null;
 
 function startPriceFlicker() {
   if (_flickerTimer) return;
+  /* Per-karat last flicker value — used for direction badge */
+  const _lf = {};
+
   _flickerTimer = setInterval(() => {
-    if (!base24QAR || document.hidden) return;
-    const fx = FX[gCurCode] || 1;
-    /* Each karat gets its own independent jitter ±0.025% max
-       So 24K can tick up while 18K ticks down — realistic behaviour */
+    if (!base24QAR || document.hidden || currentPage !== 'home') return;
+    const fx  = FX[gCurCode] || 1;
+
+    /* ── Each karat gets its own independent tiny jitter ──
+       Max ±0.025% of real price (~0.13 QAR on a 528 QAR price).
+       This is purely cosmetic — never stored, never affects real data. */
     [24, 22, 21, 18].forEach(k => {
+      const base    = base24QAR * (PURITY[k] || 1);
+      /* Independent random per karat — so 24K can tick opposite to 18K */
+      const jitter  = (Math.random() - 0.5) * base * 0.0005;
+      const newQAR  = base + jitter;            /* jittered QAR/gram */
+      const newDisp = newQAR * fx;              /* in display currency */
+      const prev    = _lf[k];
+      _lf[k] = newDisp;
+
+      /* ── Widget price card ── */
       const pEl = document.getElementById('wp-' + k);
-      if (!pEl) return;
-      const base = base24QAR * (PURITY[k] || 1);
-      const jitter = (Math.random() - 0.5) * base * 0.0005; /* ±0.025% */
-      pEl.textContent = ((base + jitter) * fx).toFixed(2);
+      if (pEl) pEl.textContent = newDisp.toFixed(2);
+
+      /* ── Direction badge ── */
+      const dBadge = document.getElementById('wdir-' + k);
+      if (dBadge && prev !== undefined) {
+        const up = newDisp >= prev;
+        dBadge.textContent = (document.documentElement.getAttribute('dir')==='rtl')?(up?'↑ صعود':'↓ هبوط'):(up?'↑ UP':'↓ DN');
+        dBadge.style.color       = up ? 'var(--green)' : 'var(--red)';
+        dBadge.style.background  = up ? 'rgba(52,199,89,.15)' : 'rgba(255,59,48,.15)';
+        dBadge.style.opacity     = '0.85';
+      }
+
+      /* ── Table row — update gram cell only (most visible) ──
+         kg/oz/pound/tola are rounded integers so tiny jitter is invisible there */
+      const trow = document.getElementById('trow' + k);
+      if (trow) {
+        const cells = trow.querySelectorAll('td');
+        /* cells[0]=karat label, cells[1]=gram, cells[2]=kg, cells[3]=oz ... */
+        if (cells[1]) cells[1].textContent = newDisp.toFixed(2);
+        /* kg: show jitter only if it moves the rounded integer */
+        if (cells[2]) {
+          const kgJit = Math.round(newQAR * 1000 * fx);
+          cells[2].textContent = kgJit.toLocaleString('en-QA');
+        }
+      }
     });
   }, 3000);
 }
@@ -3618,7 +3409,7 @@ async function updatePrices(){
     /* All sources failed on first load — schedule a retry in 30s */
     const ut=document.getElementById('upd-txt');
     if(ut)ut.textContent=document.documentElement.getAttribute('dir')==='rtl'?(window.GM_STRINGS?.retrying||'إعادة المحاولة…'):'Retrying…';
-    setTimeout(()=>{_priceUpdateInFlight=false;updatePrices();},30000);
+    setTimeout(()=>{_priceUpdateInFlight=false;},30000); /* watchdog: reset lock only */
     _priceUpdateInFlight=false;
     return;
   }
@@ -3638,7 +3429,7 @@ async function updatePrices(){
     _priceUpdateInFlight=false;
     return;
   }
-  prevSpot=spotUSD;spotUSD=spot;srcLabel=src;lastFetch=new Date();
+  prevSpot=spotUSD;try{localStorage.setItem('gm_prev_spot',spotUSD);}catch{}spotUSD=spot;srcLabel=src;lastFetch=new Date();
   if(src!=='estimated')lastKnownSpot=spot; /* cache real prices only */
   /* v79: use live FX rate for USD→QAR conversion, not hardcoded 3.64
      FX['QAR'] is always 1 since our base currency IS QAR.
@@ -3699,6 +3490,20 @@ function setCur(btn,code,sym){
   try{localStorage.setItem('gm_cur_v1',code);}catch{} /* persist currency choice */
   const heroLbl=document.getElementById('hero-cur-label');
   if(heroLbl)heroLbl.textContent=gCurSym;
+  /* Clear custom rate when currency changes — prevents wrong currency rate carrying over */
+  if(window.useCustomRate){
+    window.useCustomRate=false;
+    const _crv=document.getElementById('custom-rate-val');
+    const _crp=document.getElementById('custom-rate-panel');
+    const _crt=document.getElementById('custom-rate-toggle');
+    const _crb=document.getElementById('custom-rate-btn');
+    if(_crv)_crv.value='';
+    if(_crp)_crp.style.display='none';
+    if(_crt)_crt.className='toggle-sw';
+    if(_crb){_crb.setAttribute('aria-checked','false');_crb.style.color='var(--ink-3)';}
+    const _ol=document.getElementById('custom-rate-btn-lbl');
+    if(_ol)_ol.textContent=t('rate.own');
+  }
   /* Immediately update card prices AND units on currency switch */
   const _isArSC=document.documentElement.getAttribute('dir')==='rtl';
   const _grSC=window.GM_STRINGS?.gram_cur||'غرام';
@@ -3707,12 +3512,10 @@ function setCur(btn,code,sym){
     const _u=document.getElementById('wcu-'+k);
     const _p=document.getElementById('wp-'+k);
     if(_u)_u.textContent=_isArSC?(_grSC+' / '+gCurSym):(gCurSym+' / gram');
-    /* Update price immediately if we have base price AND FX rate */
+    /* Update price immediately — FX always has a value now */
     if(_p&&base24QAR&&_fxSC>0){
       const _v=base24QAR*(PURITY[k]||1)*_fxSC;
       _p.textContent=_v.toFixed(2);
-    } else if(_p&&base24QAR&&(_fxSC===0||_fxSC===undefined)){
-      _p.textContent='…'; /* FX rate not loaded yet */
     }
   });
   /* v30 Fix 12 — sync calculator currency to home currency; pass skipSave=true so user's saved calc currency pref is preserved */
@@ -3733,24 +3536,18 @@ function setCur(btn,code,sym){
   /* v41 Fix 1 — only render if prices are available; removed separate renderBullionPage call
      (setBulCur handles it) to prevent double-render and NaN writes when base24QAR is null */
   if(base24QAR){
-    /* If EUR/GBP/INR selected but rate is 0 — force FX fetch first */
-    if((FX[code]||0)===0&&!['QAR','USD','AED','SAR'].includes(code)){
-      window._fxFetching=false; /* release lock so fetch proceeds */
-      refreshFXRates().then(()=>{
-        renderAllPrices(true);renderBullionScroll(base24QAR);renderSparkline();renderFMCI();
-      });
-      /* Show placeholder while loading */
-      [24,22,21,18].forEach(k=>{
-        const _pe=document.getElementById('wp-'+k);
-        const _ue=document.getElementById('wcu-'+k);
-        if(_pe)_pe.textContent='…';
-        if(_ue)_ue.textContent=code+'…';
-      });
-    } else {
-      renderAllPrices(true);
-      renderBullionScroll(base24QAR);
-      renderSparkline();
-      renderFMCI();
+    renderAllPrices(true);
+    renderBullionScroll(base24QAR);
+    renderSparkline();
+    renderFMCI();
+    /* Re-render calculator result in new currency if one exists */
+    const _lca=window._lastCheckArgs;
+    if(_lca&&document.getElementById('rcard')?.style.display!=='none'){
+      try{renderResult(_lca.total,_lca.g,_lca.k,_lca.cx,_lca.sym,_lca.rate);}catch{}
+    }
+    const _lqa=window._lastQuoteArgs;
+    if(_lqa&&document.getElementById('qcard')?.style.display!=='none'){
+      try{renderQuote(_lqa.g,_lqa.k,_lqa.cx);}catch{}
     }
   }
 }

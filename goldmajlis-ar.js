@@ -644,6 +644,8 @@ window.GM_STRINGS = {
   calc_fetching:    'جارٍ جلب سعر الذهب المباشر…',
 
   gram_cur:         'غرام',  /* currency unit label for karat cards */
+  dir_up:   '↑ صعود',
+  dir_dn:   '↓ هبوط',
 };
 
 /* Signal ready */
