@@ -1329,7 +1329,7 @@
     [dir=rtl] .hero-inner{text-align:right}
     [dir=rtl] .hero-sub{text-align:right}
     [dir=rtl] .live-glow-row{flex-direction:row-reverse}
-    [dir=rtl] .home-cur-row{flex-direction:row-reverse}
+    [dir=rtl] .home-cur-row{flex-direction:row-reverse;text-align:right}
     [dir=rtl] .home-cur-pills{flex-direction:row-reverse}
     [dir=rtl] .kcard-header{flex-direction:row-reverse}
     [dir=rtl] .kcard-delta{flex-direction:row-reverse}
@@ -1446,7 +1446,13 @@
       border:1px solid var(--div);background:var(--bg);color:var(--ink-2);cursor:pointer;transition:all .15s}
     .wtog.on{background:var(--ink);color:#fff;border-color:var(--ink)}
 
-  </style>
+  
+    [dir=rtl] .bul-group-header{flex-direction:row-reverse;text-align:right}
+    [dir=rtl] .bul-group-chev{transform:scaleX(-1)}
+    [dir=rtl] .bul-faq-item{text-align:right;direction:rtl}
+    [dir=rtl] .bul-faq-cta{text-align:right}
+    [dir=rtl] #bul-faq-cta-btn{float:none}
+</style>
   <!-- Arabic translations: loads ar.js which overrides TRANSLATIONS + adds GM_STRINGS.
        Sync load (no defer) so Arabic is ready before any JS runs.
        If this file fails to load, English fallback in TRANSLATIONS still works. -->
@@ -1669,9 +1675,9 @@
       <!-- #8 — updated row with timestamp, 60s, no "source: indicative" -->
       <div class="upd-row">
         <div class="upd-left">
-          <span id="upd-price-display" style="font-size:13px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums">--</span>
+          <span id="upd-price-display" style="font-size:13px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums" id="upd-price-display">--</span>
           <span id="upd-change-pct" style="font-size:11px;font-weight:600;padding:1px 5px;border-radius:4px;margin-left:4px">--</span>
-          <span id="upd-txt" style="display:none">Connecting…</span>
+          <span id="upd-txt" style="">Connecting…</span>
         </div>
         <span class="upd-right" id="upd-ref-label" title="Prices are indicative, calculated from international spot data. Not exchange rates." id="indic-pre">Indicative · <span id="upd-refresh">~3s</span></span>
       </div>
@@ -2012,7 +2018,7 @@
     <p class="lead" id="bul-page-lead">Reference prices from the live international spot price. Actual dealer prices include a premium.</p>
     <div style="display:flex;align-items:center;gap:6px;margin-top:10px;font-size:11px;color:var(--ink-3)">
       <span class="pip green" id="bul-status-pip" style="width:6px;height:6px;flex-shrink:0"></span>
-<span id="bul-upd-prominent">Connecting to live feed…</span>
+<span id="bul-upd-prominent">Prices calculated from live spot rate</span>
     </div>
   </div>
 
@@ -2080,7 +2086,7 @@
 
 
     <div class="bdis">
-<span id="bul-dis-txt"><span id="bul-ref-str">Reference only.</span> Calculated from live XAU/USD spot converted at current exchange rates. Actual dealer prices include a 3–8% premium. GoldMajlis does not sell gold.</span>
+<span id="bul-dis-txt"><span id="bul-ref-str">Reference only.</span> Calculated from live XAU/USD spot converted at current exchange rates. Actual dealer prices include a 1–16% premium. GoldMajlis does not sell gold.</span>
       <div style="margin-top:4px;font-size:11px;color:var(--ink-3)" id="bul-upd"></div>
     </div>
 
@@ -3342,20 +3348,29 @@ function renderAllPrices(skipBullion=false){
     /* Weight toggle — pick column based on active unit */
     const _wu = window._weightUnit || 'gram';
     const weightVal = _wu==='kg'?kgVal : _wu==='oz'?ozVal : _wu==='pound'?poundVal : _wu==='tola'?tolaVal : gramVal;
-    /* Session high/low tracking */
-    if(!window._priceHigh) window._priceHigh={};
-    if(!window._priceLow)  window._priceLow={};
-    const _cur = parseFloat(gramVal);
-    if(!window._priceHigh[r.k] || _cur > window._priceHigh[r.k]) window._priceHigh[r.k]=_cur;
-    if(!window._priceLow[r.k]  || _cur < window._priceLow[r.k])  window._priceLow[r.k]=_cur;
-    const highVal = window._priceHigh[r.k] ? (window._priceHigh[r.k]*fx).toFixed(2) : '--';
-    const lowVal  = window._priceLow[r.k]  ? (window._priceLow[r.k]*fx).toFixed(2)  : '--';
-    /* Change % vs session open */
-    if(!window._priceOpen) window._priceOpen={};
-    if(!window._priceOpen[r.k]) window._priceOpen[r.k]=_cur;
-    const _open=window._priceOpen[r.k];
-    const _chg=((_cur-_open)/_open*100);
-    const changeVal=(_chg>=0?'▲':'▼')+Math.abs(_chg).toFixed(2)+'%';
+    /* High/Low: set once per real API fetch (not during flicker) — stored in window._dayHigh/_dayLow */
+    if(!window._dayHigh) window._dayHigh={};
+    if(!window._dayLow)  window._dayLow={};
+    const _cur = base24QAR * PURITY[r.k]; /* real QAR/gram, no flicker jitter */
+    /* Only update high/low on real renders (skipBullion=false = called from updatePrices) */
+    if(!skipBullion || !window._dayHigh[r.k]){
+      if(!window._dayHigh[r.k] || _cur > window._dayHigh[r.k]) window._dayHigh[r.k]=_cur;
+      if(!window._dayLow[r.k]  || _cur < window._dayLow[r.k])  window._dayLow[r.k]=_cur;
+    }
+    const _high = window._dayHigh[r.k] || _cur;
+    const _low  = window._dayLow[r.k]  || _cur;
+    const highVal = (_high * fx).toFixed(2);
+    const lowVal  = (_low  * fx).toFixed(2);
+    /* Change: (current - low) / (high - low) position, or % from low */
+    const _rng = _high - _low;
+    let changeVal = '--';
+    if(_rng > 0){
+      const _chgFromLow = ((_cur - _low) / _low * 100);
+      const _chgNet = ((_cur - _low) >= 0 ? '▲' : '▼') + Math.abs(_chgFromLow).toFixed(2) + '%';
+      changeVal = _chgNet;
+    } else if(_high > 0){
+      changeVal = '▲0.00%';
+    }
     const vals=[weightVal, highVal, lowVal, changeVal];
     const existingRow=document.getElementById('trow'+r.k);
     if(existingRow){
@@ -3525,26 +3540,22 @@ function startPriceFlicker() {
       const trow = document.getElementById('trow' + k);
       if (trow) {
         const cells = trow.querySelectorAll('td');
-        /* cells[0]=karat, [1]=gram, [2]=kg, [3]=oz, [4]=pound, [5]=tola */
-        /* Each column gets its own independent decimal jitter */
-        const _j = () => Math.random() * 0.98; /* 0.00–0.98 */
-        if (cells[1]) cells[1].textContent = newDisp.toFixed(2);
-        if (cells[2]) {
-          const kgBase = Math.floor(newQAR * 1000 * fx);
-          cells[2].textContent = (kgBase + Math.round(_j() * 100) / 100).toLocaleString('en-QA',{maximumFractionDigits:0});
+        /* Table: [0]=karat [1]=weight-val [2]=high [3]=low [4]=change */
+        /* Flicker ONLY updates cells[1] — High/Low/Change stay from real 60s fetch */
+        if (cells[1]) {
+          const _wu = window._weightUnit || 'gram';
+          let _fv;
+          if      (_wu === 'kg')    _fv = newQAR * 1000 * fx;
+          else if (_wu === 'oz')    _fv = newQAR * OZ * fx;
+          else if (_wu === 'tola')  _fv = newQAR * TOLA * fx;
+          else if (_wu === 'pound') _fv = newQAR * OZ * 12 * fx;
+          else                      _fv = newDisp;
+          const _dec = (_wu === 'kg' || _wu === 'pound') ? 0 : 2;
+          cells[1].textContent = _dec === 0
+            ? Math.round(_fv).toLocaleString('en-QA')
+            : _fv.toFixed(2);
         }
-        if (cells[3]) {
-          const ozBase = Math.floor(newQAR * OZ * fx);
-          cells[3].textContent = (ozBase + Math.round(_j() * 100)).toLocaleString('en-QA');
-        }
-        if (cells[4]) {
-          const lbBase = Math.floor(newQAR * OZ * 12 * fx);
-          cells[4].textContent = (lbBase + Math.round(_j() * 100)).toLocaleString('en-QA');
-        }
-        if (cells[5]) {
-          const tolBase = Math.floor(newQAR * TOLA * fx);
-          cells[5].textContent = (tolBase + Math.round(_j() * 100)).toLocaleString('en-QA');
-        }
+        /* cells[2/3/4] = High/Low/Change — NOT updated during flicker */
       }
     });
     /* Update live dot timestamp every tick */
@@ -3580,6 +3591,7 @@ async function updatePrices(){
   if(qarPerGram24k&&qarPerGram24k>50){
     base24QAR=qarPerGram24k;
     window._lastSpotQAR=base24QAR; /* persist for bar page fast render */
+    try{localStorage.setItem('gm_last_p24',base24QAR.toFixed(4));}catch{}
     spotUSD=spot;
     srcLabel=src;
     lastKnownSpot=spot;
@@ -5211,6 +5223,16 @@ document.addEventListener('keydown',e=>{
   /* Restore saved currency */
   (function(){try{const _sc=localStorage.getItem('gm_cur_v1');if(_sc&&SYMS[_sc]&&_sc!=='QAR'){const _b=document.querySelector('.tcp[data-code="'+_sc+'"]');setCur(_b||null,_sc,SYMS[_sc]);}}catch{}})();
   refreshFXRates(); /* fetch live EUR/GBP/INR immediately on startup */
+  /* Restore last known price for instant bar render */
+  try{
+    const _lp=parseFloat(localStorage.getItem('gm_last_p24'));
+    if(_lp>100){window._lastSpotQAR=_lp;if(currentPage==='bullion')renderBullionPage(_lp);}
+  }catch{}
+  /* Restore last known price from localStorage for instant bar render */
+  try{
+    const _lp4=parseFloat(localStorage.getItem('gm_last_p24'));
+    if(_lp4>100){window._lastSpotQAR=_lp4;}
+  }catch{}
   /* Set unit labels correctly before first price loads */
   (function(){const _ar=document.documentElement.getAttribute('dir')==='rtl';
   const _gr=window.GM_STRINGS?.gram_cur||'غرام';
@@ -5876,7 +5898,7 @@ const TRANSLATIONS={
   'bul.large.range':    {en:'100g – 1kg',           ar:''},
   'bul.coins':          {en:'Gold Coins',           ar:''},
   'bul.coins.range':    {en:'Sovereign mints · 22K',ar:''},
-  'bul.dis':            {en:'<strong>Reference only.</strong> Calculated from live XAU/USD spot. Dealer prices include 3–8% premium. GoldMajlis does not sell gold.',ar:''},
+  'bul.dis':            {en:'<strong>Reference only.</strong> Calculated from live XAU/USD spot. Dealer prices include 1–16% premium. GoldMajlis does not sell gold.',ar:''},
   'bul.faq.eyebrow':    {en:'Gold Bars in Qatar',   ar:''},
   'bul.faq.title':      {en:'Common Questions',     ar:''},
   'bul.faq.cta.title':  {en:'Want the full bullion guide?',ar:''},
@@ -6006,7 +6028,7 @@ const TRANSLATIONS={
 
   'bul.page.title':   {en:'Gold Bars &amp; Coins<br>in Qatar', ar:''},
   'bul.page.lead':    {en:'Reference prices from the live international spot price. Actual dealer prices include a premium.', ar:''},
-  'bul.disclaimer':   {en:'<strong>Reference only.</strong> Calculated from live XAU/USD spot converted at current exchange rates. Actual dealer prices include a 3–8% premium. GoldMajlis does not sell gold.', ar:''},
+  'bul.disclaimer':   {en:'<strong>Reference only.</strong> Calculated from live XAU/USD spot converted at current exchange rates. Actual dealer prices include a 1–16% premium. GoldMajlis does not sell gold.', ar:''},
   'calc.tip':         {en:'Analyse This Piece', ar:''},
   'calc.wt.tip.text': {en:'💡 Don\'t know the weight? Ask the jeweller to weigh it in front of you, or check your purchase receipt.', ar:''},
 
@@ -6044,7 +6066,7 @@ const TRANSLATIONS={
   'bul.large.range':    {en:'100g – 1kg',            ar:''},
   'bul.coins':          {en:'Gold Coins',            ar:''},
   'bul.coins.range':    {en:'Sovereign mints · 22K', ar:''},
-  'bul.dis':            {en:'<strong>Reference only.</strong> Calculated from live XAU/USD spot converted at current exchange rates. Actual dealer prices include a 3–8% premium. GoldMajlis does not sell gold.',ar:''},
+  'bul.dis':            {en:'<strong>Reference only.</strong> Calculated from live XAU/USD spot converted at current exchange rates. Actual dealer prices include a 1–16% premium. GoldMajlis does not sell gold.',ar:''},
   'bul.faq.eyebrow':    {en:'Gold Bars in Qatar',    ar:''},
   'bul.faq.heading':    {en:'Common Questions',      ar:''},
   'bul.faq.q1':         {en:'What are bullion prices in Qatar today?',ar:''},
@@ -6642,6 +6664,18 @@ function applyLang(lang){
     _s('footer-link-privacy', 'Privacy Policy', 'سياسة الخصوصية');
     _s('footer-updated', 'Updates every few seconds', 'تتحدث كل ثوانٍ');
     _s('story-handle-name', 'GoldMajlis', 'غولد مجلس');
+    /* Weight toggle buttons */
+    const _wu_labels={gram:isAr?'جرام':'Gram',oz:isAr?'أوقية':'Ounce',kg:isAr?'كيلو':'KG',tola:isAr?'تولا':'Tola',pound:isAr?'رطل':'Pound'};
+    Object.entries(_wu_labels).forEach(([u,lbl])=>{const b=document.getElementById('wtog-'+u);if(b)b.textContent=lbl;});
+    /* Table column headers */
+    const _wu=window._weightUnit||'gram';
+    const _wlbl={gram:isAr?'جرام':'Gram',oz:isAr?'أوقية':'Ounce',kg:isAr?'كيلو':'KG',tola:isAr?'تولا':'Tola',pound:isAr?'رطل':'Pound'};
+    const _thW=document.getElementById('th-weight-val');
+    if(_thW)_thW.textContent=(_wlbl[_wu]||'جرام')+' / '+(isAr?'ر.ق':'QAR');
+    const _thH=document.getElementById('th-high');  if(_thH)_thH.textContent=isAr?'أعلى':'High';
+    const _thL=document.getElementById('th-low');   if(_thL)_thL.textContent=isAr?'أدنى':'Low';
+    const _thC=document.getElementById('th-change');if(_thC)_thC.textContent=isAr?'تغير':'Change';
+    const _thK=document.getElementById('th-karat'); if(_thK)_thK.textContent=isAr?'عيار':'Karat';
     _s('cookie-txt', 'Got it', 'حسناً');
     _s('hwedge-cta-1', 'Learn more', 'اعرف أكثر');
     _s('hwedge-cta-2', 'Learn more', 'اعرف أكثر');
@@ -6650,7 +6684,7 @@ function applyLang(lang){
     _s('mnav-calc', 'Calculator', 'الحاسبة');
     _s('mnav-guide', 'Gold Guide', 'الدليل');
     _s('mnav-more', 'More', 'المزيد');
-    _s('bul-upd-prominent', 'Connecting to live feed…', 'جارٍ الاتصال بالبث المباشر…');
+    _s('bul-upd-prominent', 'Connecting to live feed…', 'أسعار محسوبة من السعر الفوري المباشر');
     _s('bul-loading-sub', 'This takes just a moment', 'هذا يستغرق لحظة');
     _s('indic-pre', 'Indicative ·', 'استرشادي ·');
     _s('mode-check-lbl', 'Check a price', 'تحقق من سعر');

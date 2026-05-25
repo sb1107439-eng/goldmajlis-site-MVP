@@ -101,7 +101,7 @@ window.GM_TRANSLATIONS = {
   'calc.jtype.pat':     {en:'Patterned',            ar:'منقوش'},
   'calc.jtype.hand':    {en:'Handmade',             ar:'يدوي'},
   'calc.jtype.plain.r': {en:'Chains, bangles, simple rings',ar:'سلاسل، أساور، خواتم بسيطة'},
-  'calc.jtype.pat.r':   {en:'Engraved, filigree, textured',ar:'محفور، فيليgري، منسوج'},
+  'calc.jtype.pat.r':   {en:'Engraved, filigree, textured',ar:'محفور، فيليغري، منسوج'},
   'calc.jtype.hand.r':  {en:'Bridal, custom, intricate assembly',ar:'عرائس، مخصص، تجميع معقد'},
   'calc.result.new':    {en:'New calculation',      ar:'حساب جديد'},
   'calc.result.share':  {en:'Share',                ar:'مشاركة'},
@@ -125,7 +125,7 @@ window.GM_TRANSLATIONS = {
   'bul.large.range':    {en:'100g – 1kg',           ar:'100g – 1كg'},
   'bul.coins':          {en:'Gold Coins',           ar:'عملات ذهبية'},
   'bul.coins.range':    {en:'Sovereign mints · 22K',ar:'سك حكومي · 22 قيراط'},
-  'bul.dis':            {en:'<strong>Reference only.</strong> Calculated from live XAU/USD spot. Dealer prices include 3–8% premium. GoldMajlis does not sell gold.',ar:'<strong>استرشادي فقط.</strong> محسوب من سعر XAU/USD المباشر. أسعار الوكلاء تشمل علاوة 3–8%. gولد مجلس لا يبيع الذهب.'},
+  'bul.dis':            {en:'<strong>Reference only.</strong> Calculated from live XAU/USD spot. Dealer prices include 1–16% premium. GoldMajlis does not sell gold.',ar:'<strong>استرشادي فقط.</strong> محسوب من سعر XAU/USD المباشر. أسعار الوكلاء تشمل علاوة 1–16%. gولد مجلس لا يبيع الذهب.'},
   'bul.faq.eyebrow':    {en:'Gold Bars in Qatar',   ar:'سبائك الذهب في قطر'},
   'bul.faq.title':      {en:'Common Questions',     ar:'أسئلة شائعة'},
   'bul.faq.cta.title':  {en:'Want the full bullion guide?',ar:'تريد الدليل الكامل للسبائك؟'},
@@ -144,7 +144,7 @@ window.GM_TRANSLATIONS = {
   'learn.fmci.hand':    {en:'Handmade',             ar:'يدوي'},
   'learn.fmci.above':   {en:'Above market',         ar:'فوق السوق'},
   'learn.fmci.note1':   {en:'Chains, simple bangles',ar:'سلاسل، أساور بسيطة'},
-  'learn.fmci.note2':   {en:'Engraved, filigree, textured',ar:'محفور، فيليgري، منسوج'},
+  'learn.fmci.note2':   {en:'Engraved, filigree, textured',ar:'محفور، فيليغري، منسوج'},
   'learn.fmci.note3':   {en:'Bridal sets, custom, stone-set',ar:'طقم عرائس، مخصص، مرصع'},
   'learn.fmci.note4':   {en:'Negotiate or walk away',ar:'تفاوض أو انصرف'},
   /* Bottom nav */
@@ -169,7 +169,7 @@ window.GM_TRANSLATIONS = {
   /* Stories */
   'story.live.label':   {en:'Live',                ar:'مباشر'},
   /* Misc */
-  'disclaimer.mobile':  {en:'Gold prices and calculations shown are for informational purposes only and may not reflect actual retail or market transaction prices.',ar:'الأسعار والحسابات المعروضة للأgراض المعلوماتية فقط وقد لا تعكس أسعار التجزئة أو المعاملات الفعلية.'},
+  'disclaimer.mobile':  {en:'Gold prices and calculations shown are for informational purposes only and may not reflect actual retail or market transaction prices.',ar:'الأسعار والحسابات المعروضة للأغراض المعلوماتية فقط وقد لا تعكس أسعار التجزئة أو المعاملات الفعلية.'},
 
   /* ── Additional keys added in comprehensive pass ── */
   'home.livebar':       {en:'Live Qatar Gold Prices',ar:'أسعار الذهب المباشرة في قطر'},
@@ -217,7 +217,7 @@ window.GM_TRANSLATIONS = {
   'calc.jtype.pat':     {en:'Patterned',             ar:'منقوش'},
   'calc.jtype.hand':    {en:'Handmade',              ar:'يدوي'},
   'calc.jtype.plain.r': {en:'Chains, bangles, simple rings',ar:'سلاسل، أساور، خواتم بسيطة'},
-  'calc.jtype.pat.r':   {en:'Engraved, filigree, textured',ar:'محفور، فيليgري، منسوج'},
+  'calc.jtype.pat.r':   {en:'Engraved, filigree, textured',ar:'محفور، فيليغري، منسوج'},
   'calc.jtype.hand.r':  {en:'Bridal, custom, intricate assembly',ar:'عرائس، مخصص، تجميع معقد'},
   'calc.result.new':    {en:'New calculation',       ar:'حساب جديد'},
   'calc.result.share':  {en:'Share',                 ar:'مشاركة'},
@@ -245,7 +245,7 @@ window.GM_TRANSLATIONS = {
   'bul.large.range':    {en:'100g – 1kg',            ar:'100g – 1كg'},
   'bul.coins':          {en:'Gold Coins',            ar:'عملات ذهبية'},
   'bul.coins.range':    {en:'Sovereign mints · 22K', ar:'سك حكومي · 22 قيراط'},
-  'bul.dis':            {en:'<strong>Reference only.</strong> Calculated from live XAU/USD spot converted at current exchange rates. Actual dealer prices include a 3–8% premium. GoldMajlis does not sell gold.',ar:'<strong>استرشادي فقط.</strong> محسوب من سعر XAU/USD المباشر بأسعار الصرف الحالية. أسعار الوكلاء تشمل علاوة 3–8%. gولد مجلس لا يبيع الذهب.'},
+  'bul.dis':            {en:'<strong>Reference only.</strong> Calculated from live XAU/USD spot converted at current exchange rates. Actual dealer prices include a 1–16% premium. GoldMajlis does not sell gold.',ar:'<strong>استرشادي فقط.</strong> محسوب من سعر XAU/USD المباشر بأسعار الصرف الحالية. أسعار الوكلاء تشمل علاوة 1–16%. gولد مجلس لا يبيع الذهب.'},
   'bul.faq.eyebrow':    {en:'Gold Bars in Qatar',    ar:'سبائك الذهب في قطر'},
   'bul.faq.heading':    {en:'Common Questions',      ar:'أسئلة شائعة'},
   'bul.faq.q1':         {en:'What are bullion prices in Qatar today?',ar:'ما هي أسعار السبائك في قطر اليوم؟'},
@@ -255,7 +255,7 @@ window.GM_TRANSLATIONS = {
   'bul.faq.q3':         {en:'Where can I buy gold bars in Qatar?',ar:'أين يمكنني شراء سبائك الذهب في قطر؟'},
   'bul.faq.a3':         {en:'Licensed sources include QNB (Qatar National Bank), Al Fardan Exchange, and authorised dealers in Souq Waqif and Al Rayyan Gold Souq. Every legitimate bar comes with a sealed assay certificate and serial number — never buy without it. Avoid private sellers or unlicensed dealers regardless of price.',ar:'المصادر المرخصة تشمل بنك قطر الوطني QNB وشركة الفردان للصرافة وتجار معتمدون في سوق واقف وسوق الريان للذهب. كل سبيكة حقيقية تأتي مع شهادة تحليل مختومة ورقم تسلسلي — لا تشتر أبداً بدونها. تجنب البائعين الخاصين أو التجار gير المرخصين بgض النظر عن السعر.'},
   'bul.faq.q4':         {en:'Bars vs coins — which is better value?',ar:'السبائك مقابل العملات — أيهما أفضل قيمة؟'},
-  'bul.faq.a4':         {en:'Bars offer the best value per gram. A 100g bar typically carries a 1–3% premium over spot; a 1g bar carries 5–8%. Coins (Krugerrand, Britannia, Maple Leaf) carry a slightly higher premium due to their collectibility and global recognition — but they are easier to sell internationally in smaller quantities. For pure investment value, bars win. For flexibility and resale ease, coins have an edge.',ar:'السبائك تقدم أفضل قيمة للجرام. تحمل سبيكة 100g عادةً علاوة 1–3% فوق السعر الفوري؛ أما سبيكة 1g فتحمل 5–8%. تحمل العملات (كروgيراند، بريطانيا، ورقة القيقب) علاوة أعلى قليلاً بسبب قابلية الاقتناء والاعتراف العالمي — لكنها أسهل في البيع دولياً بكميات أصgر. للقيمة الاستثمارية الخالصة، السبائك تفوز. للمرونة وسهولة البيع، للعملات ميزة.'},
+  'bul.faq.a4':         {en:'Bars offer the best value per gram. A 100g bar typically carries a 1–3% premium over spot; a 1g bar carries 5–8%. Coins (Krugerrand, Britannia, Maple Leaf) carry a slightly higher premium due to their collectibility and global recognition — but they are easier to sell internationally in smaller quantities. For pure investment value, bars win. For flexibility and resale ease, coins have an edge.',ar:'السبائك تقدم أفضل قيمة للجرام. تحمل سبيكة 100g عادةً علاوة 1–3% فوق السعر الفوري؛ أما سبيكة 1g فتحمل 5–8%. تحمل العملات (كروgيراند، بريطانيا، ورقة القيقب) علاوة أعلى قليلاً بسبب قابلية الاقتناء والاعتراف العالمي — لكنها أسهل في البيع دولياً بكميات أصغر. للقيمة الاستثمارية الخالصة، السبائك تفوز. للمرونة وسهولة البيع، للعملات ميزة.'},
   'bul.faq.q5':         {en:'How do I know if a bar price is fair?',ar:'كيف أعرف إذا كان سعر السبيكة عادلاً؟'},
   'bul.faq.a5':         {en:"Compare the dealer's price against the reference price shown above for that bar size. A premium of up to 8% over spot is normal for small bars; over 8% means you should ask questions or shop around. For 100g bars, a fair premium is 1–3%. Always verify the spot price independently — use GoldMajlis as your baseline.",ar:'قارن سعر الوكيل بالسعر المرجعي المعروض أعلاه لحجم السبيكة المحدد. علاوة تصل إلى 8% فوق السعر الفوري أمر طبيعي للسبائك الصgيرة؛ وأكثر من 8% تعني أنه يجب عليك طرح أسئلة أو مقارنة الأسعار. بالنسبة لسبائك 100g، العلاوة العادلة هي 1–3%. تحقق دائماً من السعر الفوري بشكل مستقل — استخدم gولد مجلس كمرجع.'},
   'bul.faq.q6':         {en:'Can I sell gold bars back in Qatar?',ar:'هل يمكنني بيع سبائك الذهب مجدداً في قطر؟'},
@@ -291,7 +291,7 @@ window.GM_TRANSLATIONS = {
   'learn.fmci.hand':    {en:'Handmade',               ar:'يدوي'},
   'learn.fmci.above':   {en:'Above market',           ar:'فوق السوق'},
   'learn.fmci.note1':   {en:'Chains, simple bangles', ar:'سلاسل، أساور بسيطة'},
-  'learn.fmci.note2':   {en:'Engraved, filigree, textured',ar:'محفور، فيليgري، منسوج'},
+  'learn.fmci.note2':   {en:'Engraved, filigree, textured',ar:'محفور، فيليغري، منسوج'},
   'learn.fmci.note3':   {en:'Bridal sets, custom, stone-set',ar:'طقم عرائس، مخصص، مرصع'},
   'learn.fmci.note4':   {en:'Negotiate or walk away', ar:'تفاوض أو انصرف'},
   'learn.fmci.cur.note':{en:'Updates when you change currency on the Home page',ar:'يتحدث عند تgيير العملة في الصفحة الرئيسية'},
@@ -333,7 +333,7 @@ window.GM_TRANSLATIONS = {
     <div class="about-section"><h3 class="about-h">دقة المعلومات</h3><p>أسعار الذهب والبيانات المعروضة مجمَّعة من مصادر عامة خارجية وقد تكون متأخرة أو مقدَّرة. لا تعتمد على أي سعر أو رقم أو حساب في هذه المنصة عند إجراء أي معاملة فعلية. تحقق دائماً بشكل مستقل مع وكيل مرخص أو متخصص مالي مؤهل.</p></div>
     <div class="about-section"><h3 class="about-h">لا تُعدّ نصيحة مالية أو استثمارية</h3><p>جميع المحتويات في gولد مجلس — بما في ذلك المقالات والأدلة ونتائج الحاسبة وبيانات الأسعار — لأgراض المعلومات العامة فقط ولا تشكّل نصيحة مالية أو استثمارية أو ضريبية أو قانونية. تنطوي أسواق الذهب على مخاطر، وتحركات الأسعار السابقة لا تدل على الأداء المستقبلي.</p></div>
     <div class="about-section"><h3 class="about-h">تحديد المسؤولية</h3><p>لا تتحمل gولد مجلس ومشgلوها وشركاؤها المسؤولية عن أي خسارة أو ضرر ناتج عن استخدامك أو عدم قدرتك على استخدام هذه المنصة؛ أو الاعتماد على أي معلومات أو أسعار أو أدوات أو محتوى مقدَّم.</p></div>
-    <div class="about-section"><h3 class="about-h">الملكية الفكرية</h3><p>جميع المحتويات والتصميمات والنصوص والبيانات في gولد مجلس ملك لمشgليها. يجوز لك استخدام المنصة للأgراض الشخصية gير التجارية فحسب. لا يجوز لك نسخ أو توزيع أو استgلال أي جزء من هذه المنصة تجارياً دون إذن مسبق.</p></div>
+    <div class="about-section"><h3 class="about-h">الملكية الفكرية</h3><p>جميع المحتويات والتصميمات والنصوص والبيانات في gولد مجلس ملك لمشgليها. يجوز لك استخدام المنصة للأغراض الشخصية gير التجارية فحسب. لا يجوز لك نسخ أو توزيع أو استgلال أي جزء من هذه المنصة تجارياً دون إذن مسبق.</p></div>
     <div class="about-section"><h3 class="about-h">الاستخدام المقبول</h3><p>توافق على عدم استخدام هذه المنصة في أي نشاط gير مشروع أو محاولة التدخل في تشgيلها أو جمع البيانات منها تجارياً بدون إذن.</p></div>
     <div class="about-section"><h3 class="about-h">الأهلية</h3><p>هذه المنصة مخصصة للمستخدمين الذين تبلg أعمارهم 18 عاماً فأكثر.</p></div>
     <div class="about-section"><h3 class="about-h">التواصل</h3><p>للاستفسارات: <strong><a href="mailto:info@goldmajlis.com" style="color:var(--gold)">info@goldmajlis.com</a></strong></p></div>
@@ -406,6 +406,7 @@ window.GM_TRANSLATIONS = {
   'bul.cur.inr': {en:'INR — Indian Rupee', ar:'روبية هندية — INR'},
   'bul.grp.small.inv': {en:'Investment bar · 24K fine', ar:'سبيكة استثمارية · عيار 24'},
 
+  'calc.wt.tip.text': {en:'Do you know the weight? Ask jeweller to weigh it.', ar:'💡 لا تعرف الوزن؟ اطلب من البائع وزنه أمامك أو راجع الإيصال.'},
 };;
 
 
@@ -562,7 +563,7 @@ window.GM_STRINGS = {
   footer_privacy: 'سياسة الخصوصية',
   footer_legal: '© 2026 gولد مجلس. أسعار استرشادية فقط — ليست نصيحة مالية. gير مرتبط بأي بورصة أو وكيل أو مؤسسة مالية.',
   footer_refresh: 'يتحدث كل 10 دقائق',
-  footer_disclaimer: 'الأسعار والحسابات المعروضة للأgراض المعلوماتية فقط وقد لا تعكس أسعار التجزئة أو المعاملات الفعلية.',
+  footer_disclaimer: 'الأسعار والحسابات المعروضة للأغراض المعلوماتية فقط وقد لا تعكس أسعار التجزئة أو المعاملات الفعلية.',
   footer_about_us: 'عنّا',
 
   /* Screen reader */
@@ -585,7 +586,7 @@ window.GM_STRINGS = {
   mtb_at: 'الساعة',
 
   /* Disclaimer */
-  disclaimer: 'الأسعار والحسابات المعروضة للأgراض المعلوماتية فقط وقد لا تعكس أسعار التجزئة أو المعاملات الفعلية.',
+  disclaimer: 'الأسعار والحسابات المعروضة للأغراض المعلوماتية فقط وقد لا تعكس أسعار التجزئة أو المعاملات الفعلية.',
 
   /* Story purity labels */
   purity_999: 'نقاء 99.9%',
@@ -658,7 +659,7 @@ window.GM_STRINGS = {
   /* v105 — bullion page + calc result */
   bul_page_title:   'سبائك وعملات الذهب في قطر',
   bul_page_lead:    'أسعار مرجعية من السعر الدولي المباشر. أسعار التجار الفعلية تشمل علاوة إضافية.',
-  bul_disclaimer:   'للإشارة فقط. محسوب من سعر XAU/USD المباشر. أسعار التجار تشمل علاوة 3–8%.',
+  bul_disclaimer:   'للإشارة فقط. محسوب من سعر XAU/USD المباشر. أسعار التجار تشمل علاوة 1–16%.',
   calc_wt_tip:      'لا تعرف الوزن؟ اطلب من الجوهري وزنه أمامك، أو راجع إيصال الشراء.',
 
   /* v106 — bullion full */
