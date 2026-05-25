@@ -1441,6 +1441,11 @@
     /* ── SPARKLINE CARD ── */
     
 
+  
+    .wtog{padding:3px 10px;border-radius:980px;font-size:11px;font-weight:500;
+      border:1px solid var(--div);background:var(--bg);color:var(--ink-2);cursor:pointer;transition:all .15s}
+    .wtog.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
   </style>
   <!-- Arabic translations: loads ar.js which overrides TRANSLATIONS + adds GM_STRINGS.
        Sync load (no defer) so Arabic is ready before any JS runs.
@@ -1559,7 +1564,7 @@
 
       <h1 class="hero-title" id="hero-title">Today's Gold<br>Price in Qatar</h1>
       <!-- #13 — subtitle currency updates with pill selection -->
-      <p class="hero-sub">Live rates per gram in <span id="hero-cur-label" style="color:var(--gold);font-weight:600">QAR</span> — updated every 60 seconds from global markets.</p>
+      <p class="hero-sub">Live rates per gram in <span id="hero-cur-label" style="color:var(--gold);font-weight:600">QAR</span> — updated every few seconds from global markets.</p>
     </div>
     <div class="hero-ring"></div>
   </div>
@@ -1594,7 +1599,7 @@
     <div class="kcard-item kcard-24" id="wc-24">
       <div class="kcard-header">
         <span class="kcard-karat" id="wk-24">24K</span>
-        <span id="wdir-24" style="font-size:9px;font-weight:600;padding:1px 4px;border-radius:4px;background:transparent;color:var(--ink-3);transition:all .4s;letter-spacing:.01em;opacity:0.5">–</span>
+        
       </div>
       <div class="kcard-price" id="wp-24">--</div>
       <div class="kcard-unit" id="wcu-24">QAR / gram</div>
@@ -1603,7 +1608,7 @@
     <div class="kcard-item kcard-22" id="wc-22">
       <div class="kcard-header">
         <span class="kcard-karat" id="wk-22">22K</span>
-        <span id="wdir-22" style="font-size:9px;font-weight:600;padding:1px 4px;border-radius:4px;background:transparent;color:var(--ink-3);transition:all .4s;letter-spacing:.01em;opacity:0.5">–</span>
+        
       </div>
       <div class="kcard-price" id="wp-22">--</div>
       <div class="kcard-unit" id="wcu-22">QAR / gram</div>
@@ -1612,7 +1617,7 @@
     <div class="kcard-item kcard-21" id="wc-21">
       <div class="kcard-header">
         <span class="kcard-karat" id="wk-21">21K</span>
-        <span id="wdir-21" style="font-size:9px;font-weight:600;padding:1px 4px;border-radius:4px;background:transparent;color:var(--ink-3);transition:all .4s;letter-spacing:.01em;opacity:0.5">–</span>
+        
       </div>
       <div class="kcard-price" id="wp-21">--</div>
       <div class="kcard-unit" id="wcu-21">QAR / gram</div>
@@ -1621,7 +1626,7 @@
     <div class="kcard-item kcard-18" id="wc-18">
       <div class="kcard-header">
         <span class="kcard-karat" id="wk-18">18K</span>
-        <span id="wdir-18" style="font-size:9px;font-weight:600;padding:1px 4px;border-radius:4px;background:transparent;color:var(--ink-3);transition:all .4s;letter-spacing:.01em;opacity:0.5">–</span>
+        
       </div>
       <div class="kcard-price" id="wp-18">--</div>
       <div class="kcard-unit" id="wcu-18">QAR / gram</div>
@@ -1634,18 +1639,25 @@
     <div class="table-card-inner">
       <span class="table-scroll-hint" id="tbl-scroll-hint" aria-hidden="true"></span>
       <table class="ptable" aria-label="Gold prices Qatar by karat">
+        <!-- Weight toggle strip -->
+        <div id="weight-toggle-strip" style="display:flex;gap:6px;padding:10px 12px 4px;flex-wrap:wrap">
+          <button class="wtog on" id="wtog-gram"  onclick="setWeightUnit('gram')"  >Gram</button>
+          <button class="wtog"    id="wtog-oz"    onclick="setWeightUnit('oz')"    >Ounce</button>
+          <button class="wtog"    id="wtog-kg"    onclick="setWeightUnit('kg')"    >KG</button>
+          <button class="wtog"    id="wtog-tola"  onclick="setWeightUnit('tola')"  >Tola</button>
+          <button class="wtog"    id="wtog-pound" onclick="setWeightUnit('pound')" >Pound</button>
+        </div>
         <thead>
           <tr>
             <th scope="col" id="th-karat">Karat</th>
-            <th scope="col" id="th-gram">Gram</th>
-            <th scope="col" id="th-kg">KG</th>
-            <th scope="col" id="th-oz">Ounce</th>
-            <th scope="col" id="th-pound">Pound</th>
-            <th scope="col" id="th-tola">Tola</th>
+            <th scope="col" id="th-weight-val">Gram / QAR</th>
+            <th scope="col" id="th-high">High</th>
+            <th scope="col" id="th-low">Low</th>
+            <th scope="col" id="th-change">Change</th>
           </tr>
         </thead>
         <tbody id="ptbody">
-          <tr><td colspan="6" style="padding:16px 12px">
+          <tr><td colspan="5" style="padding:16px 12px">
             <div style="display:flex;flex-direction:column;gap:10px">
               <div style="height:14px;border-radius:6px;background:linear-gradient(90deg,var(--f2) 25%,var(--f1) 50%,var(--f2) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite"></div>
               <div style="height:14px;border-radius:6px;background:linear-gradient(90deg,var(--f2) 25%,var(--f1) 50%,var(--f2) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;width:85%"></div>
@@ -1657,10 +1669,11 @@
       <!-- #8 — updated row with timestamp, 60s, no "source: indicative" -->
       <div class="upd-row">
         <div class="upd-left">
-          <span class="pip green" id="src-pip"></span>
-          <span id="upd-txt">Connecting…</span>
+          <span id="upd-price-display" style="font-size:13px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums">--</span>
+          <span id="upd-change-pct" style="font-size:11px;font-weight:600;padding:1px 5px;border-radius:4px;margin-left:4px">--</span>
+          <span id="upd-txt" style="display:none">Connecting…</span>
         </div>
-        <span class="upd-right" id="upd-ref-label" title="Prices are indicative, calculated from international spot data. Not exchange rates." id="indic-pre">Indicative · <span id="upd-refresh">60s</span></span>
+        <span class="upd-right" id="upd-ref-label" title="Prices are indicative, calculated from international spot data. Not exchange rates." id="indic-pre">Indicative · <span id="upd-refresh">~3s</span></span>
       </div>
     </div>
   </div>
@@ -2488,7 +2501,7 @@
   <div class="footer-inner">
     <div>
       <div class="footer-brand">Gold<span>Majlis</span></div>
-      <div class="footer-tagline" id="footer-tagline">Live gold prices in Qatar — updated every minute from global markets.</div>
+      <div class="footer-tagline" id="footer-tagline">Live gold prices in Qatar — updated every few seconds from global markets.</div>
     </div>
     <div>
       <div class="footer-col-title" id="footer-nav-title">Navigate</div>
@@ -2507,7 +2520,7 @@
   </div>
   <div class="footer-bottom">
     <div id="footer-legal" style="color:rgba(255,255,255,.6);font-size:11px">© 2026 GoldMajlis. Reference prices only — not financial advice. Not affiliated with any exchange, dealer, or financial institution. All prices are indicative, calculated from public international spot data.</div>
-    <div id="footer-refresh" style="color:rgba(255,255,255,.45);font-size:11px" id="footer-updated">Updated every minute</div>
+    <div id="footer-refresh" style="color:rgba(255,255,255,.45);font-size:11px" id="footer-updated">Updated every few seconds</div>
     <div id="footer-disclaimer-txt" style="font-size:10px;color:rgba(255,255,255,.3);padding-top:6px;border-top:1px solid rgba(255,255,255,.08)">Gold prices and calculations shown are for informational purposes only and may not reflect actual retail or market transaction prices.</div>
     <div style="font-size:11px;display:flex;gap:16px;flex-wrap:wrap;padding-top:6px;border-top:1px solid rgba(255,255,255,.08)">
       <span id="footer-bot-about" role="button" tabindex="0" onclick="showPage('about')" onkeydown="if(event.key==='Enter'||event.key===' '){showPage('about');event.preventDefault()}" style="color:rgba(255,255,255,.45);cursor:pointer;transition:color .15s" onmouseover="this.style.color='rgba(255,255,255,.8)'" onmouseout="this.style.color='rgba(255,255,255,.45)'" onfocus="this.style.color='rgba(255,255,255,.8)'" onblur="this.style.color='rgba(255,255,255,.45)'">About Us</span>
@@ -3218,6 +3231,27 @@ async function fetchGoldPrice(){
 }
 
 /* ══ RENDER ══ */
+function setWeightUnit(unit){
+  window._weightUnit = unit;
+  /* Update toggle pill active state */
+  document.querySelectorAll('.wtog').forEach(b=>{
+    b.classList.toggle('on', b.id==='wtog-'+unit);
+  });
+  /* Update table header label */
+  const _isAr=document.documentElement.getAttribute('dir')==='rtl';
+  const labels={
+    gram: _isAr?'جرام / قار':'Gram / QAR',
+    oz:   _isAr?'أوقية / قار':'Ounce / QAR',
+    kg:   _isAr?'كيلو / قار':'KG / QAR',
+    tola: _isAr?'تولا / قار':'Tola / QAR',
+    pound:_isAr?'رطل / قار':'Pound / QAR',
+  };
+  const thW=document.getElementById('th-weight-val');
+  if(thW) thW.textContent=labels[unit]||labels.gram;
+  /* Re-render table with new unit */
+  if(base24QAR) renderAllPrices(true);
+}
+
 function renderAllPrices(skipBullion=false){
   if(!base24QAR)return;
   /* FX rates always available (defaults set on init, live rates loaded async) */
@@ -3301,11 +3335,28 @@ function renderAllPrices(skipBullion=false){
   rows.forEach(r=>{
     const np=base24QAR*PURITY[r.k];
     const gramVal  = (np * fx).toFixed(2);
-    const kgVal    = Math.round(np * 1000      * fx).toLocaleString('en-QA');
-    const ozVal    = Math.round(np * OZ        * fx).toLocaleString('en-QA');
-    const poundVal = Math.round(np * TROY_POUND * fx).toLocaleString('en-QA');
-    const tolaVal  = Math.round(np * TOLA      * fx).toLocaleString('en-QA');
-    const vals=[gramVal,kgVal,ozVal,poundVal,tolaVal];
+    const kgVal    = (np * 1000      * fx).toFixed(0);
+    const ozVal    = (np * OZ        * fx).toFixed(2);
+    const poundVal = (np * TROY_POUND * fx).toFixed(0);
+    const tolaVal  = (np * TOLA      * fx).toFixed(2);
+    /* Weight toggle — pick column based on active unit */
+    const _wu = window._weightUnit || 'gram';
+    const weightVal = _wu==='kg'?kgVal : _wu==='oz'?ozVal : _wu==='pound'?poundVal : _wu==='tola'?tolaVal : gramVal;
+    /* Session high/low tracking */
+    if(!window._priceHigh) window._priceHigh={};
+    if(!window._priceLow)  window._priceLow={};
+    const _cur = parseFloat(gramVal);
+    if(!window._priceHigh[r.k] || _cur > window._priceHigh[r.k]) window._priceHigh[r.k]=_cur;
+    if(!window._priceLow[r.k]  || _cur < window._priceLow[r.k])  window._priceLow[r.k]=_cur;
+    const highVal = window._priceHigh[r.k] ? (window._priceHigh[r.k]*fx).toFixed(2) : '--';
+    const lowVal  = window._priceLow[r.k]  ? (window._priceLow[r.k]*fx).toFixed(2)  : '--';
+    /* Change % vs session open */
+    if(!window._priceOpen) window._priceOpen={};
+    if(!window._priceOpen[r.k]) window._priceOpen[r.k]=_cur;
+    const _open=window._priceOpen[r.k];
+    const _chg=((_cur-_open)/_open*100);
+    const changeVal=(_chg>=0?'▲':'▼')+Math.abs(_chg).toFixed(2)+'%';
+    const vals=[weightVal, highVal, lowVal, changeVal];
     const existingRow=document.getElementById('trow'+r.k);
     if(existingRow){
       /* v38 FIX — update all cells then flash ALL in the same direction.
@@ -3352,7 +3403,7 @@ function renderAllPrices(skipBullion=false){
 
   /* Update footer row */
   const ur=document.getElementById('upd-refresh');
-  if(ur)ur.textContent=document.documentElement.getAttribute('dir')==='rtl'?(window.GM_STRINGS?.refreshes||'تحديث كل دقيقة'):'Refreshes every minute';
+  if(ur)ur.textContent=document.documentElement.getAttribute('dir')==='rtl'?(window.GM_STRINGS?.refreshes||'تحديث كل ثوانٍ'):'Updates every few seconds';
 
   // #9 glowing date — reflect data quality
   const isEst=srcLabel==='estimated';
@@ -3367,6 +3418,21 @@ function renderAllPrices(skipBullion=false){
   ['home-live-pip','hero-pip','src-pip'].forEach(id=>{
     const p=document.getElementById(id);if(p)p.className=pipCls;
   });
+  /* Issue 3 — update header price display */
+  const _upPrice=document.getElementById('upd-price-display');
+  const _upChg=document.getElementById('upd-change-pct');
+  if(_upPrice&&base24QAR){
+    const _dispP=(base24QAR*(FX[gCurCode]||1)).toFixed(2);
+    _upPrice.textContent=gCurSym+' '+_dispP;
+    if(prevSpot&&spotUSD){
+      const _chgPct=((spotUSD-prevSpot)/prevSpot*100);
+      const _chgUp=_chgPct>=0;
+      _upChg.textContent=(_chgUp?'▲':'▼')+Math.abs(_chgPct).toFixed(2)+'%';
+      _upChg.style.color=_chgUp?'var(--green)':'var(--red)';
+      _upChg.style.background=_chgUp?'rgba(52,199,89,.12)':'rgba(255,59,48,.12)';
+    }
+  }
+  /* price display handled above */
   const gd=document.getElementById('live-glow-date');
   /* v42 Fix 2 — guard against lastFetch being null (possible if setCur fires before first price arrives) */
   if(gd){
@@ -3404,7 +3470,7 @@ function renderAllPrices(skipBullion=false){
   if(!skipBullion){
     renderBullionScroll(base24QAR);
     /* v42 Fix 13 — only render the full bullion page if user is on it; wasteful otherwise */
-    if(currentPage==='bullion')renderBullionPage(base24QAR);
+    if(currentPage==='bullion'){const _p=base24QAR||window._lastSpotQAR||null;if(_p)renderBullionPage(_p);}
   }
 }
 
@@ -3482,10 +3548,11 @@ function startPriceFlicker() {
       }
     });
     /* Update live dot timestamp every tick */
-    const _ut=document.getElementById('upd-txt');
-    if(_ut&&base24QAR){
-      const _isArF=document.documentElement.getAttribute('dir')==='rtl';
-      _ut.textContent=(_isArF?'● مباشر':'● Live')+' · '+fT(new Date());
+    const _up2=document.getElementById('upd-price-display');
+    if(_up2&&base24QAR){
+      const _fx2=FX[gCurCode]||1;
+      const _dp=(base24QAR*_fx2).toFixed(2);
+      _up2.textContent=gCurSym+' '+_dp;
     }
   }, 3000);
 }
@@ -3512,6 +3579,7 @@ async function updatePrices(){
   /* Metal Sentinel returns price already in QAR/g — use directly */
   if(qarPerGram24k&&qarPerGram24k>50){
     base24QAR=qarPerGram24k;
+    window._lastSpotQAR=base24QAR; /* persist for bar page fast render */
     spotUSD=spot;
     srcLabel=src;
     lastKnownSpot=spot;
@@ -3599,6 +3667,18 @@ function setCur(btn,code,sym){
     if(_crb){_crb.setAttribute('aria-checked','false');_crb.style.color='var(--ink-3)';}
     const _ol=document.getElementById('custom-rate-btn-lbl');
     if(_ol)_ol.textContent=t('rate.own');
+  }
+  /* Currency pill labels in Arabic */
+  if(document.documentElement.getAttribute('dir')==='rtl'){
+    const _curLabels={QAR:'ر.ق',USD:'دولار',EUR:'يورو',GBP:'جنيه',INR:'روبية'};
+    document.querySelectorAll('.tcp').forEach(b=>{
+      const _lbl=_curLabels[b.dataset.code];
+      if(_lbl)b.textContent=_lbl;
+    });
+  } else {
+    document.querySelectorAll('.tcp').forEach(b=>{
+      if(b.dataset.code)b.textContent=b.dataset.code;
+    });
   }
   /* Immediately update card prices AND units on currency switch */
   const _isArSC=document.documentElement.getAttribute('dir')==='rtl';
@@ -5251,7 +5331,7 @@ function _buildStories(){
       html:`
         <div class="story-price-eyebrow">${T('Qatar · Live Gold Rate','قطر · سعر الذهب المباشر')}</div>
         <div class="story-price-main" id="st-p24">${fmtP(p24)}</div>
-        <div class="story-price-karat">${gCurSym} / ${T('gram · 24 Karat','gرام · 24 قيراط')}</div>
+        <div class="story-price-karat">${gCurSym} / ${T('gram · 24 Karat','جرام · 24 قيراط')}</div>
         <div class="story-price-delta ${deltaDir}" id="st-delta">
           <span>${deltaDir==='up'?'▲':deltaDir==='down'?'▼':'—'}</span>
           <span id="st-delta-val">${deltaPct}</span>
@@ -5356,7 +5436,7 @@ function _buildStories(){
           <div class="story-market-row">
             <div class="story-market-left">
               <div class="story-market-lbl">${T('24K Gold','ذهب 24 قيراط')}</div>
-              <div class="story-market-sub">${T('per gram','للgرام')} · ${gCurSym}</div>
+              <div class="story-market-sub">${T('per gram','للجرام')} · ${gCurSym}</div>
             </div>
             <div class="story-market-right">
               <div class="story-market-val" id="st-m24">${fmtP(p24)}</div>
@@ -5366,7 +5446,7 @@ function _buildStories(){
           <div class="story-market-row">
             <div class="story-market-left">
               <div class="story-market-lbl">${T('22K Jewellery','مجوهرات 22ق')}</div>
-              <div class="story-market-sub">${T('per gram','للgرام')} · ${gCurSym}</div>
+              <div class="story-market-sub">${T('per gram','للجرام')} · ${gCurSym}</div>
             </div>
             <div class="story-market-right">
               <div class="story-market-val" id="st-m22">${fmtP(p22)}</div>
@@ -5700,14 +5780,14 @@ const TRANSLATIONS={
   'home.eyebrow':       {en:'Live Gold Prices · Qatar',ar:''},
   'home.title':         {en:"Today's Gold<br>Price in Qatar",ar:''},
   'home.sub.pre':       {en:'Live rates per gram in ',ar:''},
-  'home.sub.post':      {en:' — updated every minute from global markets.',ar:''},
+  'home.sub.post':      {en:' — live · updates every few seconds.',ar:''},
   'home.th.gram':       {en:'Gram / ',             ar:''},
   'home.th.kg':         {en:'KG / ',               ar:''},
   'home.th.oz':         {en:'Ounce / ',            ar:''},
   'home.th.pound':      {en:'Pound / ',            ar:''},
   'home.th.tola':       {en:'Tola / ',             ar:''},
   'home.upd.conn':      {en:'Connecting…',         ar:''},
-  'home.upd.ref':       {en:'1 min refresh',      ar:''},
+  'home.upd.ref':       {en:'~3s updates',      ar:''},
   'home.upd.ref.label': {en:'Reference prices only · ',ar:''},
   'spark.eyebrow':      {en:'Price History',       ar:''},
   'spark.sub':          {en:'Gold price per gram — up to 7 days',ar:''},
@@ -6139,7 +6219,6 @@ function applyLang(lang){
   st('th-karat','home.th.karat');
 
   /* ─── Sparkline ─── */
-  st('spark-section-eyebrow','spark.eyebrow');
   const ssub=document.getElementById('spark-section-sub');if(ssub)ssub.textContent=isAr?(window.GM_STRINGS?.spark_sub||'سعر الذهب للغرام — حتى 7 أيام من البيانات'):'Gold price per gram — up to 7 days of price history';
 
   /* ─── Upd row ─── */
@@ -6157,9 +6236,7 @@ function applyLang(lang){
   const ctaBtnTxt=document.getElementById('home-cta-btn-txt');if(ctaBtnTxt)ctaBtnTxt.textContent=t('home.cta.btn');
 
   /* ─── Home bars section ─── */
-  st('home-bars-eyebrow','home.bars.eyebrow');
   sh('home-bars-title','home.bars.title');
-  st('home-bars-sub','home.bars.sub');
 
   /* ─── Home guide/wedges ─── */
   st('home-guide-eyebrow','home.guide.eyebrow');
@@ -6282,9 +6359,9 @@ function applyLang(lang){
 
   /* ── Piece type section ── */
   st('jtype-label','calc.jtype.label');
-  st('jtype-plain-name','calc.jtype.plain');
-  st('jtype-pat-name','calc.jtype.pat');
-  st('jtype-hand-name','calc.jtype.hand');
+  st('jtype-name-plain','calc.jtype.plain');
+  st('jtype-name-pat','calc.jtype.pat');
+  st('jtype-name-hand','calc.jtype.hand');
   st('jtype-name-plain','calc.jtype.plain');
   st('jtype-name-pat','calc.jtype.pat');
   st('jtype-name-hand','calc.jtype.hand');
@@ -6452,7 +6529,7 @@ function applyLang(lang){
   const baoShareTxtEl=document.getElementById('bao-share-txt');if(baoShareTxtEl)baoShareTxtEl.textContent=isAr?(window.GM_STRINGS?.art_share||'مشاركة'):'Share';
   /* ─── upd-right reference label ─── */
   const updRightEl=document.getElementById('upd-right-label');
-  if(updRightEl){const refSpan=document.getElementById('upd-refresh');const txt=isAr?(window.GM_STRINGS?.ref_only||'أسعار استرشادية · '):'Reference prices only · ';updRightEl.childNodes[0].textContent=txt;if(refSpan)refSpan.textContent=isAr?(window.GM_STRINGS?.refreshes||'تحديث كل دقيقة'):'1 min refresh';}
+  if(updRightEl){const refSpan=document.getElementById('upd-refresh');const txt=isAr?(window.GM_STRINGS?.ref_only||'أسعار استرشادية · '):'Reference prices only · ';updRightEl.childNodes[0].textContent=txt;if(refSpan)refSpan.textContent=isAr?(window.GM_STRINGS?.refreshes||'تحديث كل ثوانٍ'):'~3s updates';}
 
   /* ─── Calculator: custom rate panel ─── */
   const crLabel=document.getElementById('custom-rate-label');
@@ -6563,7 +6640,7 @@ function applyLang(lang){
     _s('footer-link-about', 'About GoldMajlis', 'عن غولد مجلس');
     _s('footer-link-terms', 'Terms of Use', 'شروط الاستخدام');
     _s('footer-link-privacy', 'Privacy Policy', 'سياسة الخصوصية');
-    _s('footer-updated', 'Updated every minute', 'تتحدث كل دقيقة');
+    _s('footer-updated', 'Updates every few seconds', 'تتحدث كل ثوانٍ');
     _s('story-handle-name', 'GoldMajlis', 'غولد مجلس');
     _s('cookie-txt', 'Got it', 'حسناً');
     _s('hwedge-cta-1', 'Learn more', 'اعرف أكثر');
@@ -6587,6 +6664,13 @@ function applyLang(lang){
     _h('hwedge-body-2', '22K is the most popular in Qatar for jewellery.', 'عيار 22 الأكثر شيوعاً في قطر للمجوهرات. عيار 24 للاستثمار فقط.');
     _h('hwedge-body-3', 'Al Rayyan for the best deal.', 'الريان للأفضل سعراً. سوق واقف للتجربة. متاجر المولات للاطمئنان.');
   })();
+  /* Currency pill labels */
+  const _isArCur=isAr;
+  const _curLabelMap={QAR:'ر.ق',USD:'دولار',EUR:'يورو',GBP:'جنيه',INR:'روبية'};
+  document.querySelectorAll('.tcp').forEach(b=>{
+    if(_isArCur){const _l=_curLabelMap[b.dataset.code];if(_l)b.textContent=_l;}
+    else if(b.dataset.code)b.textContent=b.dataset.code;
+  });
   /* ─── Persist ─── */
   try{localStorage.setItem(LANG_LS_KEY,lang);}catch{}
 }

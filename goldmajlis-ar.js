@@ -7,7 +7,7 @@
  *
  * CLOUDFLARE PAGES SETUP:
  *   1. Put this file in your repo root alongside index.html
- *   2. It loads via <script src="/goldmajlis-ar.js"> in the HTML
+ *   2. It loads via <script src="/جoldmajlis-ar.js"> in the HTML
  *   3. To update Arabic text: edit this file → git push → Cloudflare
  *      auto-deploys in ~30s. index.html is untouched.
  *
@@ -45,9 +45,9 @@ window.GM_TRANSLATIONS = {
   /* Home page */
   'home.eyebrow':       {en:'Live Gold Prices · Qatar',ar:'أسعار الذهب المباشرة · قطر'},
   'home.title':         {en:"Today's Gold<br>Price in Qatar",ar:'سعر الذهب اليوم<br>في قطر'},
-  'home.sub.pre':       {en:'Live rates per gram in ',ar:'الأسعار المباشرة للgرام بـ '},
+  'home.sub.pre':       {en:'Live rates per gram in ',ar:'الأسعار المباشرة للجرام بـ '},
   'home.sub.post':      {en:' — updated every 10 min from global markets.',ar:' — يتحدث كل 10 دقائق من الأسواق العالمية.'},
-  'home.th.gram':       {en:'Gram / ',             ar:'gرام / '},
+  'home.th.gram':       {en:'Gram / ',             ar:'جرام / '},
   'home.th.kg':         {en:'KG / ',               ar:'كg / '},
   'home.th.oz':         {en:'Ounce / ',            ar:'أوقية / '},
   'home.th.pound':      {en:'Pound / ',            ar:'رطل / '},
@@ -56,7 +56,7 @@ window.GM_TRANSLATIONS = {
   'home.upd.ref':       {en:'10 min refresh',      ar:'تحديث كل 10 دقائق'},
   'home.upd.ref.label': {en:'Reference prices only · ',ar:'أسعار استرشادية فقط · '},
   'spark.eyebrow':      {en:'Price History',       ar:'تاريخ السعر'},
-  'spark.sub':          {en:'Gold price per gram — up to 7 days',ar:'سعر الذهب للgرام — حتى 7 أيام'},
+  'spark.sub':          {en:'Gold price per gram — up to 7 days',ar:'سعر الذهب للجرام — حتى 7 أيام'},
   'home.cta.eyebrow':   {en:'Free Calculator',     ar:'حاسبة مجانية'},
   'home.cta.title':     {en:'Is Your Jewellery Price Fair?',ar:'هل سعر مجوهراتك عادل؟'},
   'home.cta.sub':       {en:'Check your making charge instantly — free.',ar:'تحقق من رسوم المصنعية فوراً — مجاناً.'},
@@ -137,7 +137,7 @@ window.GM_TRANSLATIONS = {
   'learn.sub':          {en:'Everything a buyer in Qatar needs to know — from reading a karat stamp to negotiating the making charge.',ar:'كل ما يحتاج معرفته المشتري في قطر — من قراءة ختم القيراط إلى التفاوض على رسوم المصنعية.'},
   'learn.fmci.eyebrow': {en:'GoldMajlis · Qatar Guide',ar:'gولد مجلس · دليل قطر'},
   'learn.fmci.title':   {en:'Fair Making<br>Charge Index',ar:'مؤشر رسوم<br>الصنعة العادلة'},
-  'learn.fmci.sub':     {en:'What you should pay per gram in Qatar',ar:'ما يجب أن تدفعه للgرام في قطر'},
+  'learn.fmci.sub':     {en:'What you should pay per gram in Qatar',ar:'ما يجب أن تدفعه للجرام في قطر'},
   'learn.fmci.btn':     {en:'Check My Piece →',     ar:'تحقق من قطعتي ←'},
   'learn.fmci.plain':   {en:'Plain',                ar:'بسيط'},
   'learn.fmci.pat':     {en:'Patterned',            ar:'منقوش'},
@@ -255,13 +255,13 @@ window.GM_TRANSLATIONS = {
   'bul.faq.q3':         {en:'Where can I buy gold bars in Qatar?',ar:'أين يمكنني شراء سبائك الذهب في قطر؟'},
   'bul.faq.a3':         {en:'Licensed sources include QNB (Qatar National Bank), Al Fardan Exchange, and authorised dealers in Souq Waqif and Al Rayyan Gold Souq. Every legitimate bar comes with a sealed assay certificate and serial number — never buy without it. Avoid private sellers or unlicensed dealers regardless of price.',ar:'المصادر المرخصة تشمل بنك قطر الوطني QNB وشركة الفردان للصرافة وتجار معتمدون في سوق واقف وسوق الريان للذهب. كل سبيكة حقيقية تأتي مع شهادة تحليل مختومة ورقم تسلسلي — لا تشتر أبداً بدونها. تجنب البائعين الخاصين أو التجار gير المرخصين بgض النظر عن السعر.'},
   'bul.faq.q4':         {en:'Bars vs coins — which is better value?',ar:'السبائك مقابل العملات — أيهما أفضل قيمة؟'},
-  'bul.faq.a4':         {en:'Bars offer the best value per gram. A 100g bar typically carries a 1–3% premium over spot; a 1g bar carries 5–8%. Coins (Krugerrand, Britannia, Maple Leaf) carry a slightly higher premium due to their collectibility and global recognition — but they are easier to sell internationally in smaller quantities. For pure investment value, bars win. For flexibility and resale ease, coins have an edge.',ar:'السبائك تقدم أفضل قيمة للgرام. تحمل سبيكة 100g عادةً علاوة 1–3% فوق السعر الفوري؛ أما سبيكة 1g فتحمل 5–8%. تحمل العملات (كروgيراند، بريطانيا، ورقة القيقب) علاوة أعلى قليلاً بسبب قابلية الاقتناء والاعتراف العالمي — لكنها أسهل في البيع دولياً بكميات أصgر. للقيمة الاستثمارية الخالصة، السبائك تفوز. للمرونة وسهولة البيع، للعملات ميزة.'},
+  'bul.faq.a4':         {en:'Bars offer the best value per gram. A 100g bar typically carries a 1–3% premium over spot; a 1g bar carries 5–8%. Coins (Krugerrand, Britannia, Maple Leaf) carry a slightly higher premium due to their collectibility and global recognition — but they are easier to sell internationally in smaller quantities. For pure investment value, bars win. For flexibility and resale ease, coins have an edge.',ar:'السبائك تقدم أفضل قيمة للجرام. تحمل سبيكة 100g عادةً علاوة 1–3% فوق السعر الفوري؛ أما سبيكة 1g فتحمل 5–8%. تحمل العملات (كروgيراند، بريطانيا، ورقة القيقب) علاوة أعلى قليلاً بسبب قابلية الاقتناء والاعتراف العالمي — لكنها أسهل في البيع دولياً بكميات أصgر. للقيمة الاستثمارية الخالصة، السبائك تفوز. للمرونة وسهولة البيع، للعملات ميزة.'},
   'bul.faq.q5':         {en:'How do I know if a bar price is fair?',ar:'كيف أعرف إذا كان سعر السبيكة عادلاً؟'},
   'bul.faq.a5':         {en:"Compare the dealer's price against the reference price shown above for that bar size. A premium of up to 8% over spot is normal for small bars; over 8% means you should ask questions or shop around. For 100g bars, a fair premium is 1–3%. Always verify the spot price independently — use GoldMajlis as your baseline.",ar:'قارن سعر الوكيل بالسعر المرجعي المعروض أعلاه لحجم السبيكة المحدد. علاوة تصل إلى 8% فوق السعر الفوري أمر طبيعي للسبائك الصgيرة؛ وأكثر من 8% تعني أنه يجب عليك طرح أسئلة أو مقارنة الأسعار. بالنسبة لسبائك 100g، العلاوة العادلة هي 1–3%. تحقق دائماً من السعر الفوري بشكل مستقل — استخدم gولد مجلس كمرجع.'},
   'bul.faq.q6':         {en:'Can I sell gold bars back in Qatar?',ar:'هل يمكنني بيع سبائك الذهب مجدداً في قطر؟'},
   'bul.faq.a6':         {en:"Yes. Reputable dealers buy back at spot minus a small spread (typically 0.5–2%). Always confirm the buyback policy before you purchase — and never break the original sealed packaging or remove the assay certificate, as this reduces resale value. QNB and Al Fardan Exchange are known for transparent buyback terms.",ar:'نعم. يشتري الوكلاء الموثوقون بسعر الفور مطروحاً منه فارق صgير (عادةً 0.5–2%). تأكد دائماً من سياسة الاسترداد قبل الشراء — ولا تكسر التgليف الأصلي المختوم ولا تزل شهادة التحليل أبداً، فهذا يقلل من قيمة الإعادة. يُعرف بنك QNB والفردان للصرافة بشروط استرداد شفافة.'},
   'bul.faq.q7':         {en:'What is a tola bar and why is it common in Qatar?',ar:'ما هي سبيكة التولا ولماذا شائعة في قطر؟'},
-  'bul.faq.a7':         {en:"The tola is a traditional South Asian and Gulf unit of weight equal to 11.664 grams. It remains popular across Qatar, the UAE, and India because much of the regional jewellery trade historically used it. A 1-tola gold bar is widely available in Doha's souqs and is a common gifting and saving format. Its weight and pricing are fully equivalent to any other 24K bar at 11.664g.",ar:'التولا وحدة وزن تقليدية لجنوب آسيا والخليج تساوي 11.664 gراماً. لا تزال شائعة في قطر والإمارات والهند لأن كثيراً من تجارة المجوهرات الإقليمية استخدمتها تاريخياً. سبيكة التولا الواحدة متاحة على نطاق واسع في أسواق الدوحة وهي شكل شائع للهدايا والادخار. وزنها وتسعيرها مكافئان تماماً لأي سبيكة 24 قيراط بوزن 11.664g.'},
+  'bul.faq.a7':         {en:"The tola is a traditional South Asian and Gulf unit of weight equal to 11.664 grams. It remains popular across Qatar, the UAE, and India because much of the regional jewellery trade historically used it. A 1-tola gold bar is widely available in Doha's souqs and is a common gifting and saving format. Its weight and pricing are fully equivalent to any other 24K bar at 11.664g.",ar:'التولا وحدة وزن تقليدية لجنوب آسيا والخليج تساوي 11.664 جراماً. لا تزال شائعة في قطر والإمارات والهند لأن كثيراً من تجارة المجوهرات الإقليمية استخدمتها تاريخياً. سبيكة التولا الواحدة متاحة على نطاق واسع في أسواق الدوحة وهي شكل شائع للهدايا والادخار. وزنها وتسعيرها مكافئان تماماً لأي سبيكة 24 قيراط بوزن 11.664g.'},
   'bul.guide.btn':      {en:'Gold Guide →',          ar:'دليل الذهب ←'},
   'bul.faq.cta.title':  {en:'Want the full bullion guide?',ar:'تريد الدليل الكامل للسبائك؟'},
   'bul.faq.cta.sub':    {en:"Read our in-depth buyer's guide in the Gold Guide section.",ar:'اقرأ دليل المشتري التفصيلي في قسم دليل الذهب.'},
@@ -284,7 +284,7 @@ window.GM_TRANSLATIONS = {
   'learn.sub':          {en:'Everything a buyer in Qatar needs to know — from reading a karat stamp to negotiating the making charge.',ar:'كل ما يحتاج معرفته المشتري في قطر — من قراءة ختم القيراط إلى التفاوض على رسوم المصنعية.'},
   'learn.fmci.eyebrow': {en:'GoldMajlis · Qatar Guide',ar:'gولد مجلس · دليل قطر'},
   'learn.fmci.title':   {en:'Fair Making<br>Charge Index<sup>™</sup>',ar:'مؤشر رسوم المصنعية<br>العادلة<sup>™</sup>'},
-  'learn.fmci.sub':     {en:'What you should pay per gram in Qatar',ar:'ما يجب أن تدفعه للgرام في قطر'},
+  'learn.fmci.sub':     {en:'What you should pay per gram in Qatar',ar:'ما يجب أن تدفعه للجرام في قطر'},
   'learn.fmci.btn':     {en:'Check My Piece →',       ar:'تحقق من قطعتي ←'},
   'learn.fmci.plain':   {en:'Plain',                  ar:'بسيط'},
   'learn.fmci.pat':     {en:'Patterned',              ar:'منقوش'},
@@ -365,7 +365,7 @@ window.GM_TRANSLATIONS = {
 
   /* Spark */
   'spark.eyebrow':      {en:'Price History',         ar:'تاريخ السعر'},
-  'spark.sub':          {en:'Gold price per gram — up to 7 days of data',ar:'سعر الذهب للgرام — حتى 7 أيام من البيانات'},
+  'spark.sub':          {en:'Gold price per gram — up to 7 days of data',ar:'سعر الذهب للجرام — حتى 7 أيام من البيانات'},
 
   'calc.piece.details': {en:'YOUR PIECE DETAILS', ar:'تفاصيل قطعتك'},
   'calc.rate.section': {en:'RATE & CURRENCY', ar:'السعر والعملة'},
@@ -379,7 +379,7 @@ window.GM_TRANSLATIONS = {
   'calc.myrate.label': {en:'Your rate (', ar:'سعرك ('},
   'calc.myrate.hint': {en:'Enter the rate the jeweller', ar:'أدخل السعر الذي أعطاك إياه الجوهري اليوم'},
   'calc.fair.range': {en:'Fair range:', ar:':النطاق العادل'},
-  'calc.unit.g': {en:'Grams', ar:'gرام'},
+  'calc.unit.g': {en:'Grams', ar:'جرام'},
   'calc.unit.tola': {en:'Tola', ar:'تولا'},
   'calc.unit.oz': {en:'Ounces', ar:'أوقية'},
   'bul.page.title': {en:'Gold Bars & Coins in Qatar', ar:'سبائك وعملات الذهب في قطر'},
@@ -413,13 +413,13 @@ window.GM_ARTICLES_AR={
   market:{tag:'السوق',date:window._arDateStr||'محدّث 2026',title:'ما الذي يحرك سعر الذهب كل يوم؟',cta:'تحقق من سعر الذهب المباشر اليوم',
     body:`<p>الذهب من أقدم الأدوات المالية في العالم — ولا يزال يستجيب لنفس القوى.</p><h3>الدولار الأمريكي</h3><p>بما أن الذهب يُسعَّر بالدولار، فحين يضعف الدولار يرتفع الذهب والعكس صحيح.</p><h3>أسعار الفائدة</h3><p>حين ترتفع الفائدة تقل جاذبية الذهب. وحين تنخفض يتدفق المستثمرون مجدداً عليه.</p><h3>الجيوسياسة</h3><p>الحروب والعقوبات والأزمات تدفع المستثمرين للذهب بوصفه الملاذ الآمن.</p><blockquote>«الذهب نقود الملوك، والفضة نقود النبلاء — أما الدين فنقود العبيد.»</blockquote><h3>لماذا الذهب في قطر أرخص؟</h3><p>قطر تفرض <strong>رسوم استيراد صفرية على الذهب</strong>. الريال مربوط بالدولار عند 3.64 ثابتاً.</p><h3>أفضل وقت للشراء</h3><p>راقب مؤشر الدولار. تجنب أوقات الأعياد الكبرى. الأفضل: صباح يوم عمل بعد تصحيح سعري 2–3%.</p>`},
   pricing:{tag:'التسعير',date:window._arDateStr||'محدّث 2026',title:'رسوم المصنعية — الرقم الذي يجب أن تطلبه دائماً',cta:'تحقق من عدالة رسوم المصنعية',
-    body:`<p>كل سعر مجوهرات في قطر مكوّن من جزأين. معظم المشترين لا يفصلانهما.</p><h3>الرقمان</h3><p><strong>قيمة الذهب</strong> ثابتة — gير قابلة للتفاوض. <strong>رسوم المصنعية (أجرة)</strong> — قابلة للتفاوض تماماً.</p><p>اطلب دائماً هذين الرقمين منفصلَين.</p><h3>المعادلة</h3><p><strong>الإجمالي = (الوزن × سعر الذهب) + (الوزن × رسوم المصنعية)</strong></p><h3>صنع آلي مقابل يدوي</h3><p><strong>آلي</strong>: QAR 45–60/g. <strong>يدوي/عرائس</strong>: QAR 65–75/g.</p><blockquote>«الذهب واحد في كل متجر. الشيء الوحيد المختلف هو رسوم المصنعية.»</blockquote>`},
+    body:`<p>كل سعر مجوهرات في قطر مكوّن من جزأين. معظم المشترين لا يفصلانهما.</p><h3>الرقمان</h3><p><strong>قيمة الذهب</strong> ثابتة — gير قابلة للتفاوض. <strong>رسوم المصنعية (أجرة)</strong> — قابلة للتفاوض تماماً.</p><p>اطلب دائماً هذين الرقمين منفصلَين.</p><h3>المعادلة</h3><p><strong>الإجمالي = (الوزن × سعر الذهب) + (الوزن × رسوم المصنعية)</strong></p><h3>صنع آلي مقابل يدوي</h3><p><strong>آلي</strong>: QAR 45–60/ج. <strong>يدوي/عرائس</strong>: QAR 65–75/ج.</p><blockquote>«الذهب واحد في كل متجر. الشيء الوحيد المختلف هو رسوم المصنعية.»</blockquote>`},
   karats:{tag:'القيراط',date:window._arDateStr||'محدّث 2026',title:'24ق، 22ق، 21ق، 18ق، 14ق، 12ق — أي قيراط مناسب لك؟',cta:'اطلع على الأسعار المباشرة لكل القيراطات',
     body:`<p>رقم القيراط يخبرك بنسبة الذهب الخالص. 24 جزءاً من 24 ذهب خالص.</p><h3>أي قيراط يهيمن على أسواق قطر؟</h3><p><strong>22ق و21ق</strong> قلب السوق القطري. 22ق الاختيار الأول لطقم العرائس. 21ق أكثر متانة للقطع اليومية.</p><p><strong>18ق</strong> الاختيار لقطع الماس. <strong>24ق</strong> للسبائك فقط.</p><h3>القيراطات الأقل</h3><p><strong>14ق</strong> (58.3%) المعيار الأوروبي — أقل تكلفة لكن قيمة إعادة بيع أقل.</p><blockquote>«لـ22ق دفء وعمق لا تستطيع القيراطات الأدنى محاكاتهما.»</blockquote>`},
   souq:{tag:'سوق قطر',date:window._arDateStr||'محدّث 2026',title:'التسوق في أسواق ذهب الدوحة — دليل المطلعين',cta:'استخدم حاسبة المجوهرات',
-    body:`<p>قطر تقدم ثلاث تجارب تسوق ذهب مختلفة.</p><h3>🏛️ سوق واقف</h3><p>أكثر تجارب التسوق أجواءً. الأسعار قابلة للتفاوض. الأفضل للتصفح والمقارنة.</p><h3>⚖️ سوق الريان للذهب</h3><p>منافسة أعلى وأسعار أفضل. حيث يتسوق السكان الجادون.</p><h3>🏪 متاجر المراكز التجارية</h3><p>داماس، مالابار، جوي أليوكاس. جودة متسقة مقابل راحة البال.</p><h3>ذهب العرائس</h3><p>الشبكة: قلادة وأقراط وسوار وخاتم — 21ق أو 22ق، 35–65 gراماً.</p><blockquote>«في قطر الذهب ذاكرة وتراث ولgة الاحتفال.»</blockquote>`},
+    body:`<p>قطر تقدم ثلاث تجارب تسوق ذهب مختلفة.</p><h3>🏛️ سوق واقف</h3><p>أكثر تجارب التسوق أجواءً. الأسعار قابلة للتفاوض. الأفضل للتصفح والمقارنة.</p><h3>⚖️ سوق الريان للذهب</h3><p>منافسة أعلى وأسعار أفضل. حيث يتسوق السكان الجادون.</p><h3>🏪 متاجر المراكز التجارية</h3><p>داماس، مالابار، جوي أليوكاس. جودة متسقة مقابل راحة البال.</p><h3>ذهب العرائس</h3><p>الشبكة: قلادة وأقراط وسوار وخاتم — 21ق أو 22ق، 35–65 جراماً.</p><blockquote>«في قطر الذهب ذاكرة وتراث ولgة الاحتفال.»</blockquote>`},
   bullion:{tag:'الاستثمار',date:window._arDateStr||'محدّث 2026',title:'سبائك وعملات الذهب في قطر — الدليل الشامل للمشتري',cta:'اطلع على أسعار السبائك والعملات اليوم',
-    body:`<p>الذهب الاستثماري أنقى أشكال المعدن — بلا رسوم صنعة.</p><h3>السبائك مقابل العملات</h3><p><strong>السبائك</strong> أفضل قيمة للgرام. سبيكة 100g: علاوة 1–3%. سبيكة 1g: علاوة 5–8%.</p><p><strong>العملات</strong> (كروgيراند، بريطانيا، ورقة القيقب) أسهل في إعادة البيع دولياً.</p><h3>ماذا تشتري في قطر</h3><p>قطر تفرض <strong>رسوم استيراد صفرية</strong> ولا ضريبة. الوكلاء: QNB والفردان للصرافة.</p><h3>ما الذي تبحث عنه</h3><p>كل سبيكة حقيقية: <strong>رقم تسلسلي وختم مطبعة وشهادة تحليل</strong>. مطابع موثوقة: PAMP Suisse، Heraeus، Emirates Gold.</p><blockquote>«في الذهب الاستثماري البساطة هي المقصد.»</blockquote>`}
+    body:`<p>الذهب الاستثماري أنقى أشكال المعدن — بلا رسوم صنعة.</p><h3>السبائك مقابل العملات</h3><p><strong>السبائك</strong> أفضل قيمة للجرام. سبيكة 100g: علاوة 1–3%. سبيكة 1g: علاوة 5–8%.</p><p><strong>العملات</strong> (كروgيراند، بريطانيا، ورقة القيقب) أسهل في إعادة البيع دولياً.</p><h3>ماذا تشتري في قطر</h3><p>قطر تفرض <strong>رسوم استيراد صفرية</strong> ولا ضريبة. الوكلاء: QNB والفردان للصرافة.</p><h3>ما الذي تبحث عنه</h3><p>كل سبيكة حقيقية: <strong>رقم تسلسلي وختم مطبعة وشهادة تحليل</strong>. مطابع موثوقة: PAMP Suisse، Heraeus، Emirates Gold.</p><blockquote>«في الذهب الاستثماري البساطة هي المقصد.»</blockquote>`}
 };
 /* ── GM_STRINGS: every dynamic Arabic string used in index.html JS ──
    Edit this file to update any Arabic text without touching index.html.
@@ -443,13 +443,13 @@ window.GM_STRINGS = {
 
   /* Spark / Price History section */
   spark_eyebrow: 'تاريخ السعر',
-  spark_sub: 'سعر الذهب للgرام — حتى 7 أيام من البيانات',
+  spark_sub: 'سعر الذهب للجرام — حتى 7 أيام من البيانات',
   spark_title_today: 'حركة السعر اليوم',
   spark_title_2d: 'حركة السعر (يومان)',
   spark_title_3d: 'حركة السعر (3 أيام)',
   spark_title_7d: 'حركة السعر (7 أيام)',
   spark_title_fallback: 'حركة السعر',
-  spark_unit: 'gرام',
+  spark_unit: 'جرام',
   spark_empty: 'جارٍ جمع بيانات الأسعار…',
   spark_empty_today: 'جارٍ جمع بيانات اليوم…',
   spark_no_data_range: 'لا توجد بيانات كافية لهذا النطاق بعد',
@@ -457,10 +457,10 @@ window.GM_STRINGS = {
   spark_readings: 'قراءة اليوم',
 
   /* Table headers */
-  th_gram: 'gرام / ', th_kg: 'كg / ', th_oz: 'أوقية / ', th_pound: 'رطل / ', th_tola: 'تولا / ', th_karat: 'القيراط',
+  th_gram: 'جرام / ', th_kg: 'كg / ', th_oz: 'أوقية / ', th_pound: 'رطل / ', th_tola: 'تولا / ', th_karat: 'القيراط',
 
   /* General units */
-  per_gram: 'للgرام', per_gram_short: '/g', gram: 'gرام',
+  per_gram: 'للجرام', per_gram_short: '/ج', gram: 'جرام',
 
   /* Updates / status */
   refreshes: 'تحديث كل 10 دقائق',
@@ -468,7 +468,7 @@ window.GM_STRINGS = {
   connecting: 'جارٍ الاتصال…',
   ref_only: 'أسعار استرشادية · ',
   sr_updated_prefix: 'تم تحديث أسعار الذهب. 24ق: ',
-  sr_updated_suffix: ' للgرام',
+  sr_updated_suffix: ' للجرام',
 
   /* Calculator modes */
   calc_check_title: 'هل هذا السعر عادل؟',
@@ -492,7 +492,7 @@ window.GM_STRINGS = {
   fx_outdated: '· أسعار EUR/GBP/INR قد تكون قديمة',
 
   /* Units */
-  unit_grams: 'gرام', unit_tola: 'تولا', unit_oz: 'أوقية',
+  unit_grams: 'جرام', unit_tola: 'تولا', unit_oz: 'أوقية',
 
   /* Piece types */
   cx_plain:     'بسيط',
@@ -567,7 +567,7 @@ window.GM_STRINGS = {
 
   /* Screen reader */
   sr_updated_pre: 'تم تحديث أسعار الذهب. 24ق: ',
-  sr_updated_suf: ' للgرام',
+  sr_updated_suf: ' للجرام',
 
   /* Alert banner */
   alert_close: 'إgلاق',
@@ -596,8 +596,8 @@ window.GM_STRINGS = {
   /* Connecting */
   bul_upd_prominent: 'جارٍ الاتصال بالبيانات المباشرة…',
   /* v89 — Additional keys */
-  gram:             'gرام',
-  per_gram_short:   '/g',
+  gram:             'جرام',
+  per_gram_short:   '/ج',
   q_piece:          'قطعة',
   q_making_short:   'رسوم ',
   date_prefix:      'محدّث ',
@@ -651,7 +651,7 @@ window.GM_STRINGS = {
   calc_myrate_label:  'سعرك (',
   calc_myrate_hint:   'أدخل السعر الذي أعطاك إياه الجوهري اليوم.',
   calc_fair_range:    ':النطاق العادل',
-  calc_unit_g:        'gرام',
+  calc_unit_g:        'جرام',
   calc_unit_tola:     'تولا',
   calc_unit_oz:       'أوقية',
 
@@ -690,14 +690,14 @@ window.GM_STRINGS = {
   story_price_today:  'السعر اليوم',
   story_open_calculator:  'فتح الحاسبة',
   story_qatar___live_gold_rate:  'قطر · سعر الذهب المباشر',
-  story_gram___24_karat:  'gرام · 24 قيراط',
+  story_gram___24_karat:  'جرام · 24 قيراط',
   story_see_price_chart:  'عرض المخطط',
   story_price_movement___7_days:  'حركة السعر · 7 أيام',
   story_where_is_gold_br_heading:  'إلى أين يتجه<br>الذهب؟',
   story_based_on_price_data_collected:  'بناءً على بيانات الأسعار التي يجمعها gولد مجلس كل 10 دقائق.',
   story_spot__oz_usd:  'السعر/أوقية',
-  story_7_day_high__g:  'أعلى 7 أيام/g',
-  story_7_day_low__g:  'أدنى 7 أيام/g',
+  story_7_day_high__g:  'أعلى 7 أيام/ج',
+  story_7_day_low__g:  'أدنى 7 أيام/ج',
   story_karat_guide:  'دليل القيراط',
   story_read_gold_guide:  'اقرأ الدليل',
   story_24k___investment:  '24ق · استثمار',
@@ -715,7 +715,7 @@ window.GM_STRINGS = {
   story_see_full_prices:  'عرض كل الأسعار',
   story_qatar_gold_br_at_a_glance:  'الذهب في قطر<br>بلمحة سريعة',
   story_24k_gold:  'ذهب 24 قيراط',
-  story_per_gram:  'للgرام',
+  story_per_gram:  'للجرام',
   story_22k_jewellery:  'مجوهرات 22ق',
   story_spot_price:  'سعر الفور',
   story_troy_oz:  'أوقية',
@@ -737,7 +737,7 @@ window.GM_STRINGS = {
   navigate:         'التنقل',
   updated_min:      'تتحدث كل دقيقة',
 
-  gram_cur:         'gرام',  /* currency unit label for karat cards */
+  gram_cur:         'جرام',  /* currency unit label for karat cards */
   dir_up:   '↑ صعود',
   dir_dn:   '↓ هبوط',
 };
