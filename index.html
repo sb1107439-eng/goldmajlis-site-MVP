@@ -3351,7 +3351,9 @@ function renderAllPrices(skipBullion=false){
   const rows=[
     {k:24,l:'24K'},{k:22,l:'22K'},{k:21,l:'21K'},{k:18,l:'18K'},{k:14,l:'14K'},{k:12,l:'12K'}
   ];
+  const dotC={24:'#D4A017',22:'#C8880A',21:'#B87040',18:'#C06080',14:'#A07890',12:'#8888A0'};
   const tbody=document.getElementById('ptbody');
+  if(!tbody)return; /* safety guard */
   const isFirstRender=!document.getElementById('trow24');
   if(isFirstRender){tbody.innerHTML='';}
   /* v38 — price direction is global for the whole tick: one colour for all rows/cells.
