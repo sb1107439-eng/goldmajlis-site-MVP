@@ -3293,7 +3293,7 @@ function renderAllPrices(skipBullion=false){
     const dEl=document.getElementById('wd-'+k);
     const cEl=document.getElementById('wc-'+k);
     const cuEl=document.getElementById('wcu-'+k);
-    if(!pEl)return;
+    if(!pEl||!cEl)return; /* guard both price el and card el */
     const np=P[k],pp=pb24?pb24*PURITY[k]:null,df=pp?np-pp:0;
     const dispSym=gCurSym;
     pEl.textContent=(np*(FX[gCurCode]||1)).toFixed(2);
@@ -3322,13 +3322,9 @@ function renderAllPrices(skipBullion=false){
         _chgEl.className='kcard-chg '+(df>0?'up':'dn');
       }
     } else {
-      /* No prev price yet — show current price as reference */
+      /* No prev price yet — leave badge empty until we have a comparison */
       const _chgEl2=document.getElementById('wchg-'+k);
-      if(_chgEl2&&_chgEl2.textContent===''){
-        _chgEl2.textContent=(np*(FX[gCurCode]||1)).toFixed(2);
-        _chgEl2.className='kcard-chg';
-        _chgEl2.style.color='var(--ink-3)';
-      }
+      if(_chgEl2)_chgEl2.textContent='';
     }
   });
 
@@ -3348,6 +3344,7 @@ function renderAllPrices(skipBullion=false){
     const _thC=document.getElementById('th-change');if(_thC)_thC.textContent=_ar?'تغير':'Change';
     Object.entries(_wl).forEach(([u,l])=>{const b=document.getElementById('wtog-'+u);if(b)b.textContent=l;});
   })();
+  const fx=FX[gCurCode]||1; /* currency conversion factor */
   const rows=[
     {k:24,l:'24K'},{k:22,l:'22K'},{k:21,l:'21K'},{k:18,l:'18K'},{k:14,l:'14K'},{k:12,l:'12K'}
   ];
@@ -3475,7 +3472,7 @@ function renderAllPrices(skipBullion=false){
   /* v42 Fix 2 — guard against lastFetch being null (possible if setCur fires before first price arrives) */
   if(gd){
     const dateStr=lastFetch?(fD(lastFetch)+' '+fT(lastFetch)):fT(new Date());
-    gd.innerHTML=(isEst?'<span class="live-label" style="color:var(--amber)">'+(isAr?'تقدير':'Estimated')+'</span>':'<span class="live-label">'+(isAr?'مباشر':'Live')+'</span>')+'<span class="live-glow-sep">·</span><span class="live-glow-time">'+dateStr+'</span>';
+    gd.innerHTML=(function(){const _r=document.documentElement.getAttribute('dir')==='rtl';return isEst?'<span class="live-label" style="color:var(--amber)">'+(_r?'تقدير':'Estimated')+'</span>':'<span class="live-label">'+(_r?'مباشر':'Live')+'</span>';})()+'<span class="live-glow-sep">·</span><span class="live-glow-time">'+dateStr+'</span>';
   }
 
   // G8 — if a calc result is currently on screen, flag it as stale
