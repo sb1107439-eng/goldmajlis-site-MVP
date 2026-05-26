@@ -4000,7 +4000,6 @@ function renderBullionPage(p24){
   /* Fix 42 — also update the prominent header timestamp */
   sh('bul-page-title','bul.page.title');
   st('bul-page-lead','bul.page.lead');
-  sh('bul-disclaimer','bul.disclaimer');
     const bup=document.getElementById('bul-upd-prominent');if(bup)bup.textContent=document.documentElement.getAttribute('dir')==='rtl'?(window.GM_STRINGS?.bul_ref_prices||'أسعار استرشادية اعتباراً من '):'Reference prices as of '+now+' · Refreshes every 60s';
   const bsp=document.getElementById('bul-status-pip');if(bsp){bsp.className=(srcLabel==='estimated'?'pip amber':'pip green');}
 }
@@ -5947,84 +5946,19 @@ const TRANSLATIONS={
   /* ── Additional keys added in comprehensive pass ── */
   'home.livebar':       {en:'Live Qatar Gold Prices',ar:''},
   'home.th.karat':      {en:'Karat',                ar:''},
-  'home.upd.conn':      {en:'Connecting…',          ar:''},
-  'home.bars.eyebrow':  {en:'Gold Bars',             ar:''},
-  'home.bars.title':    {en:'Bullion Prices in Qatar',ar:''},
-  'home.bars.sub':      {en:'Reference prices from the live international spot.',ar:''},
-  'home.guide.eyebrow': {en:'Gold Guide',            ar:''},
-  'home.guide.title':   {en:'Know Before You Buy',   ar:''},
-  'home.guide.sub':     {en:'Three things every gold buyer in Qatar needs to understand.',ar:''},
-  'home.wedge1.title':  {en:'The Making Charge',     ar:''},
-  'home.wedge1.body':   {en:"Every jewellery price has two parts — the gold value (fixed) and the making charge (negotiable). Most buyers never ask for the split.",ar:''},
-  'home.wedge2.title':  {en:'Which Karat to Choose', ar:''},
-  'home.wedge2.body':   {en:'22K is the most popular in Qatar for jewellery. 18K is best for diamonds. 24K is investment only — too soft to wear.',ar:''},
-  'home.wedge3.title':  {en:'Where to Shop in Doha', ar:''},
-  'home.wedge3.body':   {en:'Al Rayyan for the best deal. Souq Waqif for the experience. Mall stores for peace of mind.',ar:''},
-  'learn.more':         {en:'Learn more',             ar:''},
-  'home.tool.div':      {en:'GoldMajlis Tools',       ar:''},
 
   /* Calculator */
-  'calc.eyebrow':       {en:'GoldMajlis Calculator', ar:''},
-  'calc.title.check':   {en:'Is This Price Fair?',   ar:''},
   'calc.title.quote':   {en:'What Should I Pay?',    ar:''},
-  'calc.sub.check':     {en:"Enter the details of the piece and we'll tell you instantly.",ar:''},
   'calc.sub.quote':     {en:"Enter weight and karat — we'll show you the fair price range.",ar:''},
-  'calc.mode.check':    {en:'Check a price',         ar:''},
-  'calc.mode.quote':    {en:'What should I pay?',    ar:''},
-  'calc.header':        {en:'Your Piece Details',    ar:''},
   'calc.header.quote':  {en:'Piece Details',         ar:''},
-  'calc.cur.label':     {en:'Currency',              ar:''},
-  'calc.live.label':    {en:'Live rate · ',          ar:''},
-  'calc.myrate.btn':    {en:'Use my rate',           ar:''},
-  'calc.mci.hint':      {en:'Fair making charge: ',  ar:''},
-  'calc.mci.dep':       {en:' depending on piece type',ar:''},
-  'calc.wt.label':      {en:'Weight',                ar:''},
   
-  'calc.piece.details': {en:'YOUR PIECE DETAILS',  ar:''},
-  'calc.rate.section':  {en:'RATE & CURRENCY',      ar:''},
-  'rate.own':           {en:'own rate',              ar:''},
-  'rate.active':        {en:'my rate ✓',             ar:''},
-  'calc.wt.ph':         {en:'e.g. 12.5',             ar:''},
-  'calc.total.ph':      {en:'e.g. 3500',             ar:''},
-  'calc.myrate.ph':     {en:'e.g. 285',              ar:''},
-  'calc.stamp.btn':     {en:'▾ karat stamp guide',  ar:''},
-  'calc.stamp.lbl':     {en:'Common stamps',         ar:''},
-  'calc.myrate.label':  {en:'Your rate (',           ar:''},
-  'calc.myrate.hint':   {en:'Enter the rate the jeweller quoted you today.',ar:''},
-  'calc.fair.range':    {en:'Fair range:',            ar:''},
-  'calc.unit.g':        {en:'Grams',                  ar:''},
-  'calc.unit.tola':     {en:'Tola',                   ar:''},
-  'calc.unit.oz':       {en:'Ounces',                 ar:''},
 
-  'calc.unit.label':    {en:'Unit',                  ar:''},
-  'calc.karat.label':   {en:'Karat',                 ar:''},
-  'calc.total.label':   {en:'Jeweller is asking (',  ar:''},
-  'calc.analyse':       {en:'Analyse This Piece',    ar:''},
-  'calc.fairprice':     {en:'Calculate Fair Price',  ar:''},
   'calc.wt.tip':        {en:"💡 Don't know the weight? Ask the jeweller to weigh it in front of you, or check your purchase receipt.",ar:''},
-  'calc.jtype.label':   {en:'What type of piece is it?',ar:''},
-  'calc.jtype.plain':   {en:'Plain',                 ar:''},
-  'calc.jtype.pat':     {en:'Patterned',             ar:''},
-  'calc.jtype.hand':    {en:'Handmade',              ar:''},
-  'calc.jtype.plain.r': {en:'Chains, bangles, simple rings',ar:''},
-  'calc.jtype.pat.r':   {en:'Engraved, filigree, textured',ar:''},
-  'calc.jtype.hand.r':  {en:'Bridal, custom, intricate assembly',ar:''},
-  'calc.result.new':    {en:'New calculation',       ar:''},
-  'calc.result.share':  {en:'Share',                 ar:''},
-  'calc.result.copy':   {en:'Copy',                  ar:''},
   'calc.score.lbl':     {en:'Score',                 ar:''},
-  'calc.score.guide':   {en:'Score guide',           ar:''},
-  'calc.score.fair':    {en:'70–100 · Fair or better',ar:''},
-  'calc.score.high':    {en:'45–69 · Slightly high', ar:''},
-  'calc.score.over':    {en:'<45 · Overpriced',      ar:''},
-  'calc.breakdown':     {en:'Breakdown',             ar:''},
-  'calc.benchmark':     {en:'Qatar Market Benchmark',ar:''},
   'calc.fairprice.lbl': {en:'Fair Price Range',      ar:''},
 
   /* Bullion */
   'bul.livebar':        {en:'Gold Bars & Coins — Qatar Reference Prices',ar:''},
-  'bul.title':          {en:"Gold Bars &amp; Coins<br>in Qatar",ar:''},
-  'bul.lead':           {en:'Reference prices from the live international spot price. Actual dealer prices include a premium.',ar:''},
 
   'bul.page.title':   {en:'Gold Bars &amp; Coins<br>in Qatar', ar:''},
   'bul.page.lead':    {en:'Reference prices from the live international spot price. Actual dealer prices include a premium.', ar:''},
@@ -6046,9 +5980,7 @@ const TRANSLATIONS={
   'bul.inv.tola':     {en:'Traditional Gulf format · 24K',ar:''},
   'bul.inv.large':    {en:'International standard · 24K',ar:''},
   'bul.inv.lbma':     {en:'LBMA good delivery · 24K',ar:''},
-  'bul.livebar':      {en:'Gold Bars &amp; Coins — Qatar Reference Prices',ar:''},
   'calc.fetching':    {en:'Fetching live gold rate…',ar:''},
-  'calc.score.lbl':   {en:'Score',                   ar:''},
   'bul.cur.qar':      {en:'QAR — Qatari Riyal',      ar:''},
   'bul.cur.usd':      {en:'USD — US Dollar',          ar:''},
   'bul.cur.eur':      {en:'EUR — Euro',               ar:''},
@@ -6057,17 +5989,6 @@ const TRANSLATIONS={
   'bul.grp.small.inv':{en:'Investment bar · 24K fine',ar:''},
 
   'bul.conn':           {en:'Connecting to live feed…',ar:''},
-  'bul.bars.label':     {en:'Gold Bars — 24K (999.9 fine)',ar:''},
-  'bul.small':          {en:'Small Bars',            ar:''},
-  'bul.small.range':    {en:'1g – 50g',              ar:''},
-  'bul.tola':           {en:'Tola Bars',             ar:''},
-  'bul.tola.range':     {en:'Gulf & South Asian format',ar:''},
-  'bul.large':          {en:'Medium & Large Bars',   ar:''},
-  'bul.large.range':    {en:'100g – 1kg',            ar:''},
-  'bul.coins':          {en:'Gold Coins',            ar:''},
-  'bul.coins.range':    {en:'Sovereign mints · 22K', ar:''},
-  'bul.dis':            {en:'<strong>Reference only.</strong> Calculated from live XAU/USD spot converted at current exchange rates. Actual dealer prices include a 1–16% premium. GoldMajlis does not sell gold.',ar:''},
-  'bul.faq.eyebrow':    {en:'Gold Bars in Qatar',    ar:''},
   'bul.faq.heading':    {en:'Common Questions',      ar:''},
   'bul.faq.q1':         {en:'What are bullion prices in Qatar today?',ar:''},
   'bul.faq.a1':         {en:'The prices shown above are calculated in real time from the international XAU/USD spot price, converted at current exchange rates. Qatar has zero import duty and no VAT on gold investment products, making it one of the most competitive bullion markets in the world. Actual dealer prices include a fabrication premium of 1–8% depending on bar size — larger bars carry a lower premium per gram.',ar:''},
@@ -6083,9 +6004,6 @@ const TRANSLATIONS={
   'bul.faq.a6':         {en:"Yes. Reputable dealers buy back at spot minus a small spread (typically 0.5–2%). Always confirm the buyback policy before you purchase — and never break the original sealed packaging or remove the assay certificate, as this reduces resale value. QNB and Al Fardan Exchange are known for transparent buyback terms.",ar:''},
   'bul.faq.q7':         {en:'What is a tola bar and why is it common in Qatar?',ar:''},
   'bul.faq.a7':         {en:"The tola is a traditional South Asian and Gulf unit of weight equal to 11.664 grams. It remains popular across Qatar, the UAE, and India because much of the regional jewellery trade historically used it. A 1-tola gold bar is widely available in Doha's souqs and is a common gifting and saving format. Its weight and pricing are fully equivalent to any other 24K bar at 11.664g.",ar:''},
-  'bul.guide.btn':      {en:'Gold Guide →',          ar:''},
-  'bul.faq.cta.title':  {en:'Want the full bullion guide?',ar:''},
-  'bul.faq.cta.sub':    {en:"Read our in-depth buyer's guide in the Gold Guide section.",ar:''},
   'bul.bar.inv':        {en:'Investment bar · 24K fine',ar:''},
   'bul.bar.tola':       {en:'Traditional Gulf format · 24K',ar:''},
   'bul.bar.intl':       {en:'International standard · 24K',ar:''},
@@ -6100,21 +6018,6 @@ const TRANSLATIONS={
   'cur.inr':            {en:'Indian Rupee',           ar:''},
 
   /* Learn page */
-  'learn.tag':          {en:'Qatar Gold Guide',       ar:''},
-  'learn.title':        {en:"The Art of<br>Buying Gold",ar:''},
-  'learn.sub':          {en:'Everything a buyer in Qatar needs to know — from reading a karat stamp to negotiating the making charge.',ar:''},
-  'learn.fmci.eyebrow': {en:'GoldMajlis · Qatar Guide',ar:''},
-  'learn.fmci.title':   {en:'Fair Making<br>Charge Index<sup>™</sup>',ar:''},
-  'learn.fmci.sub':     {en:'What you should pay per gram in Qatar',ar:''},
-  'learn.fmci.btn':     {en:'Check My Piece →',       ar:''},
-  'learn.fmci.plain':   {en:'Plain',                  ar:''},
-  'learn.fmci.pat':     {en:'Patterned',              ar:''},
-  'learn.fmci.hand':    {en:'Handmade',               ar:''},
-  'learn.fmci.above':   {en:'Above market',           ar:''},
-  'learn.fmci.note1':   {en:'Chains, simple bangles', ar:''},
-  'learn.fmci.note2':   {en:'Engraved, filigree, textured',ar:''},
-  'learn.fmci.note3':   {en:'Bridal sets, custom, stone-set',ar:''},
-  'learn.fmci.note4':   {en:'Negotiate or walk away', ar:''},
   'learn.fmci.cur.note':{en:'Updates when you change currency on the Home page',ar:''},
   'learn.readmore':     {en:'Read more',              ar:''},
   'learn.blog.market.tag':    {en:'Market',           ar:''},
@@ -6170,22 +6073,12 @@ const TRANSLATIONS={
     <div class="about-disclaimer"><div>© 2026 غولد مجلس · منصة معلوماتية مستقلة</div></div>`},
 
   /* Footer */
-  'footer.tagline':     {en:'Live gold prices in Qatar — updated every minute from global markets.',ar:''},
-  'footer.nav.title':   {en:'Navigate',              ar:''},
 
   /* Cookie */
-  'cookie.text':        {en:'We use local storage to save your preferences (currency, calculator settings) and track gold price history during your visit. See our ',ar:''},
-  'cookie.privacy':     {en:'Privacy Policy',        ar:''},
-  'cookie.btn':         {en:'Got it',                ar:''},
 
   /* More menu */
-  'more.about':         {en:'About GoldMajlis',      ar:''},
-  'more.terms':         {en:'Terms of Use',          ar:''},
-  'more.privacy':       {en:'Privacy Policy',        ar:''},
-  'more.close':         {en:'Close',                 ar:''},
 
   /* Spark */
-  'spark.eyebrow':      {en:'Price History',         ar:''},
 
 }
 
@@ -6251,14 +6144,12 @@ function applyLang(lang){
   const secRule=document.querySelector('.section-rule-label');if(secRule)secRule.textContent=t('home.tool.div');
 
   /* ─── Home CTA ─── */
-  st('null2','');
   const ctaEyebrow=document.querySelector('.home-cta-eyebrow');if(ctaEyebrow)ctaEyebrow.textContent=t('home.cta.eyebrow');
   const ctaTitle=document.querySelector('.home-cta-title');if(ctaTitle)ctaTitle.textContent=t('home.cta.title');
   const ctaSub=document.querySelector('.home-cta-sub');if(ctaSub)ctaSub.textContent=t('home.cta.sub');
   const ctaBtnTxt=document.getElementById('home-cta-btn-txt');if(ctaBtnTxt)ctaBtnTxt.textContent=t('home.cta.btn');
 
   /* ─── Home bars section ─── */
-  sh('home-bars-title','home.bars.title');
 
   /* ─── Home guide/wedges ─── */
   st('home-guide-eyebrow','home.guide.eyebrow');
@@ -6411,7 +6302,6 @@ function applyLang(lang){
   /* v105 — bullion page hero + disclaimer */
   sh('bul-page-title','bul.page.title');
   st('bul-page-lead','bul.page.lead');
-  sh('bul-disclaimer','bul.disclaimer');
   /* v106 — bullion live bar + loading */
   st('bul-livebar-txt','bul.livebar');
   const _bload=document.getElementById('bul-loading');
