@@ -1330,8 +1330,13 @@
     [dir=rtl] .hero-sub{text-align:right}
     [dir=rtl] .live-glow-row{flex-direction:row-reverse}
     [dir=rtl] .home-cur-row{flex-direction:row-reverse;text-align:right}
+    [dir=rtl] .home-cur-actions{order:-1}
     [dir=rtl] .home-cur-pills{flex-direction:row-reverse}
     [dir=rtl] .kcard-header{flex-direction:row-reverse}
+    [dir=rtl] .kcard-item{text-align:right}
+    [dir=rtl] .kcard-unit{text-align:right}
+    [dir=rtl] .kcard-price{text-align:right}
+    [dir=rtl] .kcard-delta{justify-content:flex-end}
     [dir=rtl] .kcard-delta{flex-direction:row-reverse}
     [dir=rtl] .ptable thead th{text-align:right}
     [dir=rtl] .ptable tbody td{text-align:right}
@@ -1452,7 +1457,18 @@
     [dir=rtl] .bul-faq-item{text-align:right;direction:rtl}
     [dir=rtl] .bul-faq-cta{text-align:right}
     [dir=rtl] #bul-faq-cta-btn{float:none}
-</style>
+
+    [dir=rtl] #weight-toggle-strip{flex-direction:row-reverse}
+    [dir=rtl] .ptable thead tr{direction:rtl}
+    [dir=rtl] .ptable td,[dir=rtl] .ptable th{text-align:right}
+    [dir=rtl] .ptable .karat-pip{margin-right:0;margin-left:4px}
+
+  
+    .kcard-chg{font-size:10px;font-weight:600;opacity:.85}
+    .kcard-chg.up{color:var(--green)}
+    .kcard-chg.dn{color:var(--red)}
+
+  </style>
   <!-- Arabic translations: loads ar.js which overrides TRANSLATIONS + adds GM_STRINGS.
        Sync load (no defer) so Arabic is ready before any JS runs.
        If this file fails to load, English fallback in TRANSLATIONS still works. -->
@@ -1605,7 +1621,7 @@
     <div class="kcard-item kcard-24" id="wc-24">
       <div class="kcard-header">
         <span class="kcard-karat" id="wk-24">24K</span>
-        
+        <span class="kcard-chg" id="wchg-24"></span>
       </div>
       <div class="kcard-price" id="wp-24">--</div>
       <div class="kcard-unit" id="wcu-24">QAR / gram</div>
@@ -1614,7 +1630,7 @@
     <div class="kcard-item kcard-22" id="wc-22">
       <div class="kcard-header">
         <span class="kcard-karat" id="wk-22">22K</span>
-        
+        <span class="kcard-chg" id="wchg-22"></span>
       </div>
       <div class="kcard-price" id="wp-22">--</div>
       <div class="kcard-unit" id="wcu-22">QAR / gram</div>
@@ -1623,7 +1639,7 @@
     <div class="kcard-item kcard-21" id="wc-21">
       <div class="kcard-header">
         <span class="kcard-karat" id="wk-21">21K</span>
-        
+        <span class="kcard-chg" id="wchg-21"></span>
       </div>
       <div class="kcard-price" id="wp-21">--</div>
       <div class="kcard-unit" id="wcu-21">QAR / gram</div>
@@ -1632,7 +1648,7 @@
     <div class="kcard-item kcard-18" id="wc-18">
       <div class="kcard-header">
         <span class="kcard-karat" id="wk-18">18K</span>
-        
+        <span class="kcard-chg" id="wchg-18"></span>
       </div>
       <div class="kcard-price" id="wp-18">--</div>
       <div class="kcard-unit" id="wcu-18">QAR / gram</div>
@@ -1675,11 +1691,10 @@
       <!-- #8 — updated row with timestamp, 60s, no "source: indicative" -->
       <div class="upd-row">
         <div class="upd-left">
-          <span id="upd-price-display" style="font-size:13px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums" id="upd-price-display">--</span>
-          <span id="upd-change-pct" style="font-size:11px;font-weight:600;padding:1px 5px;border-radius:4px;margin-left:4px">--</span>
-          <span id="upd-txt" style="">Connecting…</span>
+          <span class="pip green" id="src-pip"></span>
+          <span id="upd-txt">Connecting…</span>
         </div>
-        <span class="upd-right" id="upd-ref-label" title="Prices are indicative, calculated from international spot data. Not exchange rates." id="indic-pre">Indicative · <span id="upd-refresh">~3s</span></span>
+        <span class="upd-right" id="upd-ref-label" title="Prices are indicative, calculated from international spot data. Not exchange rates.">Indicative · <span id="upd-refresh">~3s</span></span>
       </div>
     </div>
   </div>
@@ -3296,18 +3311,14 @@ function renderAllPrices(skipBullion=false){
       setTimeout(()=>{pEl.classList.remove('up','dn');cEl.classList.remove('flash-up','flash-dn');},2500);
       const dfD=(Math.abs(df)*(FX[gCurCode]||1)).toFixed(2);
       const pct=Math.abs(df/pp*100).toFixed(2);
-      dEl.textContent=(df>0?'▲':'▼')+' '+dispSym+' '+dfD+' ('+pct+'%)';
+      const _arrow=df>0?'▲':'▼';
+      dEl.textContent=_arrow+' '+dispSym+' '+dfD+' ('+pct+'%)';
       dEl.className='kcard-delta '+(df>0?'up':'dn');
-      /* Direction badge */
-      /* Direction badge */
-      const _db=document.getElementById('wdir-'+k);
-      if(_db){
-        const _up=df>0;
-        _db.textContent=(document.documentElement.getAttribute('dir')==='rtl')?(_up?'↑ صعود':'↓ هبوط'):(_up?'↑ UP':'↓ DN');
-        _db.style.color=_up?'var(--green)':'var(--red)';
-        _db.style.background='transparent';
-        _db.style.opacity='1';
-        setTimeout(()=>{if(_db){_db.style.opacity='.85';}},3000);
+      /* Header change badge */
+      const _chgEl=document.getElementById('wchg-'+k);
+      if(_chgEl){
+        _chgEl.textContent=_arrow+pct+'%';
+        _chgEl.className='kcard-chg '+(df>0?'up':'dn');
       }
     } else {
       const _db=document.getElementById('wdir-'+k);
@@ -3559,11 +3570,11 @@ function startPriceFlicker() {
       }
     });
     /* Update live dot timestamp every tick */
-    const _up2=document.getElementById('upd-price-display');
-    if(_up2&&base24QAR){
-      const _fx2=FX[gCurCode]||1;
-      const _dp=(base24QAR*_fx2).toFixed(2);
-      _up2.textContent=gCurSym+' '+_dp;
+    /* Update upd-txt with live time */
+    const _ut2=document.getElementById('upd-txt');
+    if(_ut2&&base24QAR){
+      const _isArF2=document.documentElement.getAttribute('dir')==='rtl';
+      _ut2.textContent=(_isArF2?'● مباشر':'● Live')+' · '+fT(new Date());
     }
   }, 3000);
 }
@@ -4987,7 +4998,15 @@ function showLastVisitGreeting(current24QAR){
             const col=diff>=0?'var(--green)':'var(--red)';
             const absPct=Math.abs(pct).toFixed(2);
             const sym=gCurSym,fx=FX[gCurCode]||1;
-            /* BUG-55-06 fix: diff is a QAR delta; multiply by fx gives the correct display-currency delta.
+            /* BUG-55-06 fix: diff is a QAR delta; multiply by fx gives the correct display-curr    /* Translated bullion labels */
+    const _isArBul=document.documentElement.getAttribute('dir')==='rtl';
+    const _lb=document.getElementById('bul-livebar-txt');
+    if(_lb)_lb.textContent=_isArBul?'سبائك وعملات الذهب — أسعار قطر المرجعية':'Gold Bars & Coins — Qatar Reference Prices';
+    const _bb=document.getElementById('bul-bars-label');
+    if(_bb)_bb.textContent=_isArBul?'سبائك ذهب — عيار 24 (999.9 خالص)':'Gold Bars — 24K (999.9 fine)';
+    const _rs=document.getElementById('bul-ref-str');
+    if(_rs)_rs.textContent=_isArBul?'للإشارة فقط.':'Reference only.'; /* end translations */
+    /* currency delta.
                This is only wrong if gCurCode changed between sessions, which is an acceptable edge case. */
             const absDiff=Math.abs(diff*fx).toFixed(2);
             el.innerHTML=`<span style="color:${col}">${arrow} ${sym} ${absDiff} (${absPct}%) since your last visit</span>`;
@@ -5385,7 +5404,7 @@ function _buildStories(){
       html:`
         <div class="story-section-label">${T('Price Movement · 7 Days','حركة السعر · 7 أيام')}</div>
         <div class="story-whats-title">${T('Where Is Gold<br>Heading?','إلى أين يتجه<br>الذهب؟')}</div>
-        <div class="story-whats-desc">${T('Based on price data collected by GoldMajlis every 10 minutes.','بناءً على بيانات الأسعار التي يجمعها gولد مجلس كل 10 دقائق.')}</div>
+        <div class="story-whats-desc">${T('Based on price data collected by GoldMajlis every few seconds.','بناءً على بيانات الأسعار التي يجمعها غولد مجلس كل ثوانٍ.')}</div>
         <div class="story-fact-row">
           <div class="story-fact">
             ${_SVG.bank}
@@ -6388,7 +6407,7 @@ function applyLang(lang){
   st('footer-lnk-terms',isAr?(window.GM_STRINGS?.footer_terms||'شروط الاستخدام'):'Terms of Use');
   st('footer-lnk-privacy',isAr?(window.GM_STRINGS?.footer_privacy||'سياسة الخصوصية'):'Privacy Policy');
   st('footer-legal',isAr?(window.GM_STRINGS?.footer_legal||'© 2026 غولد مجلس.'):'© 2026 GoldMajlis. Reference prices only — not financial advice. Not affiliated with any exchange, dealer, or financial institution. All prices are indicative, calculated from public international spot data.');
-  st('footer-refresh',isAr?(window.GM_STRINGS?.footer_refresh||'تتحدث كل دقيقة'):'Updated every minute');
+  st('footer-refresh',isAr?(window.GM_STRINGS?.footer_refresh||'تتحدث كل ثوانٍ'):'Updated every minute');
   st('footer-disclaimer-txt',isAr?(window.GM_STRINGS?.footer_disclaimer||'الأسعار والحسابات المعروضة للأغراض المعلوماتية فقط.'):'Gold prices and calculations shown are for informational purposes only and may not reflect actual retail or market transaction prices.');
   st('footer-bot-about',isAr?(window.GM_STRINGS?.footer_about_us||'عنّا'):'About Us');
   st('footer-bot-terms',isAr?(window.GM_STRINGS?.footer_terms||'شروط الاستخدام'):'Terms of Use');
@@ -6591,9 +6610,10 @@ function applyLang(lang){
   /* Currency pill labels */
   const _isArCur=isAr;
   const _curLabelMap={QAR:'ر.ق',USD:'دولار',EUR:'يورو',GBP:'جنيه',INR:'روبية'};
-  document.querySelectorAll('.tcp').forEach(b=>{
-    if(_isArCur){const _l=_curLabelMap[b.dataset.code];if(_l)b.textContent=_l;}
-    else if(b.dataset.code)b.textContent=b.dataset.code;
+  document.querySelectorAll('.tcp[data-code]').forEach(b=>{
+    const _code=b.getAttribute('data-code');
+    if(_isArCur){const _l=_curLabelMap[_code];if(_l)b.textContent=_l;}
+    else b.textContent=_code==='INR'?'INR':_code;
   });
   /* ─── Persist ─── */
   try{localStorage.setItem(LANG_LS_KEY,lang);}catch{}

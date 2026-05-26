@@ -46,14 +46,14 @@ window.GM_TRANSLATIONS = {
   'home.eyebrow':       {en:'Live Gold Prices · Qatar',ar:'أسعار الذهب المباشرة · قطر'},
   'home.title':         {en:"Today's Gold<br>Price in Qatar",ar:'سعر الذهب اليوم<br>في قطر'},
   'home.sub.pre':       {en:'Live rates per gram in ',ar:'الأسعار المباشرة للجرام بـ '},
-  'home.sub.post':      {en:' — updated every 10 min from global markets.',ar:' — يتحدث كل 10 دقائق من الأسواق العالمية.'},
+  'home.sub.post':      {en:' — updated every 10 min from global markets.',ar:' — يتحدث كل ثوانٍ من الأسواق العالمية.'},
   'home.th.gram':       {en:'Gram / ',             ar:'جرام / '},
   'home.th.kg':         {en:'KG / ',               ar:'كg / '},
   'home.th.oz':         {en:'Ounce / ',            ar:'أوقية / '},
   'home.th.pound':      {en:'Pound / ',            ar:'رطل / '},
   'home.th.tola':       {en:'Tola / ',             ar:'تولا / '},
   'home.upd.conn':      {en:'Connecting…',         ar:'جارٍ الاتصال…'},
-  'home.upd.ref':       {en:'10 min refresh',      ar:'تحديث كل 10 دقائق'},
+  'home.upd.ref':       {en:'10 min refresh',      ar:'تحديث كل ثوانٍ'},
   'home.upd.ref.label': {en:'Reference prices only · ',ar:'أسعار استرشادية فقط · '},
   'spark.eyebrow':      {en:'Price History',       ar:'تاريخ السعر'},
   'spark.sub':          {en:'Gold price per gram — up to 7 days',ar:'سعر الذهب للجرام — حتى 7 أيام'},
@@ -76,9 +76,9 @@ window.GM_TRANSLATIONS = {
   'home.wedge3.title':  {en:'Where to Shop in Doha',ar:'أين تتسوق في الدوحة'},
   'home.wedge3.body':   {en:'Al Rayyan for the best deal. Souq Waqif for the experience. Mall stores for peace of mind.',ar:'الريان لأفضل الأسعار. سوق واقف للتجربة. متاجر المولات لراحة البال.'},
   'learn.more':         {en:'Learn more',           ar:'اقرأ المزيد'},
-  'home.tool.div':      {en:'GoldMajlis Tools',     ar:'أدوات gولد مجلس'},
+  'home.tool.div':      {en:'GoldMajlis Tools',     ar:'أدوات غولد مجلس'},
   /* Calculator */
-  'calc.eyebrow':       {en:'GoldMajlis Calculator',ar:'حاسبة gولد مجلس'},
+  'calc.eyebrow':       {en:'GoldMajlis Calculator',ar:'حاسبة غولد مجلس'},
   'calc.title.check':   {en:'Is This Price Fair?',  ar:'هل هذا السعر عادل؟'},
   'calc.sub.check':     {en:"Enter the details of the piece and we'll tell you instantly.",ar:'أدخل تفاصيل القطعة وسنخبرك فوراً.'},
   'calc.mode.check':    {en:'Check a price',        ar:'تحقق من سعر'},
@@ -113,7 +113,7 @@ window.GM_TRANSLATIONS = {
   'calc.breakdown':     {en:'Breakdown',            ar:'التفصيل'},
   'calc.benchmark':     {en:'Qatar Market Benchmark',ar:'معيار سوق قطر'},
   /* Bullion */
-  'bul.eyebrow':        {en:'GoldMajlis',           ar:'gولد مجلس'},
+  'bul.eyebrow':        {en:'GoldMajlis',           ar:'غولد مجلس'},
   'bul.title':          {en:"Gold Bars & Coins<br>in Qatar",ar:'سبائك وعملات الذهب<br>في قطر'},
   'bul.lead':           {en:'Reference prices from the live international spot price. Actual dealer prices include a premium.',ar:'أسعار استرشادية من السعر الدولي المباشر. أسعار الوكلاء الفعلية تشمل علاوة.'},
   'bul.bars.label':     {en:'Gold Bars — 24K (999.9 fine)',ar:'سبائك الذهب — 24 قيراط (999.9 خلوص)'},
@@ -125,7 +125,7 @@ window.GM_TRANSLATIONS = {
   'bul.large.range':    {en:'100g – 1kg',           ar:'100g – 1كg'},
   'bul.coins':          {en:'Gold Coins',           ar:'عملات ذهبية'},
   'bul.coins.range':    {en:'Sovereign mints · 22K',ar:'سك حكومي · 22 قيراط'},
-  'bul.dis':            {en:'<strong>Reference only.</strong> Calculated from live XAU/USD spot. Dealer prices include 1–16% premium. GoldMajlis does not sell gold.',ar:'<strong>استرشادي فقط.</strong> محسوب من سعر XAU/USD المباشر. أسعار الوكلاء تشمل علاوة 1–16%. gولد مجلس لا يبيع الذهب.'},
+  'bul.dis':            {en:'<strong>Reference only.</strong> Calculated from live XAU/USD spot. Dealer prices include 1–16% premium. GoldMajlis does not sell gold.',ar:'<strong>استرشادي فقط.</strong> محسوب من سعر XAU/USD المباشر. أسعار الوكلاء تشمل علاوة 1–16%. غولد مجلس لا يبيع الذهب.'},
   'bul.faq.eyebrow':    {en:'Gold Bars in Qatar',   ar:'سبائك الذهب في قطر'},
   'bul.faq.title':      {en:'Common Questions',     ar:'أسئلة شائعة'},
   'bul.faq.cta.title':  {en:'Want the full bullion guide?',ar:'تريد الدليل الكامل للسبائك؟'},
@@ -135,7 +135,7 @@ window.GM_TRANSLATIONS = {
   'learn.tag':          {en:'Qatar Gold Guide',     ar:'دليل الذهب في قطر'},
   'learn.title':        {en:"The Art of<br>Buying Gold",ar:'فن شراء الذهب'},
   'learn.sub':          {en:'Everything a buyer in Qatar needs to know — from reading a karat stamp to negotiating the making charge.',ar:'كل ما يحتاج معرفته المشتري في قطر — من قراءة ختم القيراط إلى التفاوض على رسوم المصنعية.'},
-  'learn.fmci.eyebrow': {en:'GoldMajlis · Qatar Guide',ar:'gولد مجلس · دليل قطر'},
+  'learn.fmci.eyebrow': {en:'GoldMajlis · Qatar Guide',ar:'غولد مجلس · دليل قطر'},
   'learn.fmci.title':   {en:'Fair Making<br>Charge Index',ar:'مؤشر رسوم<br>الصنعة العادلة'},
   'learn.fmci.sub':     {en:'What you should pay per gram in Qatar',ar:'ما يجب أن تدفعه للجرام في قطر'},
   'learn.fmci.btn':     {en:'Check My Piece →',     ar:'تحقق من قطعتي ←'},
@@ -154,7 +154,7 @@ window.GM_TRANSLATIONS = {
   'nav.m.guide':        {en:'Gold Guide',           ar:'الدليل'},
   'nav.m.more':         {en:'More',                 ar:'المزيد'},
   /* More menu */
-  'more.about':         {en:'About GoldMajlis',     ar:'عن gولد مجلس'},
+  'more.about':         {en:'About GoldMajlis',     ar:'عن غولد مجلس'},
   'more.terms':         {en:'Terms of Use',         ar:'شروط الاستخدام'},
   'more.privacy':       {en:'Privacy Policy',       ar:'سياسة الخصوصية'},
   'more.close':         {en:'Close',                ar:'إgلاق'},
@@ -163,7 +163,7 @@ window.GM_TRANSLATIONS = {
   'cookie.privacy':     {en:'Privacy Policy',       ar:'سياسة الخصوصية'},
   'cookie.btn':         {en:'Got it',               ar:'حسناً'},
   /* Footer */
-  'footer.tagline':     {en:'Live gold prices in Qatar — updated every 10 minutes from global markets.',ar:'أسعار الذهب المباشرة في قطر — تتحدث كل 10 دقائق من الأسواق العالمية.'},
+  'footer.tagline':     {en:'Live gold prices in Qatar — updated every 10 minutes from global markets.',ar:'أسعار الذهب المباشرة في قطر — تتحدث كل ثوانٍ من الأسواق العالمية.'},
   'footer.nav.title':   {en:'Navigate',             ar:'التنقل'},
   'footer.disclaimer':  {en:'Reference prices only — not financial advice. Not affiliated with any exchange, dealer, or financial institution.',ar:'أسعار استرشادية فقط — ليست نصيحة مالية. gير مرتبط بأي بورصة أو وكيل أو مؤسسة مالية.'},
   /* Stories */
@@ -196,7 +196,7 @@ window.GM_TRANSLATIONS = {
   'bul.faq.q4':         {en:'Bars vs coins — which is better value?',ar:'السبائك مقابل العملات — أيهما أفضل قيمة؟'},
   'bul.faq.a4':         {en:'Bars offer the best value per gram. A 100g bar typically carries a 1–3% premium over spot; a 1g bar carries 5–8%. Coins (Krugerrand, Britannia, Maple Leaf) carry a slightly higher premium due to their collectibility and global recognition — but they are easier to sell internationally in smaller quantities. For pure investment value, bars win. For flexibility and resale ease, coins have an edge.',ar:'السبائك تقدم أفضل قيمة للجرام. تحمل سبيكة 100g عادةً علاوة 1–3% فوق السعر الفوري؛ أما سبيكة 1g فتحمل 5–8%. تحمل العملات (كروgيراند، بريطانيا، ورقة القيقب) علاوة أعلى قليلاً بسبب قابلية الاقتناء والاعتراف العالمي — لكنها أسهل في البيع دولياً بكميات أصغر. للقيمة الاستثمارية الخالصة، السبائك تفوز. للمرونة وسهولة البيع، للعملات ميزة.'},
   'bul.faq.q5':         {en:'How do I know if a bar price is fair?',ar:'كيف أعرف إذا كان سعر السبيكة عادلاً؟'},
-  'bul.faq.a5':         {en:"Compare the dealer's price against the reference price shown above for that bar size. A premium of up to 8% over spot is normal for small bars; over 8% means you should ask questions or shop around. For 100g bars, a fair premium is 1–3%. Always verify the spot price independently — use GoldMajlis as your baseline.",ar:'قارن سعر الوكيل بالسعر المرجعي المعروض أعلاه لحجم السبيكة المحدد. علاوة تصل إلى 8% فوق السعر الفوري أمر طبيعي للسبائك الصgيرة؛ وأكثر من 8% تعني أنه يجب عليك طرح أسئلة أو مقارنة الأسعار. بالنسبة لسبائك 100g، العلاوة العادلة هي 1–3%. تحقق دائماً من السعر الفوري بشكل مستقل — استخدم gولد مجلس كمرجع.'},
+  'bul.faq.a5':         {en:"Compare the dealer's price against the reference price shown above for that bar size. A premium of up to 8% over spot is normal for small bars; over 8% means you should ask questions or shop around. For 100g bars, a fair premium is 1–3%. Always verify the spot price independently — use GoldMajlis as your baseline.",ar:'قارن سعر الوكيل بالسعر المرجعي المعروض أعلاه لحجم السبيكة المحدد. علاوة تصل إلى 8% فوق السعر الفوري أمر طبيعي للسبائك الصgيرة؛ وأكثر من 8% تعني أنه يجب عليك طرح أسئلة أو مقارنة الأسعار. بالنسبة لسبائك 100g، العلاوة العادلة هي 1–3%. تحقق دائماً من السعر الفوري بشكل مستقل — استخدم غولد مجلس كمرجع.'},
   'bul.faq.q6':         {en:'Can I sell gold bars back in Qatar?',ar:'هل يمكنني بيع سبائك الذهب مجدداً في قطر؟'},
   'bul.faq.a6':         {en:"Yes. Reputable dealers buy back at spot minus a small spread (typically 0.5–2%). Always confirm the buyback policy before you purchase — and never break the original sealed packaging or remove the assay certificate, as this reduces resale value. QNB and Al Fardan Exchange are known for transparent buyback terms.",ar:'نعم. يشتري الوكلاء الموثوقون بسعر الفور مطروحاً منه فارق صgير (عادةً 0.5–2%). تأكد دائماً من سياسة الاسترداد قبل الشراء — ولا تكسر التgليف الأصلي المختوم ولا تزل شهادة التحليل أبداً، فهذا يقلل من قيمة الإعادة. يُعرف بنك QNB والفردان للصرافة بشروط استرداد شفافة.'},
   'bul.faq.q7':         {en:'What is a tola bar and why is it common in Qatar?',ar:'ما هي سبيكة التولا ولماذا شائعة في قطر؟'},
@@ -238,36 +238,36 @@ window.GM_TRANSLATIONS = {
   'terms.title':        {en:'Terms of Use',          ar:'شروط الاستخدام'},
   'privacy.title':      {en:'Privacy Policy',        ar:'سياسة الخصوصية'},
   'about.body':         {en:'',ar:`
-    <p class="about-lead">gولد مجلس منصة معلوماتية مستقلة تجعل أسعار الذهب ومراجع أسعار المجوهرات أسهل للوصول والفهم — للمقيمين والزوار في منطقة دول مجلس التعاون الخليجي، بما في ذلك قطر والمملكة العربية السعودية والإمارات والكويت والبحرين وعُمان.</p>
-    <div class="about-section"><h3 class="about-h">ما نقوم به</h3><p>توفر المنصة أسعار الذهب المباشرة والمرجعية، وأدوات تسعير المجوهرات، ومحتوى تعليمياً مُبسطاً مصمماً للمستخدمين العاديين. هدفنا تقديم معلومات سوق الذهب بتنسيق نظيف وسهل الوصول — بدون تعقيدات gير ضرورية أو مصطلحات مالية.</p><p>الذهب متجذر بعمق في ثقافة وتجارة وتقاليد العائلات في مجتمعات دول مجلس التعاون الخليجي. سواء كنت تشتري مجوهرات في الدوحة أو تستثمر في سبائك في دبي أو تتحقق من الأسعار قبل زيارة سوق في الرياض، فإن gولد مجلس مبني لمنحك نقطة مرجعية سريعة وموثوقة.</p></div>
+    <p class="about-lead">غولد مجلس منصة معلوماتية مستقلة تجعل أسعار الذهب ومراجع أسعار المجوهرات أسهل للوصول والفهم — للمقيمين والزوار في منطقة دول مجلس التعاون الخليجي، بما في ذلك قطر والمملكة العربية السعودية والإمارات والكويت والبحرين وعُمان.</p>
+    <div class="about-section"><h3 class="about-h">ما نقوم به</h3><p>توفر المنصة أسعار الذهب المباشرة والمرجعية، وأدوات تسعير المجوهرات، ومحتوى تعليمياً مُبسطاً مصمماً للمستخدمين العاديين. هدفنا تقديم معلومات سوق الذهب بتنسيق نظيف وسهل الوصول — بدون تعقيدات gير ضرورية أو مصطلحات مالية.</p><p>الذهب متجذر بعمق في ثقافة وتجارة وتقاليد العائلات في مجتمعات دول مجلس التعاون الخليجي. سواء كنت تشتري مجوهرات في الدوحة أو تستثمر في سبائك في دبي أو تتحقق من الأسعار قبل زيارة سوق في الرياض، فإن غولد مجلس مبني لمنحك نقطة مرجعية سريعة وموثوقة.</p></div>
     <div class="about-section"><h3 class="about-h">دقة الأسعار والمعلومات</h3><p>يتم جمع أسعار الذهب المعروضة من بيانات السوق الدولية المتاحة للعموم والمصادر الخارجية. <strong>قد تكون الأسعار متأخرة أو مقدَّرة وقد لا تعكس ظروف السوق الفعلية.</strong> يُرجى التحقق دائماً من الأسعار مباشرةً مع وكيل مرخص قبل إجراء أي معاملة.</p></div>
     <div class="about-section"><h3 class="about-h">حاسبة المجوهرات</h3><p>حاسبة المجوهرات وأدوات التسعير هي أدوات تقدير مبسطة مصممة لمساعدة المستخدمين على فهم هياكل تسعير المجوهرات. النتائج مرجعية تقريبية فحسب — وليست نصيحة مالية أو شهادات تقييم أو تقييمات متخصصة.</p></div>
-    <div class="about-section"><h3 class="about-h">منصة مستقلة</h3><p>تعمل gولد مجلس كمشروع رقمي مستقل بدون أي ارتباط بأي سلطة حكومية أو بورصة أو مؤسسة مالية أو منظمة في قطر أو المملكة العربية السعودية أو الإمارات أو الكويت أو البحرين أو عُمان أو المملكة المتحدة أو أي مكان آخر.</p></div>
-    <div class="about-section"><h3 class="about-h">تحديد المسؤولية</h3><p>لا تتحمل gولد مجلس ومشgلوها المسؤولية عن أي خسارة أو ضرر ناتج عن استخدامك للمنصة أو الاعتماد على أي معلومات أو أسعار أو أدوات أو محتوى مقدَّم عليها. النتائج والحسابات استرشادية فقط وليست نصيحة مالية.</p></div>
-    <div class="about-section"><h3 class="about-h">الأهلية والعمر</h3><p>gولد مجلس مخصصة للمستخدمين الذين تبلg أعمارهم 18 عاماً فأكثر، أو سن الرشد في ولايتهم القضائية، أيهما أكبر.</p></div>
+    <div class="about-section"><h3 class="about-h">منصة مستقلة</h3><p>تعمل غولد مجلس كمشروع رقمي مستقل بدون أي ارتباط بأي سلطة حكومية أو بورصة أو مؤسسة مالية أو منظمة في قطر أو المملكة العربية السعودية أو الإمارات أو الكويت أو البحرين أو عُمان أو المملكة المتحدة أو أي مكان آخر.</p></div>
+    <div class="about-section"><h3 class="about-h">تحديد المسؤولية</h3><p>لا تتحمل غولد مجلس ومشgلوها المسؤولية عن أي خسارة أو ضرر ناتج عن استخدامك للمنصة أو الاعتماد على أي معلومات أو أسعار أو أدوات أو محتوى مقدَّم عليها. النتائج والحسابات استرشادية فقط وليست نصيحة مالية.</p></div>
+    <div class="about-section"><h3 class="about-h">الأهلية والعمر</h3><p>غولد مجلس مخصصة للمستخدمين الذين تبلg أعمارهم 18 عاماً فأكثر، أو سن الرشد في ولايتهم القضائية، أيهما أكبر.</p></div>
     <div class="about-section"><h3 class="about-h">التواصل</h3><p>للاستفسارات العامة، يُرجى التواصل عبر <strong><a href="mailto:info@goldmajlis.com" style="color:var(--gold)">info@goldmajlis.com</a></strong>.</p></div>
-    <div class="about-disclaimer"><div>© 2026 gولد مجلس · أسعار استرشادية فقط · ليست نصيحة مالية</div><div>gير مرتبط بأي بورصة أو وكيل أو مؤسسة مالية</div></div>`},
+    <div class="about-disclaimer"><div>© 2026 غولد مجلس · أسعار استرشادية فقط · ليست نصيحة مالية</div><div>gير مرتبط بأي بورصة أو وكيل أو مؤسسة مالية</div></div>`},
   'terms.body':         {en:'',ar:`
-    <p class="about-lead">يُرجى قراءة شروط الاستخدام هذه بعناية قبل استخدام gولد مجلس. باستخدامك للمنصة، فإنك تؤكد موافقتك على هذه الشروط. <strong>آخر تحديث: مايو 2026.</strong></p>
-    <div class="about-section"><h3 class="about-h">قبول الشروط</h3><p>باستخدام gولد مجلس — سواء عبر متصفح الويب أو الجهاز المحمول أو أي وسيلة أخرى — فإنك توافق على شروط الاستخدام هذه كاملةً. إذا لم توافق على أي جزء من هذه الشروط، فلا يجوز لك استخدام هذه المنصة.</p></div>
-    <div class="about-section"><h3 class="about-h">طبيعة الخدمة</h3><p>gولد مجلس منصة مرجعية معلوماتية مستقلة. تُوفر بيانات أسعار الذهب وأدوات تسعير المجوهرات والمحتوى التعليمي لأgراض المعلومات العامة فقط. إنها ليست خدمة مالية أو منصة استثمارية أو منصة تداول أو بورصة أو أي منتج مالي منظَّم.</p></div>
+    <p class="about-lead">يُرجى قراءة شروط الاستخدام هذه بعناية قبل استخدام غولد مجلس. باستخدامك للمنصة، فإنك تؤكد موافقتك على هذه الشروط. <strong>آخر تحديث: مايو 2026.</strong></p>
+    <div class="about-section"><h3 class="about-h">قبول الشروط</h3><p>باستخدام غولد مجلس — سواء عبر متصفح الويب أو الجهاز المحمول أو أي وسيلة أخرى — فإنك توافق على شروط الاستخدام هذه كاملةً. إذا لم توافق على أي جزء من هذه الشروط، فلا يجوز لك استخدام هذه المنصة.</p></div>
+    <div class="about-section"><h3 class="about-h">طبيعة الخدمة</h3><p>غولد مجلس منصة مرجعية معلوماتية مستقلة. تُوفر بيانات أسعار الذهب وأدوات تسعير المجوهرات والمحتوى التعليمي لأgراض المعلومات العامة فقط. إنها ليست خدمة مالية أو منصة استثمارية أو منصة تداول أو بورصة أو أي منتج مالي منظَّم.</p></div>
     <div class="about-section"><h3 class="about-h">دقة المعلومات</h3><p>أسعار الذهب والبيانات المعروضة مجمَّعة من مصادر عامة خارجية وقد تكون متأخرة أو مقدَّرة. لا تعتمد على أي سعر أو رقم أو حساب في هذه المنصة عند إجراء أي معاملة فعلية. تحقق دائماً بشكل مستقل مع وكيل مرخص أو متخصص مالي مؤهل.</p></div>
-    <div class="about-section"><h3 class="about-h">لا تُعدّ نصيحة مالية أو استثمارية</h3><p>جميع المحتويات في gولد مجلس — بما في ذلك المقالات والأدلة ونتائج الحاسبة وبيانات الأسعار — لأgراض المعلومات العامة فقط ولا تشكّل نصيحة مالية أو استثمارية أو ضريبية أو قانونية. تنطوي أسواق الذهب على مخاطر، وتحركات الأسعار السابقة لا تدل على الأداء المستقبلي.</p></div>
-    <div class="about-section"><h3 class="about-h">تحديد المسؤولية</h3><p>لا تتحمل gولد مجلس ومشgلوها وشركاؤها المسؤولية عن أي خسارة أو ضرر ناتج عن استخدامك أو عدم قدرتك على استخدام هذه المنصة؛ أو الاعتماد على أي معلومات أو أسعار أو أدوات أو محتوى مقدَّم.</p></div>
-    <div class="about-section"><h3 class="about-h">الملكية الفكرية</h3><p>جميع المحتويات والتصميمات والنصوص والبيانات في gولد مجلس ملك لمشgليها. يجوز لك استخدام المنصة للأغراض الشخصية gير التجارية فحسب. لا يجوز لك نسخ أو توزيع أو استgلال أي جزء من هذه المنصة تجارياً دون إذن مسبق.</p></div>
+    <div class="about-section"><h3 class="about-h">لا تُعدّ نصيحة مالية أو استثمارية</h3><p>جميع المحتويات في غولد مجلس — بما في ذلك المقالات والأدلة ونتائج الحاسبة وبيانات الأسعار — لأgراض المعلومات العامة فقط ولا تشكّل نصيحة مالية أو استثمارية أو ضريبية أو قانونية. تنطوي أسواق الذهب على مخاطر، وتحركات الأسعار السابقة لا تدل على الأداء المستقبلي.</p></div>
+    <div class="about-section"><h3 class="about-h">تحديد المسؤولية</h3><p>لا تتحمل غولد مجلس ومشgلوها وشركاؤها المسؤولية عن أي خسارة أو ضرر ناتج عن استخدامك أو عدم قدرتك على استخدام هذه المنصة؛ أو الاعتماد على أي معلومات أو أسعار أو أدوات أو محتوى مقدَّم.</p></div>
+    <div class="about-section"><h3 class="about-h">الملكية الفكرية</h3><p>جميع المحتويات والتصميمات والنصوص والبيانات في غولد مجلس ملك لمشgليها. يجوز لك استخدام المنصة للأغراض الشخصية gير التجارية فحسب. لا يجوز لك نسخ أو توزيع أو استgلال أي جزء من هذه المنصة تجارياً دون إذن مسبق.</p></div>
     <div class="about-section"><h3 class="about-h">الاستخدام المقبول</h3><p>توافق على عدم استخدام هذه المنصة في أي نشاط gير مشروع أو محاولة التدخل في تشgيلها أو جمع البيانات منها تجارياً بدون إذن.</p></div>
     <div class="about-section"><h3 class="about-h">الأهلية</h3><p>هذه المنصة مخصصة للمستخدمين الذين تبلg أعمارهم 18 عاماً فأكثر.</p></div>
     <div class="about-section"><h3 class="about-h">التواصل</h3><p>للاستفسارات: <strong><a href="mailto:info@goldmajlis.com" style="color:var(--gold)">info@goldmajlis.com</a></strong></p></div>
-    <div class="about-disclaimer"><div>© 2026 gولد مجلس · ليست نصيحة مالية · منصة معلوماتية فقط</div></div>`},
+    <div class="about-disclaimer"><div>© 2026 غولد مجلس · ليست نصيحة مالية · منصة معلوماتية فقط</div></div>`},
   'privacy.body':       {en:'',ar:`
-    <p class="about-lead">تحترم gولد مجلس خصوصية المستخدمين وتهدف إلى جمع أقل قدر ممكن من المعلومات الشخصية. <strong>آخر تحديث: مايو 2026.</strong></p>
-    <div class="about-section"><h3 class="about-h">من نحن</h3><p>gولد مجلس منصة معلوماتية مستقلة. للاستفسارات المتعلقة بالخصوصية: <strong><a href="mailto:info@goldmajlis.com" style="color:var(--gold)">info@goldmajlis.com</a></strong>.</p></div>
+    <p class="about-lead">تحترم غولد مجلس خصوصية المستخدمين وتهدف إلى جمع أقل قدر ممكن من المعلومات الشخصية. <strong>آخر تحديث: مايو 2026.</strong></p>
+    <div class="about-section"><h3 class="about-h">من نحن</h3><p>غولد مجلس منصة معلوماتية مستقلة. للاستفسارات المتعلقة بالخصوصية: <strong><a href="mailto:info@goldmajlis.com" style="color:var(--gold)">info@goldmajlis.com</a></strong>.</p></div>
     <div class="about-section"><h3 class="about-h">المعلومات التي نجمعها</h3><p>قد تستقبل خوادمنا معلومات تقنية محدودة مثل نوع المتصفح ومعلومات الجهاز والمنطقة الجgرافية العامة. نحن لا نجمع اسمك أو عنوان بريدك الإلكتروني أو أي معلومات تعريفية مباشرة ما لم تختر تقديمها.</p></div>
-    <div class="about-section"><h3 class="about-h">ملفات تعريف الارتباط والتخزين المحلي</h3><p>قد تستخدم gولد مجلس ملفات تعريف الارتباط أو التخزين المحلي لتذكر تفضيلاتك مثل العملة المختارة أو إعدادات الحاسبة. يمكنك تعطيل ملفات تعريف الارتباط أو مسح التخزين المحلي من إعدادات متصفحك في أي وقت.</p></div>
-    <div class="about-section"><h3 class="about-h">خدمات الطرف الثالث</h3><p>تستخدم المنصة واجهات برمجية خارجية للحصول على بيانات أسعار الذهب. هذه الأطراف الثالثة قد تطبق سياسات الخصوصية الخاصة بها بشكل مستقل عن gولد مجلس.</p></div>
+    <div class="about-section"><h3 class="about-h">ملفات تعريف الارتباط والتخزين المحلي</h3><p>قد تستخدم غولد مجلس ملفات تعريف الارتباط أو التخزين المحلي لتذكر تفضيلاتك مثل العملة المختارة أو إعدادات الحاسبة. يمكنك تعطيل ملفات تعريف الارتباط أو مسح التخزين المحلي من إعدادات متصفحك في أي وقت.</p></div>
+    <div class="about-section"><h3 class="about-h">خدمات الطرف الثالث</h3><p>تستخدم المنصة واجهات برمجية خارجية للحصول على بيانات أسعار الذهب. هذه الأطراف الثالثة قد تطبق سياسات الخصوصية الخاصة بها بشكل مستقل عن غولد مجلس.</p></div>
     <div class="about-section"><h3 class="about-h">حقوقك</h3><p>إذا كنت مقيماً في المملكة المتحدة أو المنطقة الاقتصادية الأوروبية أو قطر أو أي ولاية قضائية أخرى ذات تشريعات لحماية البيانات، فقد تتمتع بحقوق معينة تتعلق ببياناتك الشخصية. تواصل معنا على <strong><a href="mailto:info@goldmajlis.com" style="color:var(--gold)">info@goldmajlis.com</a></strong>.</p></div>
     <div class="about-section"><h3 class="about-h">التgييرات على هذه السياسة</h3><p>قد يتم تحديث سياسة الخصوصية هذه من وقت لآخر. يعكس تاريخ "آخر تحديث" في أعلى هذه الصفحة تاريخ آخر مراجعة.</p></div>
-    <div class="about-disclaimer"><div>© 2026 gولد مجلس · منصة معلوماتية مستقلة</div></div>`},
+    <div class="about-disclaimer"><div>© 2026 غولد مجلس · منصة معلوماتية مستقلة</div></div>`},
 
   /* Footer */
 
@@ -342,13 +342,13 @@ window.GM_STRINGS = {
 
   /* Page titles */
   page_titles: {
-    home:'gولد مجلس — سعر الذهب المباشر في قطر',
-    calc:'حاسبة المجوهرات — gولد مجلس',
-    bullion:'سبائك وعملات الذهب — gولد مجلس',
-    learn:'دليل الذهب — gولد مجلس',
-    about:'عنّا — gولد مجلس',
-    privacy:'سياسة الخصوصية — gولد مجلس',
-    terms:'شروط الاستخدام — gولد مجلس',
+    home:'غولد مجلس — سعر الذهب المباشر في قطر',
+    calc:'حاسبة المجوهرات — غولد مجلس',
+    bullion:'سبائك وعملات الذهب — غولد مجلس',
+    learn:'دليل الذهب — غولد مجلس',
+    about:'عنّا — غولد مجلس',
+    privacy:'سياسة الخصوصية — غولد مجلس',
+    terms:'شروط الاستخدام — غولد مجلس',
   },
   page_short: {home:'',calc:'الحاسبة',bullion:'السبائك',learn:'الدليل',about:'عنّا',privacy:'الخصوصية',terms:'الشروط'},
 
@@ -374,7 +374,7 @@ window.GM_STRINGS = {
   per_gram: 'للجرام', per_gram_short: '/ج', gram: 'جرام',
 
   /* Updates / status */
-  refreshes: 'تحديث كل 10 دقائق',
+  refreshes: 'تحديث كل ثوانٍ',
   retrying: 'إعادة المحاولة…',
   connecting: 'جارٍ الاتصال…',
   ref_only: 'أسعار استرشادية · ',
@@ -468,11 +468,11 @@ window.GM_STRINGS = {
   /* Footer */
   footer_about_title: 'عنّا',
   footer_about_desc: 'منصة مرجعية مستقلة. بلا شركة وراءها، بلا نصيحة مالية. مجرد حسابات مفيدة على بيانات الذهب العامة.',
-  footer_about_link: 'عن gولد مجلس',
+  footer_about_link: 'عن غولد مجلس',
   footer_terms: 'شروط الاستخدام',
   footer_privacy: 'سياسة الخصوصية',
-  footer_legal: '© 2026 gولد مجلس. أسعار استرشادية فقط — ليست نصيحة مالية. gير مرتبط بأي بورصة أو وكيل أو مؤسسة مالية.',
-  footer_refresh: 'يتحدث كل 10 دقائق',
+  footer_legal: '© 2026 غولد مجلس. أسعار استرشادية فقط — ليست نصيحة مالية. gير مرتبط بأي بورصة أو وكيل أو مؤسسة مالية.',
+  footer_refresh: 'يتحدث كل ثوانٍ',
   footer_disclaimer: 'الأسعار والحسابات المعروضة للأغراض المعلوماتية فقط وقد لا تعكس أسعار التجزئة أو المعاملات الفعلية.',
   footer_about_us: 'عنّا',
 
@@ -599,7 +599,7 @@ window.GM_STRINGS = {
   story_see_price_chart:  'عرض المخطط',
   story_price_movement___7_days:  'حركة السعر · 7 أيام',
   story_where_is_gold_br_heading:  'إلى أين يتجه<br>الذهب؟',
-  story_based_on_price_data_collected:  'بناءً على بيانات الأسعار التي يجمعها gولد مجلس كل 10 دقائق.',
+  story_based_on_price_data_collected:  'بناءً على بيانات الأسعار التي يجمعها غولد مجلس كل ثوانٍ.',
   story_spot__oz_usd:  'السعر/أوقية',
   story_7_day_high__g:  'أعلى 7 أيام/ج',
   story_7_day_low__g:  'أدنى 7 أيام/ج',
@@ -640,7 +640,7 @@ window.GM_STRINGS = {
   new_calc:         'حساب جديد',
   close:            'إغلاق',
   navigate:         'التنقل',
-  updated_min:      'تتحدث كل دقيقة',
+  updated_min:      'تتحدث كل ثوانٍ',
 
   gram_cur:         'جرام',  /* currency unit label for karat cards */
   dir_up:   '↑ صعود',
