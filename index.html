@@ -1468,7 +1468,9 @@
     .kcard-chg.up{color:var(--green)}
     .kcard-chg.dn{color:var(--red)}
 
-  </style>
+  
+    .kcard-delta{display:none!important}
+</style>
   <!-- Arabic translations: loads ar.js which overrides TRANSLATIONS + adds GM_STRINGS.
        Sync load (no defer) so Arabic is ready before any JS runs.
        If this file fails to load, English fallback in TRANSLATIONS still works. -->
@@ -1660,15 +1662,14 @@
   <div class="table-card">
     <div class="table-card-inner">
       <span class="table-scroll-hint" id="tbl-scroll-hint" aria-hidden="true"></span>
-      <table class="ptable" aria-label="Gold prices Qatar by karat">
-        <!-- Weight toggle strip -->
-        <div id="weight-toggle-strip" style="display:flex;gap:6px;padding:10px 12px 4px;flex-wrap:wrap">
+      <div id="weight-toggle-strip" style="display:flex;gap:6px;padding:10px 12px 4px;flex-wrap:wrap">
           <button class="wtog on" id="wtog-gram"  onclick="setWeightUnit('gram')"  >Gram</button>
           <button class="wtog"    id="wtog-oz"    onclick="setWeightUnit('oz')"    >Ounce</button>
           <button class="wtog"    id="wtog-kg"    onclick="setWeightUnit('kg')"    >KG</button>
           <button class="wtog"    id="wtog-tola"  onclick="setWeightUnit('tola')"  >Tola</button>
           <button class="wtog"    id="wtog-pound" onclick="setWeightUnit('pound')" >Pound</button>
         </div>
+        <table class="ptable" aria-label="Gold prices Qatar by karat">
         <thead>
           <tr>
             <th scope="col" id="th-karat">Karat</th>
@@ -3583,7 +3584,7 @@ function startPriceFlicker() {
     const _ut2=document.getElementById('upd-txt');
     if(_ut2&&base24QAR){
       const _isArF2=document.documentElement.getAttribute('dir')==='rtl';
-      _ut2.textContent=(_isArF2?'● مباشر':'● Live')+' · '+fT(new Date());
+      _ut2.textContent=(_isArF2?'مباشر':'Live')+' · '+fT(new Date());
     }
   }, 3000);
 }
