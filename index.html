@@ -1329,9 +1329,9 @@
     [dir=rtl] .hero-inner{text-align:right}
     [dir=rtl] .hero-sub{text-align:right}
     [dir=rtl] .live-glow-row{flex-direction:row-reverse}
-    [dir=rtl] .home-cur-row{flex-direction:row-reverse;text-align:right}
-    [dir=rtl] .home-cur-actions{order:-1}
+    [dir=rtl] .home-cur-row{flex-direction:row-reverse;text-align:right;flex-wrap:nowrap}
     [dir=rtl] .home-cur-pills{flex-direction:row-reverse}
+    [dir=rtl] .home-cur-actions{flex-shrink:0}
     [dir=rtl] .kcard-header{flex-direction:row-reverse}
     [dir=rtl] .kcard-item{text-align:right}
     [dir=rtl] .kcard-unit{text-align:right}
@@ -3321,23 +3321,32 @@ function renderAllPrices(skipBullion=false){
         _chgEl.className='kcard-chg '+(df>0?'up':'dn');
       }
     } else {
-      const _db=document.getElementById('wdir-'+k);
-      if(_db){_db.textContent='–';_db.style.color='var(--ink-3)';_db.style.background='transparent';_db.style.opacity='0.4';}
+      /* No prev price yet — show current price as reference */
+      const _chgEl2=document.getElementById('wchg-'+k);
+      if(_chgEl2&&_chgEl2.textContent===''){
+        _chgEl2.textContent=(np*(FX[gCurCode]||1)).toFixed(2);
+        _chgEl2.className='kcard-chg';
+        _chgEl2.style.color='var(--ink-3)';
+      }
     }
   });
 
   // Home table — 6 columns: Karat, Gram, KG, Ounce, Pound, Tola; 6 rows: 24K–12K
   const curLabel = gCurCode;
   /* Use translation system if loaded, else fallback to English */
-  if(typeof updateTableHeaders==='function'){updateTableHeaders();}else{
-    const thGram=document.getElementById('th-gram');const thKg=document.getElementById('th-kg');
-    const thOz=document.getElementById('th-oz');const thPound=document.getElementById('th-pound');const thTola=document.getElementById('th-tola');
-    const _isArTH=document.documentElement.getAttribute('dir')==='rtl';if(thGram)thGram.textContent=(_isArTH?(window.GM_STRINGS?.th_gram||'غرام / '):'Gram / ')+curLabel;if(thKg)thKg.textContent=(_isArTH?'كغ / ':'KG / ')+curLabel;
-    if(thOz)thOz.textContent=(_isArTH?(window.GM_STRINGS?.th_oz||'أوقية / '):'Oz / ')+curLabel;if(thPound)thPound.textContent=(_isArTH?(window.GM_STRINGS?.th_pound||'رطل / '):'Pound / ')+curLabel;if(thTola)thTola.textContent=(_isArTH?(window.GM_STRINGS?.th_tola||'تولا / '):'Tola / ')+curLabel;
-  }
-
-  const dotC={24:'#D4A017',22:'#C8880A',21:'#B87040',18:'#C06080',14:'#A07890',12:'#8888A0'};
-  const fx=FX[gCurCode]||1;
+  /* Update 5-col table headers */
+  (function(){
+    const _ar=document.documentElement.getAttribute('dir')==='rtl';
+    const _wu=window._weightUnit||'gram';
+    const _wl={gram:_ar?'جرام':'Gram',oz:_ar?'أوقية':'Ounce',kg:_ar?'كيلو':'KG',tola:_ar?'تولا':'Tola',pound:_ar?'رطل':'Pound'};
+    const _thW=document.getElementById('th-weight-val');
+    if(_thW)_thW.textContent=(_wl[_wu]||(_ar?'جرام':'Gram'))+' / '+(gCurCode||'QAR');
+    const _thK=document.getElementById('th-karat'); if(_thK)_thK.textContent=_ar?'عيار':'Karat';
+    const _thH=document.getElementById('th-high');  if(_thH)_thH.textContent=_ar?'أعلى':'High';
+    const _thL=document.getElementById('th-low');   if(_thL)_thL.textContent=_ar?'أدنى':'Low';
+    const _thC=document.getElementById('th-change');if(_thC)_thC.textContent=_ar?'تغير':'Change';
+    Object.entries(_wl).forEach(([u,l])=>{const b=document.getElementById('wtog-'+u);if(b)b.textContent=l;});
+  })();
   const rows=[
     {k:24,l:'24K'},{k:22,l:'22K'},{k:21,l:'21K'},{k:18,l:'18K'},{k:14,l:'14K'},{k:12,l:'12K'}
   ];
